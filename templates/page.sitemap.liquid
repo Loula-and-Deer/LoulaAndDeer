@@ -1,0 +1,60 @@
+<div class="sitemap" style="padding: 1rem;">
+
+<h1>Site Map</h1>
+<ul class="sitemap-list">
+<h2>Pages</h2>
+<li>
+  <a href="https://www.loulaanddeer.co.uk/pages/frontpage" title=" Welcome "> Welcome </a>
+</li>
+  
+<li>
+  <a href="https://www.loulaanddeer.co.uk/pages/about-us" title=" About Us "> About Us </a>
+</li>
+  
+<li >
+  <a href="https://www.loulaanddeer.co.uk/pages/contact-us" title=" Contact Us "> Contact Us </a>
+</li>
+  
+<li >
+  <a href="https://www.loulaanddeer.co.uk/pages/delivery" title=" Shipping "> Shipping </a>
+</li>
+  
+<li>
+  <a href="https://www.loulaanddeer.co.uk/pages/returns-policy" title=" Returns Policy "> Returns Policy </a>
+</li>
+  
+<li>
+  <a href="https://www.loulaanddeer.co.uk/pages/terms-and-conditions" title=" Terms and Conditions "> Terms and Conditions </a>
+</li>
+  
+  <li>
+ <a href="https://www.loulaanddeer.co.uk/blogs/news" title=" News "> News </a>
+</li>
+</ul>
+  
+<ul class="sitemap-list">
+<h2>Collections</h2>
+  {% for collection in collections %}
+  <li>
+    <a href="{{collection.url}}">{{collection.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+<ul class="sitemap-list">
+<h2>Products</h2>
+{% for product in collections['alphabetical'].products %}
+  <li>
+   <a href="{{product.url}}">{{product.title}}</a>
+  </li>
+{% endfor %}
+</ul>
+
+<ul class="sitemap-list">
+<h2>Vendors</h2>
+{% for vendor in shop.vendors %}
+  <li>{{ vendor | link_to_vendor }}</li>
+{% endfor %}
+</ul>
+
+</div>
