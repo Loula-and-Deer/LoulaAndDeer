@@ -7,14 +7,14 @@
  <!-- start social profiles (https://developers.google.com/structured-data/customize/social-profiles) -->
  <!-- Internet Explorer and Microsoft Edge have an issue with scripts being loading asynchronously, please avoid.-->
 <script type="application/ld+json">
- { 
+ {
  "@context" : "http://schema.org",
  "@type" : "LocalBusiness",
  "name" : "Loula and Deer",
  "url" : "https://www.loulaanddeer.co.uk/",
  "email": "info@loulaanddeer.co.uk",
  "telephone" : "01273726138",
- "logo": "https://cdn.shopify.com/s/files/1/0398/6929/t/5/assets/logo.png",http://mamissima.myshopify.com/?preview_theme_id=151689033
+ "logo": "https://cdn.shopify.com/s/files/1/0398/6929/t/5/assets/logo.png",
  "image": "https://cdn.shopify.com/s/files/1/0398/6929/t/5/assets/logo.png",
  "priceRange": "££",
  "currenciesAccepted": "GBP",
@@ -27,7 +27,7 @@
     "postalCode": "BN1 1HJ",
     "streetAddress": "5 Brighton Place"
   },
- "sameAs" : [ 
+ "sameAs" : [
  	"https://www.facebook.com/Loula-and-Deer-170682726287660/",
  	"https://twitter.com/loulaanddeer",
  	"https://www.instagram.com/loulaanddeerbrighton/"
@@ -38,11 +38,14 @@
 
 <head>
 <meta name="google-site-verification" content="BDt6zg4W_YgDvPXbxNRyTZ9CqADLQoZvqULXSu-Vx_8" />
+  <meta name="msvalidate.01" content="C8BDDE326B27793994EACFDF0A558030" />
   <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
   <meta charset="utf-8">
   <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
-  <title> {{ page_title }} {% if template == '404' %}404 Error{% endif %} - {{ shop.name }} {% if template == 'search' %}Search{% endif %}</title>
+  <title>{{ page_title }}
+    {% if template != 'index' %} - {{ shop.name }} {% else %} - Baby gifts and toys {% endif %}
+    {% if template == 'search' %}Search{% endif %}</title>
 
   {% if page_description %}
   <meta name="description" content="{{ page_description | escape }}" />
@@ -56,15 +59,15 @@
   maileg, petit bateau, I love gorgeous, Wild and gorgeous" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
-  <link rel="canonical" href="{{ canonical_url }}" /> 
+  <link rel="canonical" href="{{ canonical_url }}" />
 
   {% include 'fb-open-graph-tags' %}
   {% include 'twitter-cards' %}
 
   {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
   {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
-  {{ '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' | stylesheet_tag }}
+  {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
+  {{ 'mailchimp.scss' | asset_url | stylesheet_tag }}
   {% if settings.google_header_font != "none" %}
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.google_header_font }}:300,400,700">
   {% endif %}
@@ -73,26 +76,27 @@
   {% endif %}
   <!-- <script src="{{ 'html5shiv.js' | asset_url}}"></script> -->
   {{ content_for_header }}
-  
+
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 
-  <script src="{{ 'option_selection.js' | shopify_asset_url}}"></script>
+  <script src="{{ 'option_selection.js' | shopify_asset_url}}" async="async"></script>
   <script src="{{ 'api.jquery.js' | shopify_asset_url}}"></script>
 
   {% if template contains 'customers' %}
-  <script src="{{ 'shopify_common.js' | shopify_asset_url}}"></script>
-  <script src="{{ 'customer_area.js' | shopify_asset_url}}"></script>
+  <script src="{{ 'shopify_common.js' | shopify_asset_url}}" async="async"></script>
+  <script src="{{ 'customer_area.js' | shopify_asset_url}}" async="async"></script>
   {% endif %}
   {{ 'shopstorm-apps.scss.css' | asset_url | stylesheet_tag }}
 </head>
 <body>
 	<div class="content-overlay"></div>
+    <div class="desktop-search-overlay"></div>
 	<!-- Desktop toolbar -->
 	{% include 'desktop-toolbar' %}
 	<!-- Mobile toolbar -->
 	{% include 'mobile-toolbar' %}
-	
+
 	<!-- Begin Mobile Nav -->
 	<div class="row mobile-wrapper">
 		<nav class="mobile clearfix">
@@ -102,7 +106,7 @@
 	<!-- End Mobile Nav -->
 
 	<!-- Begin wrapper -->
-	<div id="transparency" class="wrapper" style="transition: all 1s">
+	<div id="transparency" class="wrapper">
 		<div class="bigpadding bigborder" id="header">
 			<div class="border-bottom">
 				<div class="logo">
@@ -164,7 +168,7 @@
 		}
 	} else {
 		jQuery('#add-to-cart').val('Unavailable').addClass('disabled').attr('disabled', 'disabled');
-		}};
+  }};
 	jQuery(document).ready(function ($) {
 		var optionSelectors = new Shopify.OptionSelectors("product-select", {
 			product: {{product | json}},
@@ -182,8 +186,8 @@
 {% endif %}
 {% include 'ajax' %}
 {% include 'search-autocomplete' %}
-
 </body>
 
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"e8fd710d43f0b4800046d6813","lid":"6dfaf55ebd"}) })</script>
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false" ></script>
+<script type="text/javascript" >require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us15.list-manage.com","uuid":"e8fd710d43f0b4800046d6813","lid":"6dfaf55ebd"}) })</script>
 </html>

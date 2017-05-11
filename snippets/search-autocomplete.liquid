@@ -1,9 +1,3 @@
-{% comment %} Background color of results box {% endcomment %}
-{% assign results_box_background_color = '#ffffff' %}
-{% comment %} Border color of results box {% endcomment %}
-{% assign results_box_border_color = '#d4d4d4' %}
-{% assign results_box_width = '300px' %}
-{% assign results_box_image_width = '80px' %}
 <script>
 $(function() {
   // Current Ajax request.
@@ -26,8 +20,10 @@ $(function() {
       // What's the search results list?
       var resultsList = form.find('.search-results');
       // If that's a new term and it contains at least 3 characters.
-      if (term.length > 6 && term != $(this).attr('data-old-term')) {
+      if (term.length > 3 && term != $(this).attr('data-old-term')) {
         // Saving old query.
+        resultsList.fadeIn(200);
+        resultsList.append('<li style="height: auto; padding: 10px 0;"><span class="title"><p>Searching...</p></span></li>');
         $(this).attr('data-old-term', term);
         
         // Killing any Ajax request that's currently being processed.
@@ -60,99 +56,17 @@ $(function() {
             if(data.results_count > 4) {
               resultsList.append('<li style="height: auto; padding: 10px 0;"><span class="title"><a href="' + searchURL + '">See all results (' + data.results_count + ')</a></span></li>');
             }
-            resultsList.fadeIn(200);
+            
           }        
         });
       }
     });
   });
   // Clicking outside makes the results disappear.
-  $('body').bind('click', function(){
+  $('body').on('click', function(){
     $('.search-results').hide();
-    
   });
   
   
 });
 </script>
-
-
-<style>
-.search-results {
-  list-style-type: none;   
-  width: {{ results_box_width }};
-  margin: 0;
-  padding: 0;
-  background: {{ results_box_background_color }};
-  border: 1px solid {{ results_box_border_color }};
-  border-radius: 2px;
-  -webkit-box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.1);
-  box-shadow: 0px 4px 7px 0px rgba(0,0,0,0.1);
-  overflow: hidden;
-  top: 49px;
-  z-index: 999999;
-}
-  
-.search-results li {
-  display: block;
-  width: 100%;
-  height: 60px;
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid #f6f6f6;
-  line-height: 18px;
-  overflow: hidden;
-}
-
-.search-results li:hover{
-  background: #f9f9f9;
-}
-.search-results li:first-child {
-  border-top: none;
-}
-.search-results .title {
-  float: left;
-  padding-left: 8px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  text-align: left;
-  width: {{ results_box_width | remove: 'px' | to_number | minus: 120 }}px;
-}
-  
-.search-results .price {
-  color: #b7b7b7;
-  font-size: 12px;
-}
-  
-.search-results .thumbnail {
-  float: left;
-  display: block;
-  width: {{results_box_image_width}};  
-  margin: 3px 0 3px 3px;
-  padding: 0;
-  text-align: center;
-  overflow: hidden;
-}
-  
-@media only screen and (max-width: 797px){
-  .search-results {
-    top: 40px !important;
-    left: 0px !important;
-    width: 100%;
-    border-bottom: 1px solid #d4d4d4;
-    border-radius: 0 0 3px 3px;
-    -webkit-box-shadow: 0 10px 26px -8px rgba(0,0,0,0.25);
-    -moz-box-shadow: 	0 10px 26px -8px rgba(0,0,0,0.25);
-    box-shadow: 		0 10px 26px -8px rgba(0,0,0,0.25);
-  	border: none;
-  }
-  
-  .search-results li {
-    display: block;
-    width: 100%;
-    padding: 6px;
-  }
-}
-</style>

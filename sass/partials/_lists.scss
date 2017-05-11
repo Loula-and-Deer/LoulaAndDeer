@@ -1,0 +1,6 @@
+ul.unstyled, ol.unstyled { margin: 0; list-style: none outside none; }
+ul.unstyled > li, ol.unstyled > li { list-style: none; }
+ul.horizontal > li, ol.horizontal > li { display: block; float: left; }
+ul.horizontal-inline, ol.horizontal-inline { text-align: center; }
+ul.horizontal-inline > li, ol.horizontal-inline > li { display: inline; margin: 0 5px; }
+ul.expanded > li, ol.expanded > li { margin-bottom: 10px; }

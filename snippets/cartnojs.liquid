@@ -5,14 +5,14 @@
     .buttons input {width: 100%; margin: 5px 0;}
     .item {padding: 0;}
   }
-  
+
   .cartJS{
     display: none;
   }
 </style>
 
 <div id="cart" style="background: white";>
-  
+
   <!-- Begin empty cart -->
   {% if cart.item_count == 0 %}
   <div class="row" >
@@ -21,7 +21,7 @@
     </div>
   </div>
   <!-- End empty cart -->
-  
+
   <!-- Begin cart -->
   {% else %}
   <div class="row" style="background: white";>
@@ -33,17 +33,14 @@
       {% endif %}
 
 
-      <form action="/cart" method="post" id="cartform" style="background: white";> 
-      
+      <form action="/cart" method="post" id="cartform" style="background: white";>
+
         <table>
           <thead>
             <tr>
               <th class="image">&nbsp;</th>
               <th class="item">&nbsp;</th>
               <th class="qty">
-                <div class="tooltip">Quantity
-                  <span class="tooltiptext">Quantities for personal items may not be changed. </span>
-                </div>
               </th>
               <th class="price">Price</th>
               <th class="remove">&nbsp;</th>
@@ -62,7 +59,7 @@
               <td class="item">
                 <a href="{{ item.url }}">
                   <strong>{{ item.product.title }}</strong>
-                  
+
                    {% include 'product-customizer-helper' %}
                   {% if item.product.variants.size > 1 %}
                   <span class="variant_title">{{ item.variant.title }}</span>
@@ -91,16 +88,16 @@
             </tr>
           </tbody>
         </table>
-        
+
         <div class="buttons clearfix">
           <input type="submit" id="checkout" class="btn" name="checkout" value="Checkout" />
           <input type="submit" id="update-cart" class="btn" name="update" value="Update" />
         </div>
-        
+
         {% if additional_checkout_buttons or settings.display_cart_note %}
         <div class="row" style="background: white";>
           {% if additional_checkout_buttons %}
-          <div class="extra-checkout-buttons span6">            
+          <div class="extra-checkout-buttons span6">
             {{ content_for_additional_checkout_buttons }}
           </div>
           {% endif %}
@@ -112,7 +109,7 @@
             </div>
           </div>
           {% endif %}
-        </div> 
+        </div>
         {% endif %}
         {% endif %}
 

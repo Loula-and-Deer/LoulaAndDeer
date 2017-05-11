@@ -30,15 +30,21 @@
               <li class="cart-item" id="cart-item_{{ forloop.index }}" expanded="false">
                 <div class="cart-item-inner">
                   <a class="image" href="{{ item.url }}">
-                      <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}" />
+                      <img src="{{ item | img_url: '130x85' , crop: 'center' , format: 'pjpg' }}"  alt="{{ item.title | escape }}" />
                   </a>
                   <i class="fa fa-ellipsis-v" aria-hidden="true" style="font-size: 25px;float: right;width: 5rem;text-align: right;"></i>
                   <a class="item" href="{{ item.url }}">
-
-                    <p id="linetitle_{{ forloop.index }}">{% if item.quantity > 1 %}
-                    {{ item.product.title }} | x{{ item.quantity }}
+                    
+                    <p id="linetitle_{{ forloop.index }}">
+                    {% if item.product.title contains "Personalised Name"%}
+                      <!-- Hides the quantity display if the item is a name plaque-->
+                      {{ item.product.title }}
                     {% else %}
-                    {{ item.product.title }}
+                      {% if item.quantity > 1 %}
+                        {{ item.product.title }} | x{{ item.quantity }}
+                      {% else %}
+                      	{{ item.product.title }}
+                      {% endif %}
                     {% endif %}
                     </p>
                   </a>
@@ -58,21 +64,23 @@
                   {% endif %}
                   
                   <!-- Quantity Input -->
+                  {% if item.product.title != "Personalised Name Plaque" %}
                   <li>
                     <p>Quantity</p>
                     <input type="button" size="2" class="cart__quantity_dec" value="-" data-line="{{ forloop.index }}">
-                    <input type="number" size="2" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
+                    <input type="number" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
                     <input type="button" size="2" class="cart__quantity_inc" value="+" data-line="{{ forloop.index }}">
 
                   </li>
+                  {% endif %}
                   <!-- Remove Item -->
                   <li><a href="/cart/change?line={{ forloop.index }}&quantity=0" data-line="{{ forloop.index }}">Remove</a></li>
                 </ul>
               </li>
             {% endfor %}
-            <li class="cart-item" style="height: 35px">
-              <h3 class="subtotal-preview" style="text-align: right; margin: 0;">SUBTOTAL &nbsp; &nbsp; &nbsp; {{cart.total_price | money}}</h3>
-              <p style="text-align: right; font-size: 10px;">All of our items come gift wrapped.</p>
+            <li class="cart-item" style="height: auto">
+              <h3 class="subtotal-preview fr" style="text-align: right; margin: 0;">SUBTOTAL &nbsp; &nbsp; &nbsp; {{cart.total_price | money}}</h3>
+              <h3 class="fl" style="text-align: right; text-transform: uppercase;">All of our items come gift wrapped.</h3>
             </li>
           </ul>
           
@@ -82,23 +90,24 @@
               <p style="text-align: left; width: 50%; float:left;">Subtotal</p>
               <p class="subtotal" style="text-align: right; width: 50%; float:left;">{{cart.total_price | money}}</p>
               <p style="text-align: left; width: 50%; float:left;">Delivery</p>
-              <a style="text-align: right; width: 50%; float:left;" href="https://www.loulaanddeer.co.uk/pages/delivery">
+              <p id="open-mcp-btn" class="btn" style="text-align: right; width: 50%; float:left; margin: 0; padding: 0; clear: none;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
+              </p>
             </div>
             <div class="cart-buttons">
-
+  <p style="clear: both; margin: 10px 0;">
+     <input style="float:none; vertical-align: middle;" type="checkbox" id="agree" />
+     <label style="display:inline; float:none" for="agree">
+       I agree with the <a href="https://loulaanddeer.co.uk/pages/terms-and-conditions">terms and conditions</a>.
+     </label>
+   </p>
               <input type="submit" class="btn" name="checkout" value="Checkout" />
-              <!--             <input type="submit" id="update-cart" class="btn" name="update" value="Update" /> -->
+              <!--  <input type="submit" id="update-cart" class="btn" name="update" value="Update" /> -->
               {{ content_for_additional_checkout_buttons }}
             </div>
             <div class="cart-addtional-info" style="font-size:12px ">
-              <p class="tc">Order Notes</p>
+              <p class="tc">Order Note</p>
               <textarea id="note" name="note" maxlength="400" style="resize: vertical; max-height: 167px;">{{ cart.note }}</textarea>
-              <div>
-                <i style="font-size: 12px; line-height: 18px; margin-right: 8px;" class="fa fa-question-circle fl" aria-hidden="true"></i>
-                <p style="font-size: 12px;" >Have a discount code? Add it in the next step.</p>
-              </div>
             </div>
           </div>
         </form>
@@ -110,7 +119,7 @@
     <div class="row">
       <div class="cart-t">
           <ul class="cart-list" style="max-width: 100%;">
-            <li class="cart-item" style="height: 35px">
+            <li class="cart-item" style="height: auto;">
               <h2>SUGGESTED ITEMS</h2>
             </li>
             <div class="cart-featured">
@@ -125,3 +134,7 @@
 
   <!-- End cart -->
 </div>
+
+{% assign mcp_title = pages.delivery.title %}
+{% assign mcp_content = pages.delivery.content %}
+{% include 'modular-content-popup' %}

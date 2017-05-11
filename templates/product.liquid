@@ -16,7 +16,6 @@
             <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="url">
               <span itemprop="title">{{ collection.title }}</span>
             </a>
-         
           {% else %}
             <a href="/collections/all" title="All Products" itemprop="url">
               <span itemprop="title">Products</span>
@@ -35,10 +34,10 @@
       <!-- Begin featured image -->
       <div class="image featured">
         {% if settings.enable_product_image_zoom %}
-        <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" />
+        <img src="{{ featured_image | img_url: '1024x1024', format: 'pjpg'}}" alt="{{ featured_image.alt | escape }}" />
         {% else %}
         <a href="{{ featured_image | img_url: 'master' }}" class="fancy" id="placeholder">
-          <img src="{{ featured_image | img_url: '1024x1024' }}" alt="{{ featured_image.alt | escape }}" />
+          <img src="{{ featured_image | img_url: '1024x1024', format: 'pjpg'}}" alt="{{ featured_image.alt | escape }}" />
         </a>
         {% endif %}
       </div>
@@ -53,7 +52,7 @@
         {% for image in product.images %}
         <div class="image span1{% cycle 'last-in-row': '', '', ' last-in-row' %}">
           <a href="{{ image | img_url: '1024x1024' }}">
-            <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
+            <img src="{{ image | img_url: '150x100' , crop: 'center' , format: 'pjpg'}}" alt="{{ image.alt | escape }}" />
           </a>
         </div>
         {% endfor %}
@@ -68,22 +67,6 @@
       
     </div>
     <!-- End product photos -->
-    
-    {% if product.images.size > 1 and settings.thumbnails_position == 'right' %}
-    <!-- Begin thumbnails -->
-    <div class="span1">
-      <div class="thumbs clearfix">
-        {% for image in product.images %}
-        <div class="image">
-          <a href="{{ image | product_img_url: '1024x1024' }}">
-            <img src="{{ image | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    <!-- End thumbnails -->
-    {% endif %}
     
     
     <!-- Begin description -->
@@ -103,7 +86,7 @@
         {% assign variant = product.selected_or_first_available_variant %}
         <h3 class="price fl" id="price-preview" style="color: #a1a1a1">
           <span>{{ variant.price | money }}</span>{% if variant.price < variant.compare_at_price %} <del>{{ variant.compare_at_price | money }}</del>{% endif %}
-                <h3 class="title fr"><a style="color:{{ settings.link_color }}" href="/collections/vendors?q={{product.vendor}}">{{ product.vendor }}</a></h3>
+                <h3 class="title fr"><a href="/collections/vendors?q={{product.vendor}}">{{ product.vendor }}</a></h3>
           <span style="display: none" itemprop="price">{{ variant.price | money_without_currency }}</span>
         </h3>
       </div>
@@ -145,8 +128,10 @@
 
 
         <div class="description" style="clear: both;">
-          <h3 style="border-bottom: 3px solid #F9F9F9;">More about {{ product.title}}</h3>
+          {% if product.description != "" %}
+          <h3 style="border-bottom: 3px solid #F9F9F9;">More about {{ product.title }} </h3>
           {{ product.description }}
+          {% endif %}
           <p style="float: left;"><a href="http://loulaanddeer.co.uk/pages/returns-policy">Returns Policy</a></p>
           <p style="float: left;">&nbsp; | &nbsp;</p>
           <p style="float: left;"><a href="http://loulaanddeer.co.uk/pages/delivery">Shipping</a></p>

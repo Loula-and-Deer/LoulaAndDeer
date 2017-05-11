@@ -1,7 +1,12 @@
+
+/* NOTICE: This is all Shopfy code.
+ * I would not write anything this bad.
+ */
+
 var MinimalTheme = {};
 
 jQuery(window).ready(function(){
-  
+
   {% if settings.display_slideshow %}
   $('.flexslider').flexslider({
     animation: "slide",
@@ -16,20 +21,20 @@ jQuery(window).ready(function(){
   {% endif %}
 });
 
-jQuery(window).load(function(){  
+jQuery(window).load(function(){
 
   $("select.loc_on_change").change(function(){
     if($(this).find(":selected").attr("value") == "#") return false;
     window.location = $(this).find(":selected").attr("value");
   });
-   
+
 });
 
 jQuery(document).ready(function($){
-    
-  // force wide nav -->  
+
+  // force wide nav -->
   {% if settings.force_wide_nav and settings.navigation_alignment == "right" %}
-  (function($,sr){  
+  (function($,sr){
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
     var debounce = function (func, threshold, execAsap) {
@@ -48,12 +53,12 @@ jQuery(document).ready(function($){
         timeout = setTimeout(delayed, threshold || 500);
       };
     }
-    // smartresize 
-    jQuery.fn[sr] = function(fn) {  
-      return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); 
-    };  
+    // smartresize
+    jQuery.fn[sr] = function(fn) {
+      return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr);
+    };
   })(jQuery,'smartresize');
-        
+
   var nav_items = $('nav.main > ul > li');
   var nav_width = 0;
   nav_items.each(function(i){
@@ -61,15 +66,15 @@ jQuery(document).ready(function($){
   });
   var nav_container = $('nav.main').parent();
   var logo_container = $('.logo').parent();
-      
-  if (nav_width >= $('nav.main').width()){  
-    nav_container.removeClass('span8').addClass('span12 wide'); 
+
+  if (nav_width >= $('nav.main').width()){
+    nav_container.removeClass('span8').addClass('span12 wide');
     logo_container.removeClass('span4').addClass('span12 wide');
     $('nav.main').children().removeClass('fr');
-  }  
-  
+  }
+
   $(window).smartresize(function(){
-    if (nav_width >= $('nav.main').width()){  
+    if (nav_width >= $('nav.main').width()){
       nav_container.removeClass('span8').addClass('span12 wide');
       logo_container.removeClass('span4').addClass('span12 wide');
       $('nav.main').children().removeClass('fr');
@@ -81,22 +86,13 @@ jQuery(document).ready(function($){
   });
   {% endif %}
   // <-- end force wide nav
-  
-  $(".flyout").hide();
-
-  $(".sub-menu").hide();
-  $(".more, .account-links").on("click", function() {
-    $(this).nextAll("ul").slideToggle( "fast" );
-    $("i", this).toggleClass("fa-plus fa-minus");
-    $(this).next(".more").find("i").toggleClass("fa-user fa-minus");
-  });  
 
   $("nav.mobile select").change(function(){ window.location = jQuery(this).val(); });
-     
+
   $("a.fancy").fancybox({
     padding: 0
   });
-   
+
   {% if settings.enable_product_image_zoom %}
   /* Initialize zoom on main product image */
   var mainProductImage = $('.image.featured img');
@@ -109,7 +105,7 @@ jQuery(document).ready(function($){
     .zoom( { url: zoomedSrc } );
   }
   {% endif %}
-  
+
   MinimalTheme.switchImage = function(newSizedImageSrc, newImage, mainImageDomEl) {
     var largestImage = newSizedImageSrc.replace('_1024x1024', '');
     $(mainImageDomEl)
@@ -123,18 +119,18 @@ jQuery(document).ready(function($){
       .zoom( { url: largestImage } );
     {% endif %}
   };
-  
+
   $('#product .thumbs a').click(function(e){
     e.preventDefault();
     var newSizedImageSrc = $(this).attr('href');
     var mainImageDomEl = $('.image.featured img')[0];
     MinimalTheme.switchImage(newSizedImageSrc, null, mainImageDomEl);
   });
-  
+
   $('input[type="submit"], input.btn, button').click(function(){ // remove ugly outline on input button click
     $(this).blur();
   })
-  
+
   $('li.dropdown').hover(function(){
     $(this).children('.dropdown').show();
     $(this).children('.dropdown').stop();
@@ -149,5 +145,5 @@ jQuery(document).ready(function($){
       $(this).hide();
     });
   });
-  
+
 });
