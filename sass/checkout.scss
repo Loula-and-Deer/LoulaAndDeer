@@ -50,7 +50,7 @@ html, body {background:$shop-bg-colour; background-image:none; }
 
 h1,h2,h3,h4,h5,h6 {font-weight:#{'{{ settings.header_weight }}'}; color:#{'{{ settings.header_color }}'}; margin:0 0 13px 0; text-transform:#{'{{ settings.header_font_style }}'}; font-family:#{'{{ settings.header_font }}'}; }
 // {% if settings.google_header_font != "none" %}
-h1,h2,h3,h4,h5,h6,#email label {font-family:#{'{{ settings.google_header_font | replace: '+', ' ' }}'}, #{'{{ settings.header_font }}'}; }
+h1,h2,h3,h4,h5,h6,#email label {font-family:#{'{{ settings.google_header_font | replace: "+", " " }}'}, #{'{{ settings.header_font }}'}; }
 // {% endif %}
 h1 { color:#{'{{ settings.header_color }}'}; font-weight:#{'{{ settings.header_weight }}'}; font-size:#{'{{ settings.main_heading_font_size }}'}; line-height:#{'{{ settings.main_heading_line_height }}'}; }
 h2 { color:#{'{{ settings.header_color }}'}; font-weight:#{'{{ settings.header_weight }}'}; font-size:#{'{{ settings.sub_heading_font_size }}'}; line-height:#{'{{ settings.sub_heading_line_height }}'};  }
