@@ -23,7 +23,7 @@
 
 .search-link img {max-width: 100%; max-height: 100%; display: block;}
 #search .results.list .thumbnail a { display:block; float:right; }
-#search .search-border { border-bottom: 1px {{ settings.border_style }} {{ settings.border_color }}; }
+#search .search-border { border-bottom: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'}; }
 #search .results.list .thumbnail a { float: none; }
 #search .search-field { position: relative; height: 60px; line-height: 60px;}
 #search h1 { padding: 20px 20px 0 20px; margin: 0; }
@@ -51,8 +51,8 @@
 }
 
 .search-add{
-  background: {{settings.modern_btn_color}};
-  color: {{settings.modern_btn_text_color}};
+  background: #{'{{settings.modern_btn_color}}'};
+  color: #{'{{settings.modern_btn_text_color}}'};
   height: 35px;
   padding: 0 1rem;
   text-transform: uppercase;
@@ -63,9 +63,9 @@
 }
 
 .search-add:hover{
-  background: {{settings.modern_btn_hover_color}};
-  color: {{settings.modern_btn_text_hover_color}};
-  outline: 1px solid {{settings.modern_btn_text_hover_color}};
+  background: #{'{{settings.modern_btn_hover_color}}'};
+  color: #{'{{settings.modern_btn_text_hover_color}}'};
+  outline: 1px solid #{'{{settings.modern_btn_text_hover_color}}'};
 }
 
 .search-add-soldout{

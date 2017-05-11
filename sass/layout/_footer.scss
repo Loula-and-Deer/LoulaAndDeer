@@ -1,32 +1,29 @@
 .footer-menu { margin-bottom: 20px; }
-.footer-wrapper { width: 100%; margin-top: 4rem; background: {% if settings.no_footer_background %} none; {% else %} {{ settings.footer_bg_color }}; {% endif %} }
-{% if settings.footer_border_style == "none" %}
-.footer-wrapper { border: none; }
-{% endif %}
-{% if settings.footer_border_style == "full_width" %}
-.footer-wrapper { border-top: 1px {{ settings.border_style }} {{ settings.footer_border_color }}; }
-{% endif %}
+
+.footer-wrapper {
+  width: 100%;
+  margin-top: 4rem;
+  background: #{'{{ settings.footer_bg_color }}'};
+}
 
 footer {
   padding: 0; padding-bottom: 20px;
-  color: {{ settings.footer_text_color }};
+  color: #{'{{ settings.footer_text_color }}'};
+
   h1,h2,h3,h4,h5 {
-    color: {{ settings.footer_heading_color }};
+    color: #{'{{ settings.footer_heading_color }}'};
   }
+
   h4 {
     font-size: 16px;
-    {% if settings.footer_show_underline %}
-      padding-bottom: 10px;
-      border-bottom: 1px {{ settings.border_style }} {{ settings.footer_heading_border_color }};
-      {% endif %}
-    }
+  }
 
-  p { color: {{ settings.footer_text_color }}; }
+  p { color: #{'{{ settings.footer_text_color }}'}; }
 
   a {
-    color: {{ settings.footer_link_color }} !important;
+    color: #{'{{ settings.footer_link_color }}'} !important;
     &:hover {
-      color: {{ settings.footer_link_hover_color }} !important;
+      color: #{'{{ settings.footer_link_hover_color }}'} !important;
     }
   }
 
@@ -49,24 +46,24 @@ footer {
   .tweet_time { display: none; }
   .tweet_text {
     a {
-      color: {{ settings.footer_link_color }} !important;
+      color: #{'{{ settings.footer_link_color }}'} !important;
       &:hover {
-        color: {{ settings.footer_link_hover_color }} !important;
+        color: #{'{{ settings.footer_link_hover_color }}'} !important;
       }
     }
   }
   .btn{
     &.newsletter {
-      background: {{ settings.newsletter_btn_color }};
-      color: {{ settings.newsletter_btn_text_color }};
+      background: #{'{{ settings.newsletter_btn_color }}'};
+      color: #{'{{ settings.newsletter_btn_text_color }}'};
       font-size: 14px;
       font-weight: bold;
       height: 34px;
       line-height: 34px;
       margin-left: 15px;
       &:hover {
-        background: {{ settings.newsletter_btn_hover_color }};
-        color: {{ settings.newsletter_btn_hover_text_color }};
+        background: #{'{{ settings.newsletter_btn_hover_color }}'};
+        color: #{'{{ settings.newsletter_btn_hover_text_color }}'};
       }
     }
   }

@@ -1,0 +1,6 @@
+// This is used for shopify settings which are frequently used.
+// Or shopify settings that need to use lighten/darken
+
+$shop-bg-colour: #{'{{ settings.shop_bg_color }}'};
+$shop-btn-colour: #{'{{settings.shop_btn_colour}}'};
+$body-font-color: #{'{{settings.body_font_color}}'};

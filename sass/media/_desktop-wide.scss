@@ -16,7 +16,7 @@
   .span3.adaptive-grid {width: 303px;}
   .products{margin: 0 auto; display: table;}
 
-  #cart .row{background: {{ settings.shop_bg_color }};}
+  #cart .row{background: $shop-bg-colour;}
 
   #cart .cart-list{
     background: white;
@@ -32,7 +32,7 @@
     margin-left: 20px;
     }
 
-  #cart #content{background: {{ settings.shop_bg_color }};}
+  #cart #content{background: $shop-bg-colour;}
 
   .product .image {
     display: block;

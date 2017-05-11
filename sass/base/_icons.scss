@@ -1,21 +1,40 @@
-.social-links{ display: block}
-.social-links a { display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; margin: 0.19em; padding: 0 6px 6px 0; line-height: 24px }
-[class^="shopify-social-icon-"]:before, [class*=" shopify-social-icon-"]:before { color: {{ settings.social_icon_color }}; font-size: 24px; }
-[class^="shopify-social-icon-"]:hover:before, [class*=" shopify-social-icon-"]:hover:before  {color: {{ settings.social_icon_hover_color }} ;}
+.social-links{
+  display: block;
+  a {
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    margin: 0.19em;
+    padding: 0 6px 6px 0;
+    line-height: 24px;
+  }
+}
+
+[class^="shopify-social-icon-"]:before, [class*=" shopify-social-icon-"]:before {
+  color: #{'{{ settings.social_icon_color }}'};
+  font-size: 24px;
+}
+
+[class^="shopify-social-icon-"]:hover:before, [class*=" shopify-social-icon-"]:hover:before {
+  color: #{'{{ settings.social_icon_hover_color }}'};
+}
 
 #social {
   .google-plus {@extend %social_button;}
   .tweet-btn {@extend %social_button;}
   .pinterest {@extend %social_button;}
   .facebook-like {@extend %social_button;}
-  .share-this { float: left; margin: 0 10px 0 0; }
+  .share-this {float: left; margin: 0 10px 0 0;}
 }
 
 .credit-cards {
   margin:0 auto;
   list-style:none outside none;
   text-align: center;
-  li { display: inline; margin-right: 10px; }
+  li {
+    display: inline;
+    margin-right: 10px;
+  }
 }
 
 .search-icon{
