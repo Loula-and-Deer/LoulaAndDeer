@@ -10,7 +10,7 @@ select#collection_tags option {text-transform: capitalize;}
 
 #cart {
   h2 {
-    border-bottom: 1px solid $shop-bg-colour;
+    border-bottom: 1px solid  #{'{{ settings.shop_bg_color }}'};
     text-align: left;
     font-size: 20px;
     padding: 1rem;
@@ -85,7 +85,7 @@ select#collection_tags option {text-transform: capitalize;}
 
 .cart-item-addtional-info{
   border: none;
-  background: $shop-bg-colour;
+  background:  #{'{{ settings.shop_bg_color }}'};
   margin: -1rem;
   display: none;
   border-left: 1px solid #E6E6E6;
@@ -106,13 +106,13 @@ select#collection_tags option {text-transform: capitalize;}
   height: 5rem;
   padding: 0 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid $shop-bg-colour;
+  border-bottom: 1px solid  #{'{{ settings.shop_bg_color }}'};
 }
 
 .cart-buttons{
   padding: 0 1rem;
   margin-bottom: 1rem;
-  border-bottom: 1px solid $shop-bg-colour;
+  border-bottom: 1px solid  #{'{{ settings.shop_bg_color }}'};
 }
 
 .buttons{ padding: 1rem; }
@@ -127,11 +127,11 @@ select#collection_tags option {text-transform: capitalize;}
 }
 
 #paypal-express-button{
-  background: $shop-btn-colour;
+  background: #{'{{ settings.shop_btn_color }}'};
   border: 0;
   @include border-radius(2px);
   padding: 8px;
-  background-color:$shop-btn-colour;
+  background-color:#{'{{ settings.shop_btn_color }}'};
   img{
     height: 20px;
     filter: brightness(0) invert(1);

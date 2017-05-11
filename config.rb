@@ -4,12 +4,10 @@ require 'compass/import-once/activate'
 require "normalize-scss"
 
 # Set this to the root of your project when deployed:
-http_path = "/"
 images_dir = "assets/images"
 css_dir = "assets"
 sass_dir = "sass"
-javascripts_dir = "js"
-sourcemap = true
+sourcemap = false
 output_style = :compressed
 
 # Saves css files as liquid

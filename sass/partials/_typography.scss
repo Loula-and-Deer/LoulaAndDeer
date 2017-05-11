@@ -8,7 +8,7 @@ h1,h2,h3,h4,h5,h6 {
 
 //{% if settings.google_header_font != "none" %}
 h1,h2,h3,h4,h5,h6,.cart-summary, .toolbar {
-  font-family: '{{ settings.google_header_font | replace: "+", " " }}', '{{ settings.header_font }}';
+  font-family: #{'{{ settings.google_header_font | replace: "+", " " }}'}, #{'{{ settings.header_font }}'};
 }
 //{% endif %}
 
@@ -46,7 +46,7 @@ h5 {
 h6 {
   font-size: 10px;
   line-height: 18px;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
 h1 .note, h2 .note, h3 .note, h4 .note, h5 .note, h6 .note {

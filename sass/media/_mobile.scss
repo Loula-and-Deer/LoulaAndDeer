@@ -1,15 +1,15 @@
 @media only screen and (max-width: 797px){
 
   // Shopify settings
-  //{% if settings.navigation_alignment == "below" %}
+  /*{% if settings.navigation_alignment == "below" %} */
     nav.mobile { padding: 0; }
-  //{% endif %}
-  //{% if settings.navigation_alignment == "below" %}
-    //{% if settings.logo_center %}
-      .logo { max-width: 370px; float:none; padding-bottom:0; }
-      .logo { margin: 0 auto 30px; }
-    //{% endif %}
-  //{% endif %}
+  /*{% endif %} */
+
+  /*{% if settings.navigation_alignment == "below" %} */
+    /* {% if settings.logo_center %} */
+      .logo { max-width: 370px; float:none; padding-bottom:0; margin: 0 auto 30px; }
+    /*{% endif %} */
+  /*{% endif %} */
 
   //Input Mobile
   input:not([type="radio"]):not([type="checkbox"]){width:98%}
