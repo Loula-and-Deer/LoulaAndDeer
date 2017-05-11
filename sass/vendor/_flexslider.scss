@@ -47,7 +47,7 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
   text-indent: -999em;
 }
 
-.flex-direction-nav li .disabled {opacity: .3; filter:alpha(opacity=30); cursor: default;}
+.flex-direction-nav li .disabled {@include opacity(0.3); cursor: default;}
 //{% if settings.slideshow_arrows == "dark" %}
 /* Dark Direction Nav */
 .flex-direction-nav li .prev {left: 20px; background-position: 0 0; }

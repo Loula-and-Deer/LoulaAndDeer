@@ -23,7 +23,7 @@
       color: #{'{{ settings.toolbar_text_hover_color }}'};
     }
   }
-  
+
   .fa-shopping-cart {
     padding-right: 6px;
     font-size: 20px;
@@ -47,7 +47,7 @@
   vertical-align: middle;
   line-height: normal;
   max-height: #{'{{ settings.toolbar_height | remove: 'px' | minus: 5 }}'}px;
-  font-family: #{'{{ settings.google_header_font | replace: '+', ' ' }}'}, #{'{{ settings.header_font }}'};
+  font-family: #{'{{ settings.google_header_font | replace: "+", " " }}'}, #{'{{ settings.header_font }}'};
   font-size: #{'{{ settings.toolbar_font_size }}'};
   color: #333;
   border: none;
