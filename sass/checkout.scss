@@ -3,7 +3,7 @@
 #footer, #order-num, #thumbs td, #thumbs h3 span, #overview .hint, #container, h1,h2,h3,h1 span.subtitle, #email label, #email input, #pay-with h3, dl .hint, .big, .small, .soft label, .medium label, legend, span.hint a, .group h3, .pgroup h3 { font-size:auto !important; }
 #info-bar, #footer, #order-num, #thumbs td, #overview .hint, #container { font-size:100%; }
 
-html,body { margin:0; padding:0; border:0; background-color:$shop-bg-colour; }
+html,body { margin:0; padding:0; border:0; background-color: #{'{{ settings.shop_bg_color }}'}; }
 html { font-size:62.5%; -webkit-touch-callout:none; -webkit-text-size-adjust:none; -ms-text-size-adjust:100%; }
 body { line-height:#{'{{ settings.body_line_height }}'}; font-size:#{'{{ settings.body_font_size }}'}; color:#{'{{ settings.body_font_color }}'}; font-family:#{'{{ settings.regular_font }}'}; }
 
@@ -40,12 +40,12 @@ ul,ol { margin:0; padding:0; }
 
 // {% if settings.use_custom_bg_image %}
 // {% if settings.background_image_display == "tiled" %}
-html, body {background:$shop-bg-colour url('#{'{{ "custom_bg.png" | asset_url }}'}') repeat scroll; }
+html, body {background: #{'{{ settings.shop_bg_color }}'} url('#{'{{ "custom_bg.png" | asset_url }}'}') repeat scroll; }
 // {% else %}
-html, body {background:$shop-bg-colour url('#{'{{ "custom_bg.png" | asset_url }}'}') no-repeat scroll; }
+html, body {background: #{'{{ settings.shop_bg_color }}'} url('#{'{{ "custom_bg.png" | asset_url }}'}') no-repeat scroll; }
 // {% endif %}
 // {% else %}
-html, body {background:$shop-bg-colour; background-image:none; }
+html, body {background: #{'{{ settings.shop_bg_color }}'}; background-image:none; }
 // {% endif %}
 
 h1,h2,h3,h4,h5,h6 {font-weight:#{'{{ settings.header_weight }}'}; color:#{'{{ settings.header_color }}'}; margin:0 0 13px 0; text-transform:#{'{{ settings.header_font_style }}'}; font-family:#{'{{ settings.header_font }}'}; }
@@ -80,7 +80,7 @@ h1 span.subtitle { font-size:#{'{{ settings.body_font_size }}'}; font-weight:400
 #container.slim #footer { width:433px; }
 
 #billing-is-shipping input, #marketing-box input { vertical-align:middle; }
-#buttons input, input[type="submit"] { -webkit-transition:all 0.15s; -moz-transition:all 0.15s; transition:all 0.15s; display:inline-block; height:#{'{{ settings.btn_line_height }}'}; line-height:#{'{{ settings.btn_line_height }}'}; border:none; margin:0; padding:0 20px; color:#{'{{ settings.shop_btn_text_color }}'}; font-weight:#{'{{ settings.btn_font_weight }}'}; font-size:#{'{{ settings.btn_font_size }}'}; text-transform:#{'{{ settings.btn_font_style }}'}; background:#{'$shop-btn-colour'}; width:auto; }
+#buttons input, input[type="submit"] { -webkit-transition:all 0.15s; -moz-transition:all 0.15s; transition:all 0.15s; display:inline-block; height:#{'{{ settings.btn_line_height }}'}; line-height:#{'{{ settings.btn_line_height }}'}; border:none; margin:0; padding:0 20px; color:#{'{{ settings.shop_btn_text_color }}'}; font-weight:#{'{{ settings.btn_font_weight }}'}; font-size:#{'{{ settings.btn_font_size }}'}; text-transform:#{'{{ settings.btn_font_style }}'}; background:#{'#{'{{ settings.shop_btn_color }}'}'}; width:auto; }
 #buttons input:hover { background-color:#{'{{ settings.shop_btn_hover_color }}'}; color:#{'{{ settings.shop_btn_hover_text_color }}'}; }
 #buttons small { line-height:40px; margin-left:10px; font-size:12px; }
 .group label { line-height:24px; }

@@ -2,7 +2,7 @@
 {% assign gradient_outer_colour = '#f9f9f9' %}
 {% assign gradient_inner_colour = '#eeeeee' %}
   hr.divider{
-    background: $shop-bg-colour;
+    background:  #{'{{ settings.shop_bg_color }}'};
     clear: both;
     margin: 19px -35px 10px 0px;
     height: 1px;
@@ -34,7 +34,7 @@
   }
 
   #content{
-    background: $shop-bg-colour !important;
+    background:  #{'{{ settings.shop_bg_color }}'} !important;
   }
 </style>
 

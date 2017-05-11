@@ -2,7 +2,7 @@ html,body {
   margin: 0;
   padding: 0;
   border: 0;
-  background-color: $shop-bg-colour;
+  background-color:  #{'{{ settings.shop_bg_color }}'};
 }
 
 html {
@@ -19,10 +19,10 @@ body {
   font-size: #{'{{ settings.body_font_size }}'};
  }
 
-/* HTML5 Elements */
+//HTML5 Elements
 article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section { display:block; }
 
-/* Links and Buttons */
+//Links and Buttons
 a {
   color: #{'{{ settings.link_color }}'};
   text-decoration: none;
@@ -43,19 +43,19 @@ a.btn, input.btn {
   font-weight:#{'{{ settings.btn_font_weight }}'};
   font-size:#{'{{ settings.btn_font_size }}'};
   text-transform:#{'{{ settings.btn_font_style }}'};
-  background:#{'$shop-btn-colour'} !important;
+  background:#{'#{'{{ settings.shop_btn_color }}'}'} !important;
   width:auto;
   transition: all 0.3s;
 }
 
 a.btn:hover, input.btn:hover {
   background-color:#{'{{ settings.shop_btn_text_color }}'} !important;
-  color: #{'$shop-btn-colour'};
-  outline: 1px solid #{'$shop-btn-colour'};
+  color: #{'#{'{{ settings.shop_btn_color }}'}'};
+  outline: 1px solid #{'#{'{{ settings.shop_btn_color }}'}'};
 }
 
 input.disabled.btn:hover {
-  //  background-color: darken($shop-btn-colour, 10%) !important;
+  //  background-color: darken(#{'{{ settings.shop_btn_color }}'}, 10%) !important;
    outline: none;
    color:#{'{{ settings.shop_btn_text_color }}'};
  }
@@ -63,7 +63,7 @@ input.disabled.btn:hover {
 .btn:hover {cursor: pointer;}
 
 p.btn:hover {
-  // color: lighten($body-font-color, 10%);
+  // color: lighten(#{'{{ settings.body_font_color }}'}, 10%);
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
