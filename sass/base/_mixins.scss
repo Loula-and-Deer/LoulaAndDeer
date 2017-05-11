@@ -18,6 +18,13 @@
   animation: #{$str};
 }
 
+@mixin user-select($str) {
+  -webkit-user-select: #{$str};
+  -moz-user-select: #{$str};
+  -ms-user-select: #{$str};
+  user-select: #{$str};
+}
+
 @mixin opacity($opacity) {
   opacity: $opacity;
   $opacity-ie: $opacity * 100;

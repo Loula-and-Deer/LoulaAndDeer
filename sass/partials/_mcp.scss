@@ -10,7 +10,7 @@
   }
   .mcp_title h1 {
     padding-bottom: 2rem;
-    border-bottom: 5px solid {{ settings.shop_bg_color }};
+    border-bottom: 5px solid $shop-bg-colour;
 }
 
 .inner { position: relative; height: auto; }

@@ -1,6 +1,6 @@
 .intro {
   h2 { font-size: 32px; margin-bottom: 20px; }
   p, li{
-    font-family: {{ settings.regular_font }}; font-size: 14px; line-height: 27px;
+    font-family: #{'{{ settings.regular_font }}'}; font-size: 14px; line-height: 27px;
   }
 }

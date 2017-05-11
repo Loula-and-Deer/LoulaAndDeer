@@ -6,11 +6,11 @@ h1,h2,h3,h4,h5,h6 {
   font-family: #{'{{ settings.header_font }}'};
 }
 
-#{' {% if settings.google_header_font != "none" %} '}
+//{% if settings.google_header_font != "none" %}
 h1,h2,h3,h4,h5,h6,.cart-summary, .toolbar {
   font-family: '{{ settings.google_header_font | replace: '+', ' ' }}', '{{ settings.header_font }}';
 }
-#{' {% endif %} '}
+//{% endif %}
 
 h1 {
   color: #{'{{ settings.header_color }}'};
@@ -53,7 +53,7 @@ h1 .note, h2 .note, h3 .note, h4 .note, h5 .note, h6 .note {
   margin-left: 8px;
   font-weight: 400;
   font-size: #{'{{ settings.body_font_size }}'};
-  color: #{'{{ settings.body_font_color }}'}; 
+  color: #{'{{ settings.body_font_color }}'};
 }
 
 h1 .note a, h2 .note a, h3 .note a, h4 .note a, h5 .note a, h6 .note a {
