@@ -39,7 +39,7 @@
           {% if settings[show_slide] %}
           <li>
             <a href="{{ settings[link] }}">
-              <img src="{{ image | asset_url }}" alt="{{ settings[alt] | escape }}" />
+              <img src="{{ image | asset_img_url:'original', format: 'jpeg' }}" alt="{{ settings[alt] | escape }}" />
               <h2>{{ settings[alt] }}</h2>
             </a>
           </li>
@@ -61,7 +61,7 @@
   {% capture fp_alt %}fp_image_{{ i }}_alt{% endcapture %}
   <div class="span4 product">
     <a href="{{ settings[fp_link] }}">
-      <img src="{{ fp_image | asset_url }}" alt="{{ settings[fp_alt] | escape }}" />
+      <img src="{{ fp_image | asset_img_url:'original', format: 'jpeg' }}" alt="{{ settings[fp_alt] | escape }}" />
       <h3>{{ settings.[fp_alt] }}</h3>
     </a>
   </div>

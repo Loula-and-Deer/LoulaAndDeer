@@ -1,81 +1,74 @@
 <div class="toolbar-wrapper" id="desktop-toolbar" >
-	<div class="toolbar clearfix">
-		<ul class="unstyled" style="margin-top: -2rem;">
-			<li class="search-field fr">
+  <div class="toolbar clearfix">
+    <ul class="unstyled" >
 
-			</li>
-			<span class="social-links social-links-fix">
-				<a href="{{ settings.facebook_link }}" title="Follow us on Facebook"><span class="shopify-social-icon-facebook-circle"></span></a>
-				<a href="{{ settings.twitter_link }}" title="Follow us on Twitter"><span class="shopify-social-icon-twitter-circle"></span></a>
-				<a href="{{ settings.instagram_link }}" title="Follow us on Instagram"><span class="shopify-social-icon-instagram-circle"></span></a>
-			</span>
-			<li class="fr" style="margin-right: 2rem;">
-				<a href="/cart" class="cart" title="Shopping Cart"><i class="fa fa-shopping-cart"></i>
-				{{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }} ({{ cart.total_price | money }})</a>
-			</li>
+      <li class="fr" style="margin-right: 2rem;">
+        <a href="/cart" class="cart" title="Shopping Cart">
+          <i class="fa fa-shopping-cart" style="font-size: {{settings.toolbar_icon_font_size}}"></i>
+          <p id="desktop-cart-count" style="display: inline-block;"> {{ cart.item_count }} {{ cart.item_count | pluralize: 'Item', 'Items' }} ({{ cart.total_price | money }})</p>
+        </a>
+      </li>
+<!--
+      <li>
+        <span class="social-links">
+          <a href="{{ settings.facebook_link }}" title="Follow us on Facebook"><span class="shopify-social-icon-facebook-circle"></span></a>
+          <a href="{{ settings.twitter_link }}" title="Follow us on Twitter"><span class="shopify-social-icon-twitter-circle"></span></a>
+          <a href="{{ settings.instagram_link }}" title="Follow us on Instagram"><span class="shopify-social-icon-instagram-circle"></span></a>
+        </span>
+      </li> -->
 
-<!-- 			<li class="dropdown toolbar-account fl">
-				<i class="fa fa-user"></i>
-				<ul class="dropdown">
-					<li>
-					<i class="fa fa-sign-in"><a href="/account/login">Login</a></i>
-						
-					</li>
-					
-					<li>
-						<i class="fa fa-sign-out"><a href="/account/register">Register</a></i>
-					</li>
-				</ul>
-			</li> -->
-			<li class="fl">
-			<a href="/account">
-				<i class="fa fa-user" style="font-size: 24px"></i>
-			</a>
-			</li>
+      <li class="fl">
+        <a href="/account">
+          <i class="fa fa-user" style="font-size: {{settings.toolbar_icon_font_size}}"></i>
+          <span> Sign in / Join </span>
+        </a>
+      </li>
 
-			<form class="search desktop fl" action="/search" >
-					<p type="submit" alt="Go" class="go desktop"><i class="fa fa-search"></i></p>
-					<input style="background: #f9f9f9" type="text" name="q" class="search_box desktop" placeholder="Search" value="{{search.terms}}" />
-              		<input type="hidden" name="type" value="product" />
-					{% include 'search-datalist' %}
-				</form>
-		</ul>
-	</div>
+      <li class="search_li">
+        <form class="search desktop" action="/search" id="search">
+          <p type="submit" alt="Go" class="go desktop">
+            <i class="fa fa-search" style="font-size: {{settings.toolbar_icon_font_size}}"></i>
+          </p>
+          <input style="background: #f9f9f9" type="text" name="q" class="search_box desktop" placeholder="Product search" value="{{search.terms}}" />
+          <!-- Don't ask how, but this makes sure only proucts are shown in search results. -->
+          <input type="hidden" name="type" value="product" />
+          {% include 'search-datalist' %}
+        </form>
+      </li>
+    </ul>
+  </div>
 </div>
 
 <script>
- (function($) {
-     $(function() {
-     	var mouseInSuggestions = false;
-     	function searchFocusOn(){
-             $('.search_box.desktop').css({'box-shadow': '0px 0px 5px 0px rgba(138,138,138,0.5) inset', 'outline': 'none','border': '0'});
+(function($) {
+  $(function() {
+    var mouseInSuggestions = false;
+    /* Functions */
+    function searchFocusOn(){
+      $(".desktop-search-overlay").fadeIn();
+    }
 
-     	}
+    function searchFocusOff(){
+      if (!mouseInSuggestions) {
+        $(".desktop-search-overlay").fadeOut();
+      }
+    }
 
-     	function searchFocusOff(){
-     		if (!mouseInSuggestions) {   
-     			$('.search_box.desktop').css({'box-shadow': 'none'});
-     		}
-     	}
+    /* Listener events */
+		$(".search-results")
+        .mouseenter(function() { mouseInSuggestions = true;})
+        .mouseleave(function() { mouseInSuggestions = false;});
 
-		$(".search-results").mouseenter(function() {
-				mouseInSuggestions = true;
-			}).mouseleave(function() { mouseInSuggestions = false;});
+    //Hide overlay
+    searchFocusOff();
 
-     	searchFocusOff();
-
-     	$(".search_box.desktop").on("focusin", function() { searchFocusOn();});
-
-		$(".search_box.desktop").on("focusout", function() { 
-     			searchFocusOff();
-		});
-
-     	$(".search").on("mouseleave", function() { 
-     		if (!$(".search_box.desktop").is(":focus")) {      
-     			searchFocusOff();}
-         });
-     });
-
-
- })(jQuery);
+    $(".search_box.desktop").on("focusin", function() { searchFocusOn();});
+		$(".search_box.desktop").on("focusout", function() { searchFocusOff();});
+    $(".search").on("mouseleave", function() {
+      if (!$(".search_box.desktop").is(":focus")) {
+        searchFocusOff();
+      }
+    });
+  });
+})(jQuery);
 </script>

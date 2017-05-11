@@ -25,16 +25,11 @@
       <!-- End breadcrumb -->
       
       <!-- Begin sort collection -->
-      <div class="clearfix">
+      <div class="collection-heading clearfix">
         <h1 class="collection-title">{{ collection.title }}</h1>
-        {% if collection.description != "" %}
-        <p>
-        {{ collection.description | truncatewords: 20 }}
-        </p>
-      {% endif %}
-        {% if settings.collection_tags %}        
+        {% if settings.collection_tags %}    
           {% if collection.all_tags.size > 0 %}
-        <!-- 
+         
           <div class="browse-tags">
           	<label>Browse:</label>
           	<select id="collection_tags" class="coll-filter">
@@ -44,7 +39,6 @@
           		{% endfor %}
           	</select>        
           </div>
--->
           {% endif %}        
         {% endif %}
         {% if settings.collection_sort and collection.products_count > 1 %}
@@ -52,20 +46,24 @@
             <label>Sort by:</label>
           	<select class="sort-by">
           	  <option value="manual">Relevance</option>
+				<option value="best-selling">Best Selling</option>
               <option value="price-descending">Price: High to Low</option>
               <option value="price-ascending">Price: Low to High</option>
               <option value="title-ascending">Alphabetical (A-Z)</option>
               <option value="title-descending">Alphabetical (Z-A)</option>
-              <!-- <option value="created-ascending">Oldest to Newest</option>
+              <option value="created-ascending">Oldest to Newest</option>
               <option value="created-descending">Newest to Oldest</option>
-              <option value="best-selling">Best Selling</option> -->
+              
           	</select>           
           </div>        
         {% endif %}
+        {% if collection.description != "" %}
+        	<div class="collection-description">
+        		{{ collection.description }}
+        	</div>
+      	{% endif %}
       </div>
       <!-- End sort collection -->
-
-      
     </div>
   </div>
   <!-- End collection info -->
@@ -78,17 +76,36 @@
     </div>
   </div>
   {% endif %}
+    <!-- End no products -->
   
-  <div class="row products">
-    {% for product in collection.products %}
-    {% include 'product-loop' with collection.handle %}
-    {% endfor %}
+  {% if collection.title contains 'New in' %}
+<!--  Featured product  -->
+  <div style="display: table; margin: 0 auto;">
+    {% assign featured = true %}
+    	{% for product in collection.products limit: 1 %}
+    		{% include 'product-loop' with collection.handle %}
+      	{% endfor %}
+  	{% assign featured = false %}
   </div>
-  
+  {% endif %}
+
+  <div class="row products">
+    <!-- Begin products -->
+    {% if collection.title contains 'New' %}
+    	{% assign featured = false %}
+    	{% for product in collection.products limit: 9 offset: 1 %}
+    		{% include 'product-loop' with collection.handle %}
+      	{% endfor %}
+    {% else %}
+    	{% for product in collection.products %}
+    		{% include 'product-loop' with collection.handle %}
+      	{% endfor %}
+    {% endif %}
+    <!-- End products -->
+  </div>
   {% include 'pagination' %}
 
   {% endpaginate %}
-  <!-- End no products -->
   
 </div>
 
@@ -138,21 +155,4 @@
       Shopify.queryParams.sort_by = jQuery(this).val();
       location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
     });
-</script>
-
-
-<script>
-  (function($) {
-      $(function() {
-        if($('.span3').length > 3){
-          $(".span3").css({"position": "relative", "top": "150px", "opacity": 0});
-        $('.span3').each(function(index) {
-          $(this).delay(100*(index + 1)).animate({
-            top: 0,
-            opacity: 1,
-          }, 800, function() {/**/});
-        });
-        }
-      });      
-  })(jQuery);
 </script>

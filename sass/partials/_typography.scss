@@ -1,0 +1,63 @@
+h1,h2,h3,h4,h5,h6 {
+  font-weight: #{'{{ settings.header_weight }}'};
+  color: #{'{{ settings.header_color }}'};
+  margin:0 0 13px 0;
+  text-transform: #{'{{ settings.header_font_style }}'};
+  font-family: #{'{{ settings.header_font }}'};
+}
+
+#{' {% if settings.google_header_font != "none" %} '}
+h1,h2,h3,h4,h5,h6,.cart-summary, .toolbar {
+  font-family: '{{ settings.google_header_font | replace: '+', ' ' }}', '{{ settings.header_font }}';
+}
+#{' {% endif %} '}
+
+h1 {
+  color: #{'{{ settings.header_color }}'};
+  font-weight: #{'{{ settings.header_weight }}'};
+  font-size: #{'{{ settings.main_heading_font_size }}'};
+  line-height: #{'{{ settings.main_heading_line_height }}'};
+}
+
+h2 {
+  color: #{'{{ settings.header_color }}'};
+  font-weight: #{'{{ settings.header_weight }}'};
+  font-size: #{'{{ settings.sub_heading_font_size }}'};
+  line-height: #{'{{ settings.sub_heading_line_height }}'};
+}
+
+h3 {
+  color: #{'{{ settings.header_color }}'};
+  font-weight: #{'{{ settings.header_weight }}'};
+  font-size: #{'{{ settings.footer_heading_font_size }}'};
+  line-height: #{'{{ settings.footer_heading_line_height }}'};
+}
+
+h4 {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+h5 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+h6 {
+  font-size: 10px;
+  line-height: 18px;
+  text-transform:uppercase;
+}
+
+h1 .note, h2 .note, h3 .note, h4 .note, h5 .note, h6 .note {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: #{'{{ settings.body_font_size }}'};
+  color: #{'{{ settings.body_font_color }}'}; 
+}
+
+h1 .note a, h2 .note a, h3 .note a, h4 .note a, h5 .note a, h6 .note a {
+  color: #{'{{ settings.link_color }}'};
+}
+
+p { margin: 0 0 5px 0; }

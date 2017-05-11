@@ -1,0 +1,42 @@
+html,body { margin: 0; padding: 0; border: 0; background-color: {{ settings.shop_bg_color }}; }
+html { font-size: 62.5%; -webkit-touch-callout:none; -webkit-text-size-adjust:none; -ms-text-size-adjust:100%; }
+body { line-height: {{ settings.body_line_height }}; font-size: {{ settings.body_font_size }}; color: {{ settings.body_font_color }}; font-family: {{ settings.regular_font }}; }
+{% if settings.bg_image != '' %}
+{% assign bg_image = 'bg-custom.png' %}
+{% case settings.bg_image %}
+  {% when 'jewelry' %}
+    {% assign bg_image = 'bg-jewelry.png' %}
+  {% when 'music' %}
+    {% assign bg_image = 'bg-music.png' %}
+{% endcase %}
+{% if settings.background_image_display == "tiled" %}
+html, body { background: {{ settings.shop_bg_color }} url('{{ bg_image | asset_url }}') repeat scroll; }
+{% endif %}
+{% if settings.background_image_display == "full" %}
+html, body { background: {{ settings.shop_bg_color }} url('{{ bg_image | asset_url }}') no-repeat scroll; }
+{% endif %}
+{% if settings.background_image_display == "stretch" %}
+html, body { background: url('{{ bg_image | asset_url }}') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; }
+{% endif %}
+{% endif %}
+
+/* HTML5 Elements */
+article, aside, details, figcaption, figure, dialog, footer, header, hgroup, menu, nav, section { display:block; }
+
+/* Links and Buttons */
+a { color:{{ settings.link_color }}; text-decoration: none; }
+a:hover { color:{{ settings.link_hover_color }}; }
+a.btn, input.btn { box-shadow:none; display:inline-block; height:{{ settings.btn_line_height }}; line-height:{{ settings.btn_line_height }}; border:none; margin:0; padding:0 20px; color:{{ settings.shop_btn_text_color }}; font-weight:{{ settings.btn_font_weight }}; font-size:{{ settings.btn_font_size }}; text-transform:{{ settings.btn_font_style }}; background:{{ settings.shop_btn_color }} !important; width:auto; transition: all 0.3s;}
+a.btn:hover, input.btn:hover { background-color:{{ settings.shop_btn_text_color }} !important; color: {{ settings.shop_btn_color }}; outline: 1px solid {{ settings.shop_btn_color }}; }
+input.disabled.btn:hover { background-color: darken({{ settings.shop_btn_color }}, 10%) !important; outline: none; color:{{ settings.shop_btn_text_color }};}
+.btn:hover {cursor: pointer;}
+p.btn:hover { color: lighten({{settings.body_font_color}}, 10%);}
+.disabled {-moz-opacity:0.50; opacity:.50; filter:alpha(opacity=50); cursor:default; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {color:{{ settings.header_color }}; }
+a.back-to-top { font-size: 12px !important; color: {{ settings.link_color }} !important; }
+a:hover.back-to-top { color: {{ settings.link_hover_color }} !important; }
+.accent-color { color: {{ settings.link_color }} !important; }
+
+{% if settings.button_border_radius != "none" %}
+#product .add-to-cart .icon, a.btn, input.btn, .searchform input.submit, .cart-summary a .icon { @include border-radius({{ settings.button_border_radius }}); }
+{% endif %}

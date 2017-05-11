@@ -1,0 +1,24 @@
+@media only screen and (max-width: 1026px) {
+  #open-filter-button{
+    float: right;
+    display: block;
+  }
+
+  #close-filter-button{
+    float: right;
+    display: block;
+  }
+  #search .search.row { width: 100%; margin: 0; float: none; overflow: hidden;}
+  .results.list {
+    width: 98%;
+    .add-product-form {
+      .buttons {
+        input {width: auto;}
+        .search-qty {width: 50px;}
+      }
+    }
+  }
+
+  .filter-column{display: none; top: 10%; left: 10%; width: 71%; position: fixed; z-index: 99; margin: 0}
+  .search_li {margin-left: 0;}
+}

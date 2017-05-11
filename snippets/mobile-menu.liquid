@@ -1,16 +1,16 @@
 <div class="flyout" id="menuFlyout" style="padding-top: 1px;">
-    <ul class="clearfix">
+    <ul class="clearfix unstyled" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
         {% if shop.customer_accounts_enabled %}
         <li><span class="account-links">Account Links</span>
             <span class="more"><i class="fa fa-user"></i></span>
-            <ul class="sub-menu">
+            <ul class="sub-menu unstyled">
                 {% if customer %}
                 <li class="customer-links"><a href="/account">Your Account</a></li>
                 {% else %}
                 <li class="customer-links">{{ 'Log in' | customer_login_link }}</li>
                 {% if shop.customer_accounts_optional %}
                 <li class="customer-links">{{ 'Create an account' | customer_register_link }}</li>
-                {% endif %} 
+                {% endif %}
               {% endif %}
             </ul>
         </li>
@@ -21,7 +21,12 @@
         {% else %}
         <li>
             <a href="{{ link.url }}" class="{% if link.active %} current{% endif %} navlink"><span>{{ link.title }}</span></a>
-            <span class="more"><i class="fa fa-plus"></i></span>
+            <span class="more">
+              <ul class="unstyled" style="margin: 0;margin-top: 17px;margin-left: 7px;">
+                <li class="hamburger" style="top: 0;transform: rotate(0deg);"></li>
+                <li class="hamburger" style="top: 0;transform: rotate(90deg);"></li>
+              </ul>
+            </span>
             <ul class="sub-menu">
                 {% for l in linklists[link.handle].links %}
                 <li><a href="{{ l.url }}" class="{% if l.active %}current {% endif %}{% if forloop.last %} last {% endif %} navlink">{{ l.title }}</a>
@@ -29,106 +34,27 @@
                 {% endfor %}
             </ul>
         </li>
-        {% endif %} 
+        {% endif %}
       {% endfor %}
       <li>
-        <a href="{{ settings.facebook_link }}" title="Follow us on Facebook" class="navlink social-mobile-link"><span class="shopify-social-icon-facebook-circle"/></a>
-        <a href="{{ settings.instagram_link }}" title="Follow us on Instagram" class="navlink social-mobile-link"><span class="shopify-social-icon-instagram-circle"/></a>
-        <a href="{{ settings.twitter_link }}" title="Follow us on Twitter" class="navlink social-mobile-link"><span class="shopify-social-icon-twitter-circle"/></a>
+        <a href="{{ settings.facebook_link }}" title="Follow us on Facebook" class="navlink social-mobile-link"><span class="shopify-social-icon-facebook"/></a>
+        <a href="{{ settings.instagram_link }}" title="Follow us on Instagram" class="navlink social-mobile-link"><span class="shopify-social-icon-instagram"/></a>
+        <a href="{{ settings.twitter_link }}" title="Follow us on Twitter" class="navlink social-mobile-link"><span class="shopify-social-icon-twitter"/></a>
       </li>
     </ul>
 </div>
 
 <div class="flyout" id="searchFlyout" style="padding-top: 1px;">
-    <ul class="clearfix">
-       <li class="search-field" style="padding: 0">
-            <form class="search" action="/search" style="border: 0;border-top: 1px solid rgb(230,230,230);border-bottom: 1px solid rgb(230,230,230);">
+    <ul class="clearfix" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+       <li class="search-field" style="padding: 0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+            <form class="search" action="/search" style="border: none;">
                 <button type="submit" alt="Go" class="go" style="font-size: 20px;margin-left: -45px;padding-left: 55px;">
-                  <i class="fa fa-search"></i>
+                  <i class="fa fa-search" style="-webkit-text-stroke: 1px rgb(240, 240, 240);"></i>
                 </button>
+              <input type="text" name="q" class="search_box" placeholder="Product Search" value="{{ search.terms }}" style="border: none; font-size: 20px; box-shadow: none;"/>
+              <!-- Don't ask how, but this makes sure only proucts are shown in search results. -->
               <input type="hidden" name="type" value="product" />
-                <input type="text" name="q" class="search_box" placeholder="Search" value="{{ search.terms }}" style="border: none; font-size: 20px; box-shadow: none;"/> 
             </form>
         </li>
     </ul>
 </div>
-<script>
-  (function($){
-    $(function(){
-      var searchToggled = false;
-      var menuToggled = false;
-      
-      // I honestly have no idea what I done. It's stupid sorry.
-      $("#search-button").on("click", function() {
-        $(".mobile-wrapper").css("bottom", "0");
-        if(menuToggled){
-          $("#searchFlyout").slideToggle( "fast" );
-          $("#menuFlyout").slideToggle( "fast" );
-          menuToggled = false;
-        } else {
-          $("#searchFlyout").slideToggle( "fast" );
-        }
-        searchToggled = !searchToggled;
-        
-        if(searchToggled){
-          $("#search-button i").addClass("fa-times");
-          $("#search-button i").removeClass("fa-search");
-        } else {
-          $("#search-button i").removeClass("fa-times");
-          $("#search-button i").addClass("fa-search");
-        }       
-        
-        if(menuToggled){
-          $("#menu-button i").addClass("fa-times");
-          $("#menu-button i").removeClass("fa-bars");
-        } else {
-          $("#menu-button i").removeClass("fa-times");
-          $("#menu-button i").addClass("fa-bars");
-        }
-
-        $(".content-overlay").fadeIn();
-        $("#transparency").css("filter", "blur(5px)");
-        if(!menuToggled && !searchToggled){
-           $(".mobile-wrapper").css("bottom", "auto");
-          $(".content-overlay").fadeOut();
-          $("#transparency").css("filter", "blur(0px)");
-        }
-      });
-          
-      $("#menu-button").on("click", function() {
-        if(searchToggled){
-          $("#searchFlyout").slideToggle( "fast" );
-          $("#menuFlyout").slideToggle( "fast" );
-          searchToggled = false;
-        } else { 
-          $("#menuFlyout").slideToggle( "fast" );
-        }
-        menuToggled = !menuToggled;
-        
-        if(searchToggled){
-          $("#search-button i").addClass("fa-times");
-          $("#search-button i").removeClass("fa-search");
-        } else {
-          $("#search-button i").removeClass("fa-times");
-          $("#search-button i").addClass("fa-search");
-        }
-        
-        if(menuToggled){
-          $("#menu-button i").addClass("fa-times");
-          $("#menu-button i").removeClass("fa-bars");
-        } else {
-          $("#menu-button i").removeClass("fa-times");
-          $("#menu-button i").addClass("fa-bars");
-        }
-        
-        $(".content-overlay").fadeIn();
-        $("#transparency").css("filter", "blur(5px)");
-        if(!menuToggled && !searchToggled){
-          $(".mobile-wrapper").css("bottom", "auto");
-          $(".content-overlay").fadeOut();
-          $("#transparency").css("filter", "blur(0px)");
-        }
-      });
-    });
-})(jQuery);
-</script>

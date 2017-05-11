@@ -3,11 +3,3 @@
 
 {% comment %} Section - Custom {% endcomment %}
 {% comment %} Place any and all ShopStorm Apps custom JavaScript below this comment {% endcomment %}
-
-shopstorm.apps.productCustomizer.jqueryLoadedCallback = function($) {
-  if (shopstorm.apps.productCustomizer.xLoadedCallbackRun != true) {
-    $('.product-customizer-options').addClass('product-options');
-    $('.product-customizer-option').addClass('select clearfix choice');
-    shopstorm.apps.productCustomizer.xLoadedCallbackRun = true;
-  }
-};

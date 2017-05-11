@@ -1,70 +1,88 @@
+{% include 'toolbar-cart-handler' %}
+
 <script>
-  (function($) {
-    $(function() {
-      var understoodPersonalisedChanges = false;
-      //Fixes ugly PayPal checkout button
-      $("#paypal-express-button").removeClass("additional-checkout-button");
-      $("#paypal-express-button").removeClass("additional-checkout-button--paypal-express");
-      $("#paypal-express-button").addClass("extra-checkout-button")
+(function($) {
+  $(function() {
 
-      //Removes "Checkout with PayPal" text from PayPal button
-      $('#paypal-express-button').contents().filter(function() {
-        return this.nodeType === 3;
-      }).remove();
+    var understoodPersonalisedChanges = false;
 
-      //Item information handler
-      $(".fa-ellipsis-v").on("click", function() {
-        var item = $(this).parent().parent();
-        var info = $(this).parent().parent().find(".cart-item-addtional-info");
-        if (item.attr("expanded") == "false") {
-          item.attr("expanded", "true");
-          item.addClass("shadow");
-          info.css("display", "block");
-          item.height(100 + info.height());
-        } else {
-          item.attr("expanded", "false");
-          item.removeClass("shadow");
-          item.height(100);
-          info.css("display", "none");
-        }
-      });
+    // using vanilla JS selector for compatibility
+    var paypalCheckoutButton = document.getElementById("paypal-express-button");
 
+    //Confirmation dialogue required by our bank.
+    $('.cart-buttons input[type="submit"]').on('click', function(e) {
+      if ($('#agree').is(':checked')) {
+        $(this).submit();
+      }
+      else {
+        alert("You must agree with the terms and conditions of sales to check out.");
+        e.preventDefault();
+      }
+    });
 
+    //Changes style of PayPal checkout button
+    paypalCheckoutButton.classList.remove("additional-checkout-button");
+    paypalCheckoutButton.classList.remove("additional-checkout-button--paypal-express");
+    paypalCheckoutButton.classList.add("extra-checkout-button")
+
+    //Removes "Checkout with PayPal" text from PayPal button
+    $('#paypal-express-button').contents().filter(function() {
+      return this.nodeType === 3;
+    }).remove();
+
+    //Item information handler
+    $(".fa-ellipsis-v").on("click", function() {
+      var item = $(this).parent().parent();
+      var info = $(this).parent().parent().find(".cart-item-addtional-info");
+      if (item.attr("expanded") == "false") {
+        item.attr("expanded", "true");
+        info.css("display", "block");
+        item.height(100 + info.height());
+      } else {
+        item.attr("expanded", "false");
+        $(window).width() < 420 ? item.height(120) : item.height(100);
+        info.css("display", "none");
+      }
+    });
+
+    //Dec item value
     $('.cart__quantity_dec').on("click", function() {
       var val = $(this).next().val();
       if (val > 1){
-      val--;
-      $(this).next().val(val);
-      $(this).next().trigger("change");
+        val--;
+        $(this).next().val(val);
+        $(this).next().trigger("change");
       }
     });
 
+    //Increments item value
     $('.cart__quantity_inc').on("click", function() {
       var val = $(this).prev().val();
-  
       val++;
       $(this).prev().val(val);
       $(this).prev().trigger("change");
-      
     });
-      //On item quantity change
-      $('.cart__quantity').on("change", function() {
-        var quanDOM = $(this);
-        //Disables quantity input.
-        quanDOM.attr("disabled", "disabled");
-        var line = $(this).attr("data-line");
-        var quan = $(this).val();
-        var lineprice = '#lineprice_' + line;
-        var linetitle = '#linetitle_' + line;
+
+    //On item quantity change
+    $('.cart__quantity').on("change", function(e) {
+      var quanDOM = $(this);
+      //Disables quantity input.
+      quanDOM.attr("disabled", "disabled");
+      var line = $(this).attr("data-line");
+      var quan = $(this).val();
+      var lineprice = '#lineprice_' + line;
+      var linetitle = '#linetitle_' + line;
 
       if ($(linetitle).html().toLowerCase().indexOf("personalised") >= 0 && !understoodPersonalisedChanges) {
-        var answer = confirm("Warning. Changing the quantity of a personalised item may have an unwanted result. Change anyway?")
+        var answer = confirm("Hello! Just to let you know, changing the quantity of a personalised item may have an unwanted result. Would you like to change it anyway?")
         if (!answer) {
+          understoodPersonalisedChanges = true;
           quanDOM.removeAttr("disabled");
-          return null;
-        } 
+        } else {
+          e.preventDefault();
+        }
       }
-      understoodPersonalisedChanges = true;
+
       /**
        * POSTS quantity change
        * @param {String} URL to POST to
@@ -93,6 +111,10 @@
             } else {
               $(linetitle).html(item.product_title);
             }
+
+            //Update cart on toolbar
+            updateCartToolbars(cart.total_price, cart.item_count);
+
             //Enables quantity input to be changed.
             quanDOM.removeAttr("disabled");
 
@@ -102,10 +124,10 @@
             if(status == 422){
 
             } else {
-            alert("Something wen't wrong. Sorry.");
+            alert("Something wen't wrong and we're working hard to fix it! Sorry about that.");
           }
           });
       });
     });
-  })(jQuery); 
+  })(jQuery);
 </script>

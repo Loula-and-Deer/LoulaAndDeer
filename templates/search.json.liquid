@@ -6,7 +6,8 @@
       "title"       : {{ product.title | json }},
 	    "price"       : {{ product.price | money | json }},
       "url"         : {{ product.url | within: product.collections.last | json }},
-      "thumbnail"   : {{ product.featured_image.src | product_img_url: 'small' | json }}
+      "thumbnail"   : {{ product.featured_image.src | product_img_url: 'small' | json }},
+      "id"   : {{ product.id | json }}
     }
     {% unless forloop.last %},{% endunless %}
   {% endfor %}

@@ -1,14 +1,35 @@
-{% comment %} version: 1.6.4 {% endcomment %}
+{% comment %} version: 1.7.0 {% endcomment %}
 {% comment %} PLEASE DO NOT MODIFY THIS FILE, DOING SO MAY BREAK YOUR PRODUCT OPTIONS {% endcomment %}
 {% if product.metafields.product_customizer != empty %}
   {% unless only_js_init %}
-  <div class="product-customizer-options" data-product-id="{{ product.id }}" data-version="1.6.4">
+  {% comment %}
+  Check if the first metafield starts with position, which would indicate a v4 metafield
+  {% endcomment %}
+  {% if product.metafields.product_customizer.first.last contains '"position":' %}
+    {% assign sort_by_position = true %}
+    {% capture metafield_values %}{% for metafield in product.metafields.product_customizer %}{{ metafield.last }}||||{% endfor %}{% endcapture %}
+    {% assign sorted_mf_len = metafield_values | size | minus: 4 %}
+    {% assign sorted_metafields = metafield_values | slice: 0, sorted_mf_len | split: '||||' | sort %}
+  {% else %}
+    {% assign sorted_metafields = product.metafields.product_customizer %}
+  {% endif %}
+  <div class="product-customizer-options" data-product-id="{{ product.id }}" data-product-price="{{ product.price }}" data-version="1.7.0">
     {% assign option_price_found = false %}
-    {% for option_metafield in product.metafields.product_customizer %}
+    {% for option_metafield in sorted_metafields %}
       {% capture whitespace %}
-        {% assign metafield_key = option_metafield.first | split: '_' %}
-        {% capture option_name %}{{ metafield_key[1] }}{% endcapture %}
-        {% if option_name == empty %}{% assign option_name = option_metafield.first %}{% endif %}
+      {% if sort_by_position %}
+        {% assign metafield_value = option_metafield %}
+      {% else %}
+        {% assign metafield_value = option_metafield[1] %}
+      {% endif %}
+        {% if sort_by_position %}
+          {% assign option_name = null %}
+          {% assign option_label = null %}
+        {% else %}
+          {% assign metafield_key = option_metafield.first | split: '_' %}
+          {% capture option_name %}{{ metafield_key[1] }}{% endcapture %}
+          {% if option_name == empty %}{% assign option_name = option_metafield.first %}{% endif %}
+        {% endif %}
 
         {% capture option_id %}{{ product.id }}_option_{{ forloop.index }}{% endcapture %}
 
@@ -20,8 +41,8 @@
         {% assign option_values = null %}
         {% assign option_required = false %}
         {% assign option_price = null %}
-        {% assign option_configs_len = option_metafield[1] | size | minus: 4 %}
-        {% assign option_configs = option_metafield[1] | slice: 2, option_configs_len | split: '","' %}
+        {% assign option_configs_len = metafield_value | size | minus: 4 %}
+        {% assign option_configs = metafield_value | slice: 2, option_configs_len | split: '","' %}
         {% assign option_min_selections = null %}
         {% assign option_max_selections = null %}
         {% assign remote_option_id = null %}
@@ -29,6 +50,12 @@
 
         {% for option_config in option_configs %}
           {% assign name_value = option_config | split: '":"' %}
+          {% if name_value[0] == 'name' %}
+            {% assign option_name = name_value[1] | replace: '\"', '"' | replace: '\\', '\' | replace: '\u', '&#x' %}
+            {% if option_label == null %}
+              {% assign option_label = option_name %}
+            {% endif %}
+          {% endif %}
           {% if name_value[0] == 'label' and name_value[1] != null %}
             {% assign option_label = name_value[1] | replace: '\"', '"' | replace: '\\', '\' | replace: '\u', '&#x' %}
           {% endif %}
@@ -91,13 +118,13 @@
             </select>
           </span>
         {% when 'text' %}
-          <input type="text" id="{{ option_id }}" name="properties[{{ option_name }}]" maxlength="{{ option_maxlength }}" placeholder="{{ option_placeholder }}" {% if option_required %}required="required"{% endif %} />
+          <input class="text"  type="text" id="{{ option_id }}" name="properties[{{ option_name }}]" maxlength="{{ option_maxlength }}" placeholder="{{ option_placeholder }}" {% if option_required %}required="required"{% endif %} />
         {% when 'file' %}
-          <input type="file" id="{{ option_id }}" name="properties[{{ option_name }}]" {% if option_required %}required="required"{% endif %} />
+          <input class="file" type="file" id="{{ option_id }}" name="properties[{{ option_name }}]" {% if option_required %}required="required"{% endif %} />
         {% when 'multiline' %}
-          <textarea id="{{ option_id }}" name="properties[{{ option_name }}]" maxlength="{{ option_maxlength }}" placeholder="{{ option_placeholder }}" {% if option_required %}required="required"{% endif %}></textarea>
+          <textarea class="textarea" id="{{ option_id }}" name="properties[{{ option_name }}]" maxlength="{{ option_maxlength }}" placeholder="{{ option_placeholder }}" {% if option_required %}required="required"{% endif %}></textarea>
         {% when 'checkbox' %}
-          <input type="checkbox" id="{{ option_id }}" value="&#x2713;" name="properties[{{ option_name }}]" {% if option_required %}required="required"{% endif %} />
+          <input class="checkbox" type="checkbox" id="{{ option_id }}" value="&#x2713;" name="properties[{{ option_name }}]" {% if option_required %}required="required"{% endif %} />
           <div>
           <label for="{{ option_id }}">{{ option_label }}{% if option_price %} <span class="option-amount">(+{{ option_price | money }})</span>{% endif %}</label>
           {% if option_description %}
