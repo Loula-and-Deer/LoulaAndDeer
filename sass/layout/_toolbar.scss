@@ -1,6 +1,17 @@
+.toolbar-wrapper {
+  width: 100%;
+  height: #{'{{ settings.toolbar_height }}'};
+  background: #{'{{ settings.toolbar_bg_color }}'};
+  border-bottom: 1px #{'{{ settings.border_style }}'} #{'{{ settings.toolbar_border_color }}'};
+  z-index: 10;
+  position: relative;
+}
+
 .toolbar {
   color: #{'{{ settings.toolbar_text_color }}'};
   font-size: #{'{{ settings.toolbar_font_size }}'};
+  width: 996px;
+  margin: 0 auto;
   li {
     line-height: #{'{{ settings.toolbar_height }}'};
     list-style: none;

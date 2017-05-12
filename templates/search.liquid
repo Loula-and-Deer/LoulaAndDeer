@@ -1,18 +1,11 @@
 <style>
-{% assign gradient_outer_colour = '#f9f9f9' %}
-{% assign gradient_inner_colour = '#eeeeee' %}
   hr.divider{
-    background:  #{'{{ settings.shop_bg_color }}'};
+    background:  {{ settings.shop_bg_color }};
     clear: both;
     margin: 19px -35px 10px 0px;
     height: 1px;
-    /* Permalink - use to edit the gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,eeeeee+30,eeeeee+70,f9f9f9+100 */
-    background: {{ gradient_inner_colour}}; /* Old browsers, fall-back colour */
-    background: -moz-linear-gradient(left,  {{ gradient_outer_colour}} 0%, {{ gradient_inner_colour }} 30%, {{ gradient_inner_colour }} 70%, {{ gradient_outer_colour}} 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  {{ gradient_outer_colour}} 0%,{{ gradient_inner_colour }} 30%,{{ gradient_inner_colour }} 70%,{{ gradient_outer_colour}} 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  {{ gradient_outer_colour}} 0%,{{ gradient_inner_colour }} 30%,{{ gradient_inner_colour }} 70%,{{ gradient_outer_colour}} 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{{ gradient_outer_colour}}', endColorstr='{{ gradient_outer_colour}}',GradientType=1 ); /* IE6-9 */
-
+    background: #eeeeee;
+    background: linear-gradient(to right, #f9f9f9 0%, #eeeeee 30%, #eeeeee 70%, #f9f9f9 100%);
   }
 
   .add-product-form{
@@ -34,7 +27,7 @@
   }
 
   #content{
-    background:  #{'{{ settings.shop_bg_color }}'} !important;
+    background:  {{ settings.shop_bg_color }} !important;
   }
 </style>
 
@@ -42,7 +35,7 @@
 
 {% include 'search-handler' %}
 
-<div id="search" >
+<div id="search-container" >
   {% if search.performed %}
   {% paginate search.results by 9999 %}
 

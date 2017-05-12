@@ -7,15 +7,14 @@
 }
 
 footer {
-  padding: 0; padding-bottom: 20px;
+  width: 996px; 
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: 20px;
   color: #{'{{ settings.footer_text_color }}'};
 
   h1,h2,h3,h4,h5 {
     color: #{'{{ settings.footer_heading_color }}'};
-  }
-
-  h4 {
-    font-size: 16px;
   }
 
   p { color: #{'{{ settings.footer_text_color }}'}; }
@@ -27,31 +26,8 @@ footer {
     }
   }
 
-  ul{
-    li{
-      margin-bottom: 5px;
-    }
-  }
-  #mail { width: 168px; }
+  li{ margin-bottom: 5px; }
   .row { margin-bottom: 0; }
-  .copyright { margin: 20px 0 10px; }
-  .tweet {
-    ul {
-      li { margin-bottom: 20px;
-      }
-    }
-  }
-  .tweet_list { list-style: none; margin: 0; }
-  .tweet_avatar { display: none; }
-  .tweet_time { display: none; }
-  .tweet_text {
-    a {
-      color: #{'{{ settings.footer_link_color }}'} !important;
-      &:hover {
-        color: #{'{{ settings.footer_link_hover_color }}'} !important;
-      }
-    }
-  }
   .btn{
     &.newsletter {
       background: #{'{{ settings.newsletter_btn_color }}'};
