@@ -21,6 +21,14 @@
 .tl { text-align: left !important; }
 .tc { text-align: center !important; }
 
+.inner-left { margin-left: 0px !important; }
+.inner-right { margin-right: 0px !important; }
+
+.row { margin: 0 0 15px 0; }
+.bigpadding {padding-top: 15px;}
+
+.bigborder {border-bottom: 15px solid  #{'{{ settings.shop_bg_color }}'};}
+
 .border-top { border-top: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'}; }
 .border-right { border-right: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'}; }
 .border-bottom { border-bottom: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'}; }
@@ -50,7 +58,7 @@ hr.divider { margin: 15px 0; background: #{'{{ settings.border_color }}'}; heigh
 }
 
 .disabled {
-  @include opacity(0.5);
+  opacity: 0.5;
   cursor:default;
 }
 
