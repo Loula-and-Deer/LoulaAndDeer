@@ -1,19 +1,6 @@
 @media only screen and (min-width: $desktop-wide-width) {
 
   .wrapper, .toolbar, footer { width: 1026px;}
-  .span1  {width: 79px;}
-  .span2  {width: 188px;}
-  .span3  {width: 30.3%;}
-  .span4  {width: 30.3%;}
-  .span5  {width: 47%;}
-  .span6  {width: 624px;}
-  .span7  {width: 733px;}
-  .span8  {width: 810px;}
-  .span9  {width: 951px;}
-  .span10 {width: 1000px;}
-  .span11 {width: 1000px;}
-  .span12 {width: 970px;}
-  .span3.adaptive-grid {width: 303px;}
   .products{margin: 0 auto; display: table;}
 
   #cart .row{background:  #{'{{ settings.shop_bg_color }}'};}

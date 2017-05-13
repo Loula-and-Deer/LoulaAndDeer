@@ -1,20 +1,14 @@
- <div class="results list" id="search_product{{ forloop.index }}">
-    {% if product.price_min < product.compare_at_price_min %}
-      <div class="span2" style="outline: 3px solid red">
-      <p style="margin: 0; position: absolute; z-index: 3;  background: red;  color: white;  padding: 5px;">SALE</p>
-    {% else %}
-      <div class="span2">
-    {% endif %}
-        {% if product.selected_or_first_available_variant.inventory_quantity < 10 and product.selected_or_first_available_variant.inventory_quantity > 0  and product.selected_or_first_available_variant.inventory_quantity != 1 %}
-      <p style="margin: 0; position: absolute; z-index: 2;  background: #5858ff;  color: white;  padding: 5px; {% if product.price_min < product.compare_at_price_min %}  padding-left: 5rem; {% endif %}">ONLY {{ product.selected_or_first_available_variant.inventory_quantity }} LEFT!</p>
-    {% endif %}
-      <div class="thumbnail">
-        <a class="search-link" alt="product" href="{{ product.url }}">
-          <img src="{{ product.featured_image | product_img_url: '188x131', crop: 'center', format: 'pjpg' }}" alt="{{ product.title | escape  }}" />
-        </a>
-      </div>
-    </div>
+ <div class="search-result-container" id="search_product{{ forloop.index }}">
       <div class="search-result">
+        <div class="thumbnail" style="{% if product.price_min < product.compare_at_price_min %}outline: 3px solid red{% endif %}">
+          {% if product.price_min < product.compare_at_price_min %}
+            <div style="outline: 3px solid red">
+            <p style="margin: 0; position: absolute; z-index: 3;  background: red;  color: white;  padding: 5px;">SALE</p>
+          {% endif %}
+          <a class="search-link" alt="product" href="{{ product.url }}">
+            <img src="{{ product.featured_image | product_img_url: '188x131', crop: 'center', format: 'pjpg' }}" alt="{{ product.title | escape  }}" />
+          </a>
+        </div>
         <h3 class="product-title fl" productTitle="{{ product.title }}">{{ product.title | link_to: product.url }}</h3>
         <h3 class="product-vendor fr" productVendor="{{ product.vendor}}"> <a href="/collections/vendors?q={{product.vendor}}">{{ product.vendor }}</a></h3>
         <h4 class="product-price price"  productPrice="{{ product.price }}">
@@ -61,5 +55,5 @@
            <a href="{{ product.url }}">More Details →</a>
         </form>
       <hr class="divider" />
-  </div>  
+  </div>
   </div>

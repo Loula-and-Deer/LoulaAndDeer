@@ -16,6 +16,30 @@ $mobile-width: 797px;
 $desktop-wide-width: 1026px;
 
 // Grids
+
+// Home Page
+$homepage-layout-grid: (
+  columns: 9,
+  gutter: 2rem,
+);
+
+$homepage-layout-grid--mobile: (
+	columns: 2,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);
+
+// Search page
+
+$search-layout-grid: (
+  columns: 7,
+  gutter: 2rem,
+);
+
+$search-layout-grid--mobile: (
+	columns: 7,
+  media: "(max-width: 797px)",
+);
 // Collection page
 $collection-layout-grid: (
   columns: 3,
@@ -56,4 +80,16 @@ $product-information-layout-grid--mobile: (
   columns: 1,
   gutter: 1rem,
 	media: "(max-width: 797px)",
+);
+
+// Footer
+$footer-layout-grid: (
+  columns: 3,
+  gutter: 2rem,
+);
+
+$footer-layout-grid--mobile: (
+	columns: 1,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
 );
