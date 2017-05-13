@@ -145,7 +145,8 @@
   text-transform: uppercase;
 }
 
-.collection-description p:first-child{text-align: justify; background: #5d5d5d; color: white; padding: 2rem; border-left: 15px solid #3a3a3a; margin: 1rem 0;}
+.collection-description{margin: 1rem 0; display: none;}
+.collection-description p:first-child{text-align: justify; background: #5d5d5d; color: white; padding: 2rem; border-left: 15px solid #3a3a3a;}
 
 .product.span3.adaptive-grid.featured-product {
   max-height: none;

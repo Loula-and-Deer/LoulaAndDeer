@@ -1,15 +1,7 @@
 @media only screen and (max-width: 797px){
 
-  // Shopify settings
-  /*{% if settings.navigation_alignment == "below" %} */
-    nav.mobile { padding: 0; }
-  /*{% endif %} */
-
-  /*{% if settings.navigation_alignment == "below" %} */
-    /* {% if settings.logo_center %} */
-      .logo { max-width: 370px; float:none; padding-bottom:0; margin: 0 auto 30px; }
-    /*{% endif %} */
-  /*{% endif %} */
+  nav.mobile { padding: 0; }
+  .logo { max-width: 370px; float:none; padding-bottom:0; margin: 0 auto 30px; }
 
   //Input Mobile
   input:not([type="radio"]):not([type="checkbox"]){width:98%}
@@ -53,10 +45,11 @@
     }
   }
 
+  .copyright { width:100%; }
+
   //Wrapper mobile
   .wrapper { padding: 0; }
   .wrapper, .toolbar, footer { width:100vw; }
-  .mobile-wrapper {display: block;}
 
   // Container styles
   .span1,.span2,.span3,.span4,.span5,.span6,.span7,.span9,.span10,.span11,.span12, .span4.logo-wrapper { width:92%; float:none; margin: 0 auto;}
@@ -82,6 +75,7 @@
 
   .span8, .span12 { width:100%; }
   .product.span3.adaptive-grid.featured-product {padding: 1rem;margin: 2rem 1rem;}
+
   //No idea what this is
   section#nav { display:none; }
   nav.mobile, .menu-icon { display: block; }
@@ -123,16 +117,13 @@
   #blog .sidebar { display: none; }
 
   // Flyout Mobile
-  .flyout{
-    box-shadow: 0 10px 26px -8px rgba(0,0,0,0.25);
-    .search-field {float: none;}
+  .fa{font-size: 23px;}
+
+  .add-product-form {
+    margin-left: 0px;
+    width: 100%;
   }
 
-  .copyright { width:100%; }
-  .fa{font-size: 23px;}
-  .add-product-form {
-    margin-left: 0px !important;
-  }
   #login .btn, #register .btn {margin: 5px 0; width: 98%;text-align: center;padding: 0;}
 
   .wrapper{margin-top: 8rem;}
@@ -145,12 +136,7 @@
   }
 
   .mobile-wrapper{
-    position: fixed;
-    width: 100%;
-    z-index: 10;
-    top: 50px;
-    overflow-y:scroll;
-    overflow-x:hidden;
+    display: block;
   }
 
   #content {padding: 1rem; min-height: 0px !important;}
@@ -172,7 +158,7 @@
     width: calc(100% - 75px)  !important;
   }
 
-  // Search Mobile
+  // Search Mobiled
   #open-filter-button{
       float: none;
       width: 90% !important;
