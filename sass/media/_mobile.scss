@@ -1,4 +1,4 @@
-@media only screen and (max-width: 797px){
+@media only screen and (max-width: $mobile-width){
 
   nav.mobile { padding: 0; }
   .logo { max-width: 370px; float:none; padding-bottom:0; margin: 0 auto 30px; }
@@ -53,28 +53,10 @@
 
   // Container styles
   .span1,.span2,.span3,.span4,.span5,.span6,.span7,.span9,.span10,.span11,.span12, .span4.logo-wrapper { width:92%; float:none; margin: 0 auto;}
-  .span3 {
-    max-width: 500px;
-    margin: 0 auto;
-    &.adaptive-grid {
-      width: 45%;
-      margin: 2%;
-      float: left;
-      :nth-child(2n-3) {clear: left;}
-      :nth-child(3n+1) {clear: none;}
-    }
-  }
-  .span4{
-    &.product {
-      a {
-        display: table;
-        margin: 0 auto;
-      }
-    }
-  }
-
   .span8, .span12 { width:100%; }
-  .product.span3.adaptive-grid.featured-product {padding: 1rem;margin: 2rem 1rem;}
+
+  // .product.span3.adaptive-grid.featured-product {padding: 1rem;margin: 2rem 1rem;}
+
 
   //No idea what this is
   section#nav { display:none; }
@@ -91,6 +73,13 @@
         width: 100%;
       }
     }
+  }
+
+  .collection-heading{
+    margin-bottom: 2rem;
+  }
+  .collection-product:nth-child(odd) {
+      clear: left;
   }
 
   #product {
@@ -120,8 +109,7 @@
   .fa{font-size: 23px;}
 
   .add-product-form {
-    margin-left: 0px;
-    width: 100%;
+    display: none;
   }
 
   #login .btn, #register .btn {margin: 5px 0; width: 98%;text-align: center;padding: 0;}

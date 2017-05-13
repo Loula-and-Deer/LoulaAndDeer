@@ -1,4 +1,4 @@
-@media only screen and (min-width: 1026px) {
+@media only screen and (min-width: $desktop-wide-width) {
 
   .wrapper, .toolbar, footer { width: 1026px;}
   .span1  {width: 79px;}

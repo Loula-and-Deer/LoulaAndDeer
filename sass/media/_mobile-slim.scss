@@ -1,7 +1,4 @@
-@media only screen and (max-width: 420px) {
-  .product-options .choice * {float: none; width: 100% !important;}
-  .product-options .choice:nth-child(odd) {float: none; width: 100% !important;}
-  .product-options .choice {float: none; margin: 0; width: 100% !important;}
+@media only screen and (max-width: $mobile-slim-width) {
   hr.divider {margin: 8px -35px 14px -11px !important; height: 5px !important; }
   #cart .image {padding: 0px 1rem 0 0rem;}
   .cart-item {
