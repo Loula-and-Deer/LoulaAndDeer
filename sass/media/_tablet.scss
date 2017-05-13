@@ -62,8 +62,7 @@
   }
 }
 
-@media only screen and (min-width: 797px) {
-
+@media only screen and (min-width: $mobile-width) {
   nav{
     padding-top: 0;
     display: table;
@@ -94,7 +93,7 @@
   }
 
   .content-overlay{display: none !important;}
-
-  .span3.adaptive-grid:nth-child(2n-3) {clear: none;}
-  .span3.adaptive-grid:nth-child(3n+1) {clear: left;}
+  .collection-product:nth-child(3n+1) {
+      clear: left;
+  }
 }

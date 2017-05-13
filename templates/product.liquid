@@ -1,15 +1,13 @@
-
-
 <div id="product" class="{{ product.handle }}" itemscope itemtype="http://schema.org/Product">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
- 
+
   <div class="row clearfix">
-    
+
     <!-- Begin breadcrumb -->
     <div class="span12">
       <div class="breadcrumb clearfix" itemscope itemtype="http://schema.org/BreadcrumbList">
-        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">Home</span></a></span> 
+        <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="url"><span itemprop="title">Home</span></a></span>
         <span class="arrow-space">&#62;</span>
         <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
           {% if collection %}
@@ -29,7 +27,7 @@
     <!-- End breadcrumb -->
     <!-- Begin product photos -->
     <div class="{% if product.images.size == 1 or settings.thumbnails_position == 'below' %}span5{% else %}span5{% endif %}">
-      
+
       {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
       <!-- Begin featured image -->
       <div class="image featured">
@@ -42,13 +40,10 @@
         {% endif %}
       </div>
       <!-- End product image -->
-      
+
       {% if product.images.size > 1 and settings.thumbnails_position == 'below' %}
       <!-- Begin thumbnails -->
-      <div class="thumbs clearfix" style="margin-left: -15px;
-    position: relative;
-    display: table;
-    margin: 0 auto;">
+      <div class="thumbs clearfix">
         {% for image in product.images %}
         <div class="image span1{% cycle 'last-in-row': '', '', ' last-in-row' %}">
           <a href="{{ image | img_url: '1024x1024' }}">
@@ -64,11 +59,11 @@
       .thumbs .last-in-row { padding-right: 0 }
       </style>
       {% endif %}
-      
+
     </div>
     <!-- End product photos -->
-    
-    
+
+
     <!-- Begin description -->
     <div class="span5">
     <div>
@@ -94,70 +89,73 @@
       {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
         {% assign hide_default_title = true %}
       {% endif %}
-            
+
+      <!-- Begin product options -->
       <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
         {% include 'product-customizer' %}
-        <!-- Begin product options -->
-        <div class="product-options product-options-padded">
-        
+        <div class="product-information-layout">
           <div class="select clearfix choice"{% if hide_default_title %} style="display:none"{% endif %}>
-          {% if product.variants.size < 2 %}<label for="product-select">Style</label> {% endif %}
+          {% if hide_default_title == false %}
+          <label for="product-select">Style</label>
+          {% endif %}
             <select id="product-select" name="id" style="display:none">
               {% for variant in product.variants %}
               <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
               {% endfor %}
             </select>
           </div>
-          
+
           {% if settings.display_quantity_dropdown and product.available %}
           <div class="selector-wrapper choice">
             <label for="quantity">Quantity</label>
             <input id="quantity" type="number" name="quantity" value="1"  min="1" class="tc item-quantity" />
           </div>
           {% endif %}
-          
+
           <div class="purchase-section{% if product.variants.size > 1 %} multiple{% endif %} choice" style="width: 100%; clear: both; margin: 0;">
             <div class="purchase">
               <input type="submit" id="add-to-cart" class="btn" name="add" value="Add to cart" />
             </div>
           </div>
       <!-- End product options -->
-        
+
       </form>
 
-
-
-        <div class="description" style="clear: both;">
-          {% if product.description != "" %}
+      <!-- Begin description -->
+      <div class="description">
+        {% if product.description != "" %}
           <h3 style="border-bottom: 3px solid #F9F9F9;">More about {{ product.title }} </h3>
-          {{ product.description }}
-          {% endif %}
-          <p style="float: left;"><a href="http://loulaanddeer.co.uk/pages/returns-policy">Returns Policy</a></p>
-          <p style="float: left;">&nbsp; | &nbsp;</p>
-          <p style="float: left;"><a href="http://loulaanddeer.co.uk/pages/delivery">Shipping</a></p>
-        </div>
-        
-        <a href="#" style="color:{{ settings.link_color }}" id="expand-description" onclick="return false;">Show more</a>
+        {{ product.description }}
+        {% endif %}
 
-        </div>
-          <div class="" style="clear: both; height: 61px">
-          <h3 style="border-bottom: 3px solid #F9F9F9;">Share</h3>
-          {% if settings.show_social %}
-            <div class="social">
-              {% include 'like' %}
-            </div>
-          {% endif %}
-        </div>
+        <p class="fl"><a href="http://loulaanddeer.co.uk/pages/returns-policy">Returns Policy</a></p>
+        <p class="fl">&nbsp; | &nbsp;</p>
+        <p class="fl"><a href="http://loulaanddeer.co.uk/pages/delivery">Shipping</a></p>
         <!-- End description -->
       </div>
+
+      <a href="#" style="color:{{ settings.link_color }}" id="expand-description" onclick="return false;">Show more</a>
+
+    </div>
+
+    <!-- Social section -->
+    <div class="" style="clear: both; height: 61px">
+      <h3 style="border-bottom: 3px solid #F9F9F9;">Share</h3>
+      {% if settings.show_social %}
+      <div class="social">
+        {% include 'like' %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </div>
-  
-    
+
+
   <!-- Begin related product -->
   {% if settings.show_related_products %}
     {% include 'related-products' %}
   {% endif %}
-  
+
   <script>
   (function($) {
     $(function() {
@@ -176,8 +174,5 @@
         $("#expand-description").remove();
       });
     });
-  })(jQuery); 
+  })(jQuery);
 </script>
-  
-  
-  

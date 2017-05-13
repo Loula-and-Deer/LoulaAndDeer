@@ -1,45 +1,6 @@
 /* Maintained by Lewis Johnson @ Loula & Deer. */
 
-
-/*  SECTION 1
-/*    1.1 - Base Styles
-/*    1.2 - HTML5 Elements
-/*    1.3 - Forms and Inputs
-/*    1.4 - Typography
-/*    1.5 - Links and Buttons
-/*    1.6 - Tables & social fixes
-/*    1.7 - Icons
-/*    1.8 - Tags
-/*
-/*  SECTION 2
-/*    2.1 - Helper classes
-/*    2.2 - Grid system
-/*    2.3 - Lists
-/*    2.4 - MCP
-/*
-/*  SECTION 3
-/*    3.1 - Toolbar
-/*    3.2 - Header
-/*    3.3 - Navigation
-/*    3.4 - Footer
-/*    3.5 - Homepage
-/*    3.6 - Product & Collections
-/*    3.7 - Cart
-/*    3.8 - Blogs/Articles/Search
-/*    3.9 - Customer Pages
-/*    3.10 - Site Map
-/*
-/*  SECTION 4
-/*    4.1 - Media Query - Desktop Wide
-/*    4.2 - Media Query - Desktop Slim
-/*    4.3 - Media Query - Tablet Landscape
-/*    4.4 - Media Query - Mobile Landscape
-/*    4.5 - Media Query - Mobile Portrait
-/*    4.7 - Media Query - Fixed header for < 797px
-/*
-/*  SECTION 6
-/*    6.1 - Fancybox plugin
-/*    6.2 - FlexSlider plugin
+@import "vendor/neat";
 
 /* Base */
 @import "base/mixins";
@@ -68,7 +29,8 @@
 /* Views */
 @import "views/index";
 @import "views/customer";
-@import "views/product-collection";
+@import "views/product";
+@import "views/collection";
 @import "views/blog";
 @import "views/cart";
 @import "views/sitemap";

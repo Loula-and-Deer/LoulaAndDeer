@@ -10,3 +10,30 @@
   top: 0;
   left: 0;
 }
+
+$mobile-slim-width: 420px;
+$mobile-width: 797px;
+$desktop-wide-width: 1026px;
+
+// Grids
+$collection-layout-grid: (
+  columns: 3,
+  gutter: 2rem,
+);
+
+$collection-layout-grid--mobile: (
+	columns: 2,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);
+
+$product-information-layout-grid: (
+  columns: 2,
+  gutter: 2rem,
+);
+
+$product-information-layout-grid--mobile: (
+  columns: 1,
+  gutter: 1rem,
+	media: "(max-width: 797px)",
+);
