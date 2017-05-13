@@ -1,97 +1,87 @@
 {% assign blog_module_in_footer = false %}
 {% assign socal_align_centre = true %}
 
+<!-- Begin latest blog post -->
+{% assign article = blogs[settings.footer_blog_post].articles.first %}
+{% assign blog_module_in_footer = true %}
+
 <div class="footer-wrapper">
-  <footer>
-    <div class="bigpadding row">
-      <div class="span12 full-border">
-        <div class="clearfix">
-          {% include 'social-links' %}
-        </div>
-      </div>
+  <footer class="footer-layout">
+    <!-- Begin social links -->
+    <div class="footer-layout-full">
+      {% include 'social-links' %}
+    </div>
+    <!-- End social links -->
 
-				<!-- Begin latest blog post -->
-				{% unless settings.footer_blog_post == blank or blogs[settings.footer_blog_post].empty? or blogs[settings.footer_blog_post].articles.size == 0 %}
-				{% assign article = blogs[settings.footer_blog_post].articles.first %}
-				{% assign blog_module_in_footer = true %}
-				<div class="span4">
-					<div class="p5">
-						<h3><a href="/blogs/{{ settings.footer_blog_post }}">{{ settings.footer_blog_post_header }}</a></h3>
-						<p class="p10"><strong>{{ article.title | link_to: article.url }}</strong></p>
-						<p>{{ article.content | strip_html | truncatewords: 30 }}</p>
-					</div>
-				</div>
-			{% endunless %}
-			<!-- End latest blog post -->
+    <!-- Begin latest blog post -->
+    <div class="footer-layout-3rd">
+      <h3>
+        <a href="/blogs/{{ settings.footer_blog_post }}">{{ settings.footer_blog_post_header }}</a>
+      </h3>
+      <p class="p10"><strong>{{ article.title | link_to: article.url }}</strong></p>
+      <p>{{ article.content | strip_html | truncatewords: 30 }}</p>
+    </div>
+		<!-- End latest blog post -->
 
-			<!-- Begin footer navigation -->
-			<div class="span4 footer-menu">
-				<h3>{{ settings.footer_linklist_title }}</h3>
-				<ul class="unstyled">
-					{% for link in linklists[settings.footer_linklist].links %}
-						<li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
-					{% endfor %}
-				</ul>
-			</div>
-			<!-- End footer navigation -->
-
-			<!-- Begin newsletter/social -->
-			<div class="span4 footer-menu">
-
-				{% if settings.footer_display_newsletter %}
-					<div class="p5">
-                      <h3>{{ settings.footer_newsletter_title }}</h3>
-
-                      <style type="text/css">
-                        #mc_embed_signup{clear:left; font:14px Helvetica,Arial,sans-serif; }
-                        #mc_embed_signup input.button { background: {{ settings.newsletter_btn_color }}; display: inline-block; width: auto; border-radius: 2px;}
-                        #mc_embed_signup input.email { float: left; border-radius: 2px;}
-                      </style>
-
-                      <div id="mc_embed_signup">
-                          <form action="//loulaanddeer.us15.list-manage.com/subscribe/post?u=e8fd710d43f0b4800046d6813&amp;id=6dfaf55ebd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                              <div id="mc_embed_signup_scroll">
-
-                              <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-                              <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                              <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                                <input type="text" name="b_e8fd710d43f0b4800046d6813_6dfaf55ebd" tabindex="-1" value="">
-                                </div>
-                                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">
-
-                              </div>
-                          </form>
-                      </div>
-					</div>
-				{% endif %}
-
-			</div>
-			<!-- End newsletter/social -->
-
-
-              <div class="span4 footer-menu">
-				<div class="clearfix">
-                  <h3>Business Details</h3>
-                  <ul class="unstyled">
-                    <li style="margin: 0">{{ shop.name }}</li>
-                    <li style="margin: 0">{{ shop.address.summary }}</li>
-                    <li style="margin: 0">Registration No: 09351604 </li>
-                  </ul>
-
-				</div>
-			</div>
-		<!-- Begin copyright -->
-		<div class="tc copyright" style="clear: both;">
-			{% if shop.enabled_payment_types.size > 0 %}
-				<ul class="credit-cards clearfix">
-					{% for type in shop.enabled_payment_types %}
-						<li><img width="50" src="{{ type | payment_type_img_url }}" /></li>
-					{% endfor %}
-					<p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</p>
-					</ul> <!-- /.credit-cards -->
-				{% endif %}
-			</div>
-			<!-- End copyright -->
+		<!-- Begin footer navigation -->
+		<div class="footer-layout-3rd">
+			<h3>{{ settings.footer_linklist_title }}</h3>
+			<ul class="unstyled">
+				{% for link in linklists[settings.footer_linklist].links %}
+					<li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+				{% endfor %}
+			</ul>
 		</div>
-	</footer>
+		<!-- End footer navigation -->
+
+		<!-- Begin newsletter/social -->
+		<div class="footer-layout-3rd">
+			{% if settings.footer_display_newsletter %}
+				<div class="p5">
+          <h3>{{ settings.footer_newsletter_title }}</h3>
+          <div id="mc_embed_signup">
+            <form action="//loulaanddeer.us15.list-manage.com/subscribe/post?u=e8fd710d43f0b4800046d6813&amp;id=6dfaf55ebd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="b_e8fd710d43f0b4800046d6813_6dfaf55ebd" tabindex="-1" value="">
+                </div>
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn">
+              </div>
+            </form>
+          </div>
+				</div>
+			{% endif %}
+    </div>
+		<!-- End newsletter/social -->
+
+    <!-- Begin business details -->
+    <div class="footer-layout-3rd">
+      <div class="clearfix">
+        <h3>Business Details</h3>
+        <ul class="unstyled">
+          <li style="margin: 0">{{ shop.name }}</li>
+          <li style="margin: 0">{{ shop.address.summary }}</li>
+          <li style="margin: 0">Registration No: 09351604 </li>
+        </ul>
+      </div>
+    </div>
+    <!-- end business details -->
+
+    <!-- Begin copyright -->
+    <div class="footer-layout-full">
+      {% if shop.enabled_payment_types.size > 0 %}
+      <ul class="credit-cards clearfix">
+        {% for type in shop.enabled_payment_types %}
+        <li>
+          <img width="50" src="{{ type | payment_type_img_url }}" />
+        </li>
+        {% endfor %}
+        <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}</p>
+      </ul> <!-- /.credit-cards -->
+      {% endif %}
+    </div>
+    <!-- End copyright -->
+  </footer>
 </div>

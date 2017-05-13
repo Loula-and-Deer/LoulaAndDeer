@@ -1,6 +1,6 @@
 {% layout settings.customer_layout %}
 <div id="customer-account">
-  
+
   <div class="row">
     <div class="span12">
       <h1 class="title clearfix">Account Details
@@ -38,8 +38,8 @@
       <p>You haven't placed any orders yet.</p>
       {% endif %}
     </div>
-    
-    <div id="customer_sidebar" class="span4">
+
+    <div id="customer_sidebar">
       <h2>{{ customer.name }}</h2>
       <p class="email note">{{ customer.email }}</p>
       <div class="address note">
@@ -55,6 +55,6 @@
         <a id="view_address" href="/account/addresses">View Addresses</a>
       </div>
     </div>
-    
-  </div> 
+
+  </div>
 </div>

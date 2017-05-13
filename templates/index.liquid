@@ -11,7 +11,7 @@
 
 
 <!-- Warning Banner Message -->
-<!-- 
+<!--
 <div style="
     background: rgb(93, 93, 93);
     padding: 1rem;
@@ -22,13 +22,9 @@
     text-align: center;"><a href="/pages/contact-us" style="color: white;">Some products may be unavailable while we upgrade our system.</a></div>
 -->
 <!-- Begin slider -->
-<style>
-  .product img, .product .image a {
-    max-height: 600px;
-}
-</style>
-<div class="span12">
-  <div class="flexslider-container">
+
+<div class="homepage-layout">
+  <div class="homepage-layout-full flexslider-container">
     <div class="flexslider">
       <ul class="slides">
         {% for i in (1..10) %}
@@ -49,7 +45,7 @@
       <div class="flex-controls"></div>
     </div>
   </div>
-</div>
+
 <!-- End slider -->
 
 {% if settings.show_fp_images %}
@@ -59,7 +55,7 @@
   {% capture fp_image %}fp_image_{{ i }}.jpg{% endcapture %}
   {% capture fp_link %}fp_image_{{ i }}_link{% endcapture %}
   {% capture fp_alt %}fp_image_{{ i }}_alt{% endcapture %}
-  <div class="span4 product">
+  <div class="homepage-layout-3rd">
     <a href="{{ settings[fp_link] }}">
       <img src="{{ fp_image | asset_img_url:'original', format: 'jpeg' }}" alt="{{ settings[fp_alt] | escape }}" />
       <h3>{{ settings.[fp_alt] }}</h3>
@@ -72,7 +68,7 @@
 
 {% if settings.homepage != blank %}
 <!-- Begin intro -->
-<div class="span12 p20">
+<div class="p20">
   <div class="intro clearfix">
     <h2>{{ pages[settings.homepage].title }}</h2>
     <div>{{ pages[settings.homepage].content }}</div>
@@ -80,7 +76,7 @@
 </div>
 <!-- End intro -->
 {% endif %}
-      
+
 <div class="products">
   {% for product in collections[settings.frontpage_collection].products %}
   {% include 'product-loop' with settings.frontpage_collection %}
@@ -97,3 +93,4 @@
   {% endfor %}
 </div>
 {% endif %}
+</div>

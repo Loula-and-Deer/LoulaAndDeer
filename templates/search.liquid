@@ -1,10 +1,9 @@
 <style>
   hr.divider{
-    background:  {{ settings.shop_bg_color }};
     clear: both;
     margin: 19px -35px 10px 0px;
     height: 1px;
-    background: #eeeeee;
+    background: {{ settings.shop_bg_color }};;
     background: linear-gradient(to right, #f9f9f9 0%, #eeeeee 30%, #eeeeee 70%, #f9f9f9 100%);
   }
 
@@ -16,33 +15,24 @@
     margin-bottom: 0px !important;
   }
 
-  @media only screen and (min-width: 797px){
-    .span1{
-      width: 20% !important;
-      max-width: 160px;
-    }
-    .span11{width: 40% !important;}
-
-  }
-
   #content{
-    background:  {{ settings.shop_bg_color }} !important;
+    background: {{ settings.shop_bg_color }} !important;
   }
+
 </style>
 
 <div class="filter-underlay"></div>
 
 {% include 'search-handler' %}
 
-<div id="search-container" >
+<div class="search-layout" id="search-container">
   {% if search.performed %}
   {% paginate search.results by 9999 %}
 
   {% if search.results == empty%}
-
   <div class="row" style="background: white">
     <div class="expanded-message">
-      <h2>No search results for <strong>"{{ search.terms }}"</strong>.</h2>
+      <h2>No search results for <strong>"{{ search.terms }}"</strong></h2>
       <h3>Try searching for something else.</h3>
       <h4>Suggested products</h4>
     </div>
@@ -53,47 +43,28 @@
     </div>
   {% else %}
 
-
-  <div class="filter-column" id="filter-column" style="background: white">
-      <input id="close-filter-button" type="button" class="search-add" value="CLOSE" style="float: right;">
-  <h2>Filter</h2>
-    {% comment %}
+  <div class="search-layout-filter" id="filter-column" style="background: white">
+    <input id="close-filter-button" type="button" class="search-add" value="CLOSE" style="float: right;">
+    <h2>Filter</h2>
     <div>
-      <h3>Sort</h3>
-      <select class="sort-by">
-        <option value="manual">Relevance</option>
-        <option value="price-descending">Price: High to Low</option>
-        <option value="price-ascending">Price: Low to High</option>
-        <option value="title-ascending">Alphabetical (A-Z)</option>
-        <option value="title-descending">Alphabetical (Z-A)</option>
-        <option value="created-ascending">Oldest to Newest</option>
-        <option value="created-descending">Newest to Oldest</option>
-        <option value="best-selling">Best Selling</option>
-      </select>
-    </div>
-    {% endcomment %}
-    <div>
-        <h3>Max Price</h3>
-        <p id="maxPriceText"></p>
-        <input style="border:none; box-shadow: none;" type="range" id="maxPriceInput" step="10">
+      <h3>Max Price</h3>
+      <p id="maxPriceText"></p>
+      <input style="border:none; box-shadow: none;" type="range" id="maxPriceInput" step="10">
     </div>
     <ul id="vendor-filter" class="checkboxes">
       <h3>Brand</h3>
     </ul>
   </div>
 
-  <div class="search row" style="background: white">
-  <h1>Search Results</h1>
-  <h4 id="search-conditions" style="margin: 0; padding: 5px 20px 20px 20px;">Showing {{search.results_count}} results for "{{ search.terms }}"</h4>
+  <div class="search-layout-results" style="background: white">
+    <h1>Search Results</h1>
+    <h4 id="search-conditions" style="margin: 0; padding: 5px 20px 20px 20px;">Showing {{search.results_count}} results for "{{ search.terms }}"</h4>
     <input id="open-filter-button" type="button" class="search-add" value="FILTER">
     <!-- Begin results -->
-
-  {% for product in search.results %}
-      {% include 'product-list-loop' %}
-  {% endfor %}
-
-  <!-- End results -->
-
+    {% for product in search.results %}
+      {% include 'search-result-loop' %}
+    {% endfor %}
+    <!-- End results -->
   {% include 'pagination' %}
 
   {% endif %}
