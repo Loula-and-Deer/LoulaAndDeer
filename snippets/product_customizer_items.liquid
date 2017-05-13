@@ -1,6 +1,6 @@
 <div class="product-options" style="padding: 0; margin-bottom: 15px; border-top: 1px solid #ffffff; border-bottom: 1px solid #ffffff;">
 {% for item in product.metafields.product_customizer %}
-    <div class="select clearfix choice" style="margin-bottom:15px;">
+    <div class="select clearfix " style="margin-bottom:15px;">
     {% assign words = {{item.first}} | split: '_' %}
     {% capture item_name %}{{words[1]}}{% endcapture %}
     {% if item_name == empty %} {% assign item_name = {{item.first}} %} {% endif %}

@@ -37,9 +37,10 @@
   }
 }
 
-.breadcrumb { font-size: 11px; margin: 0 0 30px 0; }
-.breadcrumb .arrow-space { margin: -2px 6px 0; font-size: 10px; opacity: .5;}
+.breadcrumb { font-size: 11px; margin: 0 0 30px 0; padding-left: 15px;}
+.breadcrumb .arrow-space { margin: -2px 6px 0; opacity: .5;}
 .breadcrumb a { color: #{'{{ settings.body_font_color }}'}; }
+
 .details .price { color: #{'{{ settings.price_color }}'}; }
 .collection-description{margin: 1rem 0; display: none;}
 .collection-description p:first-child{text-align: justify; background: #5d5d5d; color: white; padding: 2rem; border-left: 15px solid #3a3a3a;}
@@ -48,7 +49,9 @@
 #collection .browse-tags label { float: left; display: block; margin: 1px 8px 0 0; }
 
 .pagination {
-  text-align: center; margin: 0 0 30px 0; padding: 0;
+  text-align: center;
+  margin: 0 0 30px 0;
+  padding: 0;
   li {
     display: inline;
     padding: 0 12px;

@@ -4,8 +4,25 @@ button, input, select, textarea {
   padding: 1rem;
   border: 0;
   background: #{'{{ settings.input_bg_color }}'};
-  box-shadow: none;
   transition: all 0.15s;
+  width: 100%;
+}
+
+select {
+  height: 40px;
+}
+
+input, textarea {
+  height:20px;
+  line-height:16px;
+  font-size:14px;
+  @include border-radius(2px);
+}
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  min-height:72px;
 }
 
 input:focus, button:focus, select:focus, textarea:focus {
@@ -23,30 +40,8 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   @include appearance(button);
 }
 
-input[type="search"] {
-  @include appearance(textfield);
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-}
 
-input[type="search"]::-webkit-search-decoration { @include appearance(none); }
 input[type="radio"] { @include appearance(radio);}
-
-textarea {
-  overflow: auto;
-  vertical-align: top;
-}
-
-input, textarea {
-  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-  vertical-align:top;
-  height:24px;
-  line-height:16px;
-  font-size:13px;
-  display:inline-block; @include border-radius(2px);
-}
-
 input[type=checkbox],input[type=radio] {
   height:16px;
   line-height:16px;
@@ -55,40 +50,6 @@ input[type=checkbox],input[type=radio] {
 
 input[type=checkbox] { @include appearance(checkbox); }
 input[type=submit] { cursor:pointer; }
-
-select {
-  font-size:13px;
-  display:inline-block;
-  width: 200px;
-  padding: 1rem;
-  height: 40px;
-  border: 0;
-  background: #{'{{ settings.input_bg_color }}'};
-}
-
-@-moz-document url-prefix() { select { padding:6px;  } } /* Firefox fix */
-textarea { min-height:72px; }
-img {
-  max-width:100%;
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-}
-
-ul, ol {
-  margin: 0 0 20px 20px;
-  padding: 0;
-}
-
-ul li {
-  margin-bottom: 5px;
-  -webkit-tap-highlight-color: none;
-}
-
-ul {
-  list-style:disc outside none;
-  margin-bottom: 5px;
-  -webkit-tap-highlight-color: none;
-}
 
 .sort-by select {
   padding: 0;
