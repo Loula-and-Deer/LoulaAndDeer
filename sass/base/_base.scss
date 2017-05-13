@@ -71,7 +71,29 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 // {% if settings.button_border_radius != "none" %}
-#product .add-to-cart .icon, a.btn, input.btn, .searchform input.submit, .cart-summary a .icon {
+a.btn, input.btn, .searchform input.submit, .cart-summary a .icon {
   @include border-radius(#{'{{ settings.button_border_radius }}'});
 }
 // {% endif %}
+
+img {
+  max-width:100%;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+
+ul, ol {
+  margin: 0 0 20px 20px;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+  -webkit-tap-highlight-color: none;
+}
+
+ul {
+  list-style:disc outside none;
+  margin-bottom: 5px;
+  -webkit-tap-highlight-color: none;
+}

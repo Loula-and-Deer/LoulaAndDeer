@@ -50,7 +50,7 @@
     </a>
     <form class="add-product-form fr" action="/cart/add" method="post">
           <div style="display: none;" class="{% if product.metafields.product_customizer.size > 1  %} product-options {% endif %}">
-          <div style="display: none;" class="select choice"{% if hide_default_title %} style="display:none"{% endif %}>
+          <div style="display: none;" class="select "{% if hide_default_title %} style="display:none"{% endif %}>
             <select id="product-select" name="id" style="display: none;">
               {% for variant in product.variants %}
                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>

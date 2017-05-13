@@ -38,7 +38,7 @@
 
         <form  id="add-product-form" class="add-product-form" action="/cart/add" method="post">
           <div class="{% if product.metafields.product_customizer.size > 1  %} product-options {% endif %}">
-          <div class="select choice"{% if hide_default_title %} style="display:none"{% endif %}>
+          <div class="select "{% if hide_default_title %} style="display:none"{% endif %}>
             <select id="product-select" name="id" >
               {% for variant in product.variants %}
                 <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>

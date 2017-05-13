@@ -16,6 +16,7 @@ $mobile-width: 797px;
 $desktop-wide-width: 1026px;
 
 // Grids
+// Collection page
 $collection-layout-grid: (
   columns: 3,
   gutter: 2rem,
@@ -23,13 +24,32 @@ $collection-layout-grid: (
 
 $collection-layout-grid--mobile: (
 	columns: 2,
-	gutter: 1rem,
+	gutter: 5px,
   media: "(max-width: 797px)",
 );
 
-$product-information-layout-grid: (
+// Product page
+$product-page-layout-grid: (
   columns: 2,
   gutter: 2rem,
+);
+
+$product-page-layout-grid--mobile: (
+  columns: 1,
+  gutter: 2rem,
+	media: "(max-width: 797px)",
+);
+
+// Product thumbnails
+$product-page-thumbnail-layout: (
+  columns: 3,
+  gutter: 1rem,
+);
+
+// Product information
+$product-information-layout-grid: (
+  columns: 2,
+  gutter: 1rem,
 );
 
 $product-information-layout-grid--mobile: (
