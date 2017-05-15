@@ -1,7 +1,7 @@
 {% capture collection_handle %}{{ collection-loop | handleize }}{% endcapture %}
 {% capture url %}{% if collection_handle != "" %}/collections/{{ collection-loop }}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
 
-<div class="collection-product{% if featured %}featured-product{%endif%}">
+<div class="collection-product{% if featured %} collection-product-featured{%endif%}">
   {% if featured %}<h3>Our newest product</h3>{%endif%}
   <div class="image">
     {% if settings.show_sale_circle and product.price_min < product.compare_at_price_min %}
@@ -10,7 +10,7 @@
 
 {% comment %} Added the != 1 because the inventory is not managed properly.{% endcomment %}
     {% if product.selected_or_first_available_variant.inventory_quantity < 10 and product.selected_or_first_available_variant.inventory_quantity > 0  and product.selected_or_first_available_variant.inventory_quantity != 1 %}
-      <p style="margin: 0; position: absolute; z-index: 2;  background: #5858ff;  color: white;  padding: 5px; {% if product.price_min < product.compare_at_price_min %} padding-left: 5rem; {% endif %}">ONLY {{ product.selected_or_first_available_variant.inventory_quantity }} LEFT!</p>
+      <p style="margin: 0; position: absolute; z-index: 2; background: #5858ff;  color: white;  padding: 5px; {% if product.price_min < product.compare_at_price_min %} padding-left: 5rem; {% endif %}">ONLY {{ product.selected_or_first_available_variant.inventory_quantity }} LEFT!</p>
     {% endif %}
 
     <a href="{{ url }}">

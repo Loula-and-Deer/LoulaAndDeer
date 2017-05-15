@@ -36,7 +36,7 @@
       <h3>Try searching for something else.</h3>
       <h4>Suggested products</h4>
     </div>
-    <div class="cart-featured">
+    <div>
       {% for product in collections['new-in'].products limit: 6 %}
         {% include 'product-loop' %}
       {% endfor %}

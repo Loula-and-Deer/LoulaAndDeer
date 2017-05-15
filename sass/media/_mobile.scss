@@ -49,9 +49,6 @@
   .wrapper { padding: 0; }
   .wrapper, .toolbar, footer { width:100vw; }
 
-  // .product.span3.adaptive-grid.featured-product {padding: 1rem;margin: 2rem 1rem;}
-
-
   //No idea what this is
   section#nav { display:none; }
   nav.mobile, .menu-icon { display: block; }
@@ -104,14 +101,6 @@
   #content {padding: 1rem; min-height: 0px !important;}
 
   // Cart Mobile
-  #checkout-link { display:none; }
-  #cart{
-    margin-top: -3rem;
-    .item-description {
-      display: none;
-    }
-  }
-
   .cart-item-addtional-info{
     border: none;
   }
@@ -135,7 +124,7 @@
     margin-left: -40px !important;
     padding-left: 35px !important;
   }
-  
+
   .search-results {
     top: 40px !important;
     left: 0px !important;

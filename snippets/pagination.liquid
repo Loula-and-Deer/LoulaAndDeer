@@ -1,7 +1,5 @@
 {% if paginate.pages > 1%}
 {% unless collection.title contains 'New' %}
-<div class="row">
-  <div class="span12">
     <ul class="pagination clearfix">
     {% if paginate.previous %}
     	<li><a href="{{ paginate.previous.url }}" class="btn prev">Previous</a></li>
@@ -15,7 +13,5 @@
     	<li><span>{{ next_word }}</span></li>
     {% endif %}
     </ul>
-  </div>
-</div> 
 {% endunless %}
 {% endif %}
