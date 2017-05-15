@@ -43,7 +43,7 @@ a.btn, input.btn {
   font-weight:#{'{{ settings.btn_font_weight }}'};
   font-size:#{'{{ settings.btn_font_size }}'};
   text-transform:#{'{{ settings.btn_font_style }}'};
-  background:#{'#{'{{ settings.shop_btn_color }}'}'} !important;
+  background:#{'#{'{{ settings.shop_btn_color }}'}'};
   width:auto;
   transition: all 0.3s;
 }

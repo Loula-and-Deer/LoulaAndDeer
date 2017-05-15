@@ -106,13 +106,9 @@
 
 #maxPriceInput {width: 100%};
 
-// .expanded-message {
-//   h2{
-//     padding-left: 1rem;
-//   }
-//
-//   h3{
-//     padding-left: 2rem;
-//     padding-bottom: 1rem;
-//   }
-// }
+.expanded-message {
+  padding: 2rem;
+  h2{
+    margin: 0;
+  }
+}

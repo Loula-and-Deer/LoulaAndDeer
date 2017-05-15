@@ -30,7 +30,6 @@ $homepage-layout-grid--mobile: (
 );
 
 // Search page
-
 $search-layout-grid: (
   columns: 7,
   gutter: 2rem,
@@ -40,6 +39,7 @@ $search-layout-grid--mobile: (
 	columns: 7,
   media: "(max-width: 797px)",
 );
+
 // Collection page
 $collection-layout-grid: (
   columns: 3,
@@ -63,6 +63,19 @@ $product-page-layout-grid--mobile: (
   gutter: 2rem,
 	media: "(max-width: 797px)",
 );
+
+// Cart
+$cart-layout-grid: (
+  columns: 7,
+  gutter: 1rem,
+);
+
+$cart-layout-grid--mobile: (
+	columns: 1,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);
+
 
 // Product thumbnails
 $product-page-thumbnail-layout: (

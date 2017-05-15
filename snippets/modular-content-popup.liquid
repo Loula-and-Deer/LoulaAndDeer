@@ -4,14 +4,17 @@
 <!--googleoff: index-->
 <div class="filter-underlay"></div>
 
-<div id="mcp" class="container" style="display: none;">
+<div id="mcp" style="display: none;">
   <div class="inner">
+    <img class="mcp_logo" src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="width: 135px;">
     <h1 class="mcp_title">{{mcp_title}}</h1>
     <div class="mcp_content">
       {{mcp_content}}
     </div>
-    <input id="close-mcp-btn" type="submit" class="btn" name="checkout" value="Okay">
-    </div>
+  </div>
+  <div class="footer">
+    <input id="close-mcp-btn" type="submit" class="btn" value="Okay">
+  </div>
 </div>
 
 
@@ -19,16 +22,15 @@
   var mcpSelector ='#mcp';
   var openMcpSelector = '#open-mcp-btn';
   var closeMcpSelector = '#close-mcp-btn';
-  
-   $(document).ready(function() {
-     
-     $(openMcpSelector).on("click", function() {
+  $(document).ready(function() {
+
+    $(openMcpSelector).on("click", function() {
        $('.filter-underlay').css("display", "block");
        $(mcpSelector).css({"opacity": 0});
        $(mcpSelector).show();
        $(mcpSelector).animate({opacity: 1}, 200, "swing");
      });
-     
+
      $(closeMcpSelector).on("click", function() {
        $('.filter-underlay').css("display", "none");
        $(mcpSelector).animate({
@@ -39,9 +41,9 @@
            $(mcpSelector).hide();
          }
        });
-     });   
+     });
    });
-  
+
 </script>
 
 <!--googleon: index>
