@@ -11,6 +11,16 @@
   left: 0;
 }
 
+%cart-button{
+  float: left;
+  width: 35px !important;
+  height: 40px;
+  background: #dddddd;
+  font-size: 2rem;
+  border-radius: 0;
+	outline: 1px solid #e1e1e1;
+}
+
 $mobile-slim-width: 420px;
 $mobile-width: 797px;
 $desktop-wide-width: 1026px;
@@ -32,11 +42,12 @@ $homepage-layout-grid--mobile: (
 // Search page
 $search-layout-grid: (
   columns: 7,
-  gutter: 2rem,
+  gutter: 1rem,
 );
 
 $search-layout-grid--mobile: (
 	columns: 7,
+	gutter: 0,
   media: "(max-width: 797px)",
 );
 
@@ -72,7 +83,7 @@ $cart-layout-grid: (
 
 $cart-layout-grid--mobile: (
 	columns: 1,
-	gutter: 1rem,
+	gutter: 0,
   media: "(max-width: 797px)",
 );
 

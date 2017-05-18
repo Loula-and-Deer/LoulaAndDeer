@@ -67,13 +67,15 @@
                   {% if item.product.title != "Personalised Name Plaque" %}
                   <li>
                     <p>Quantity</p>
-                    <input type="button" size="2" class="cart__quantity_dec" value="-" data-line="{{ forloop.index }}">
-                    <input type="number" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
-                    <input type="button" size="2" class="cart__quantity_inc" value="+" data-line="{{ forloop.index }}">
+                    <div class="cart-item-quantity-container">
+                      <input type="button" size="2" class="cart__quantity_dec" value="-">
+                      <input type="number" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
+                      <input type="button" size="2" class="cart__quantity_inc" value="+">
+                    </div>
                   </li>
                   {% endif %}
                   <!-- Remove Item -->
-                  <li><a href="/cart/change?line={{ forloop.index }}&quantity=0" data-line="{{ forloop.index }}">Remove</a></li>
+                  <li><a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a></li>
                 </ul>
               </li>
             {% endfor %}
