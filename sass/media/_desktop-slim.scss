@@ -1,23 +1,10 @@
-@media only screen and (max-width: $desktop-wide-width) {
-  #open-filter-button{
-    float: right;
-    display: block;
-  }
+@media only screen and (min-width: 797px) and (max-width: 1026px) {
+  .wrapper, .toolbar, footer { width:768px; }
 
-  #close-filter-button{
-    float: right;
-    display: block;
+  .cart-layout-side-information{
+    border-left: 1rem solid #f9f9f9;
   }
-  .results.list {
-    width: 98%;
-    .add-product-form {
-      .buttons {
-        input {width: auto;}
-        .search-qty {width: 50px;}
-      }
-    }
+  .filter-underlay{
+    display: none !important;
   }
-
-  .filter-column{display: none; top: 10%; left: 10%; width: 71%; position: fixed; z-index: 99; margin: 0}
-  .search_li {margin-left: 0;}
 }

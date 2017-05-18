@@ -17,12 +17,13 @@ class SearchResult {
     var products = [];
     var vendors = new Set();
     var i = 0;
+    var maxPriceInputSlider = $("#maxPriceInput");
 
     //Change vendor H3
     $("#vendor-filter > h3").text("LOADING...");
 
     //Initialise search result array
-    $(".results").each(function() {
+    $(".search-result-container").each(function() {
 
       //Increment is here to match HTML ID's
       i++;
@@ -60,12 +61,12 @@ class SearchResult {
     createVendorFilterList(vendors);
 
     //Added 1000 (£1) because sometimes Edge can't snap to the max price.
-    $("#maxPriceInput").attr("min", minProductPrice);
-    $("#maxPriceInput").attr("max", (maxProductPrice + 100));
-    $("#maxPriceInput").attr("value", maxProductPrice);
+    maxPriceInputSlider.attr("min", minProductPrice);
+    maxPriceInputSlider.attr("max", (maxProductPrice + 100));
+    maxPriceInputSlider.attr("value", maxProductPrice);
 
-    $("#maxPriceText").text(Shopify.formatMoney(maxProductPrice, "{{ shop.money_with_currency_format  }}"
-                                               ));
+    $("#maxPriceText").text(Shopify.formatMoney(maxProductPrice, "{{ shop.money_with_currency_format }}"));
+
     //Revertes text from "Loading"
     $("#vendor-filter > h3:first").text("Brand");
 
@@ -73,17 +74,16 @@ class SearchResult {
       ||  Lisetner Events  ||
       =======================*/
     $(document).on('input', '#maxPriceInput', function() {
-      $('#maxPriceText').text(Shopify.formatMoney($(this).val(), "{{ shop.money_with_currency_format  }}"
-                                                 ));
+      $('#maxPriceText').text(Shopify.formatMoney($(this).val(), "{{ shop.money_with_currency_format }}"));
     });
 
-    $("#maxPriceInput").change(function() {
+    maxPriceInputSlider.change(function() {
       filterProducts($(this).val());
     });
 
     //Filter results when a new vendor/brand is selected
     $('input[class*="vendorCheckbox"]').change(function() {
-      filterProducts($("#maxPriceInput").val());
+      filterProducts(maxPriceInputSlider.val());
     });
 
     //Open filter menu mobile bind
@@ -169,38 +169,3 @@ class SearchResult {
 })(jQuery);
 
 </script>
-
-
-
-
-// function setCookie(cname, cvalue, exdays) {
-//     var d = new Date();
-//     d.setTime(d.getTime() + (exdays*24*60*60*1000));
-//     var expires = "expires="+ d.toUTCString();
-//     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-// }
-
-// function getCookie(cname) {
-//     var name = cname + "=";
-//     var decodedCookie = decodeURIComponent(document.cookie);
-//     var ca = decodedCookie.split(';');
-//     for(var i = 0; i <ca.length; i++) {
-//         var c = ca[i];
-//         while (c.charAt(0) == ' ') {
-//             c = c.substring(1);
-//         }
-//         if (c.indexOf(name) == 0) {
-//             return c.substring(name.length, c.length);
-//         }
-//     }
-//     return "";
-// }
-
-// function checkCookie() {
-//     var listStyle = getCookie("search-ls");
-//     if (user != "") {
-//         return listStyle;
-//     } else {
-//         setCookie("search-ls", "list", 365);
-//     }
-// }

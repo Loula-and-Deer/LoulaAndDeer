@@ -17,7 +17,7 @@
     max-width: 260px;
     float: left;
     margin-left: 20px;
-    }
+  }
 
   #cart #content{background:  #{'{{ settings.shop_bg_color }}'};}
 
@@ -26,21 +26,18 @@
     max-height: 225px;
     width: auto;
     height: auto;
-    }
+  }
 
-    #open-filter-button{
-      display: none !important;
-    }
+  #filter-column{
+    //Important is for when mobile resizes to desktop
+    display: block !important;
+  }
 
-    #close-filter-button{
-      display: none !important;
-    }
+  .filter-underlay{
+    display: none !important;
+  }
 
-    #filter-column{
-      display: block !important;
-    }
-
-    .filter-underlay{
-      display: none !important;
-    }
+  #mcp{
+    max-width: 600px;
+  }
 }

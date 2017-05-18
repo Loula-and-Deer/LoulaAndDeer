@@ -4,8 +4,8 @@
   .logo { max-width: 370px; float:none; padding-bottom:0; margin: 0 auto 30px; }
 
   //Input Mobile
-  input:not([type="radio"]):not([type="checkbox"]){width:98%}
-  select:not([type="radio"]):not([type="checkbox"]){width:98%}
+  input:not([type="radio"]):not([type="checkbox"]){width:100%}
+  select:not([type="radio"]):not([type="checkbox"]){width:100%}
 
   //Desktop style changes
   #desktop-toolbar{display: none;}
@@ -36,6 +36,7 @@
       float: left;
     }
   }
+
   //Footer Mobile
   footer {
     .btn.newsletter {
@@ -60,6 +61,8 @@
       display: block;
       padding-top: 10px;
       padding-left: 0px;
+      max-width: none;
+      clear: both;
       select {
         width: 100%;
       }
@@ -105,29 +108,38 @@
     border: none;
   }
 
-  .cart__quantity{
-    width: calc(100% - 75px)  !important;
+  .cart-buttons{
+    max-width: 400px;
+    margin: 0 auto;
   }
 
-  // Search Mobiled
+  // Search Mobile
   #open-filter-button{
-      float: none;
-      width: 90% !important;
-      margin: 0 auto;
+    display: block;
+    float: none;
+    width: 90%;
+    margin: 0 auto;
   }
 
   #close-filter-button{
-      width: auto !important;
+    display: block;
+    width: auto;
   }
 
-  .search_box{
-    margin-left: -40px !important;
-    padding-left: 35px !important;
+  .filter-header-wrapper{
+    position: fixed;
+    width: 95%;
   }
+
+  .filter-options-wrapper{
+    margin-top: 5rem;
+  }
+
+  .search_box{margin-left: -40px !important;}
 
   .search-results {
-    top: 40px !important;
-    left: 0px !important;
+    top: 40px;
+    left: 0px;
     width: 100%;
     border-bottom: 1px solid #d4d4d4;
     border-radius: 0 0 3px 3px;
@@ -140,8 +152,28 @@
     }
   }
 
+  //MCP
+  #mcp {
+    top: 5%;
+    bottom: 5%;
+    left: 5%;
+    right: 5%;
+    .footer{
+      position: fixed;
+      bottom: 0;
+      left: 5%;
+      width: 90%;
+      height: 5rem;
+      margin-bottom: 36px;
+    }
+  }
 
-  #mcp {top: 5%; bottom: 5%; left: 5%; right: 5%;}
+  #close-mcp-btn {
+    width: 50%;
+    display: table;
+    margin: 0 auto;
+    margin-top: 6px;
+  }
 
   //Blog
   .row.title{padding-bottom: 1px; text-align: center;}

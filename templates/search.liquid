@@ -1,20 +1,4 @@
 <style>
-  hr.divider{
-    clear: both;
-    margin: 19px -35px 10px 0px;
-    height: 1px;
-    background: {{ settings.shop_bg_color }};;
-    background: linear-gradient(to right, #f9f9f9 0%, #eeeeee 30%, #eeeeee 70%, #f9f9f9 100%);
-  }
-
-  .add-product-form{
-    margin-left: 224px;
-  }
-
-  .product-options{
-    margin-bottom: 0px !important;
-  }
-
   #content{
     background: {{ settings.shop_bg_color }} !important;
   }
@@ -44,16 +28,20 @@
   {% else %}
 
   <div class="search-layout-filter" id="filter-column" style="background: white">
-    <input id="close-filter-button" type="button" class="search-add" value="CLOSE" style="float: right;">
-    <h2>Filter</h2>
-    <div>
-      <h3>Max Price</h3>
-      <p id="maxPriceText"></p>
-      <input style="border:none; box-shadow: none;" type="range" id="maxPriceInput" step="10">
+    <div class="filter-header-wrapper">
+      <input id="close-filter-button" type="button" class="search-add" value="CLOSE" style="float: right;">
+      <h2>Filter</h2>
     </div>
-    <ul id="vendor-filter" class="checkboxes">
-      <h3>Brand</h3>
-    </ul>
+    <div class="filter-options-wrapper">
+      <div>
+        <h3>Max Price</h3>
+        <p id="maxPriceText"></p>
+        <input style="border:none; box-shadow: none;" type="range" id="maxPriceInput" step="10">
+      </div>
+      <ul id="vendor-filter" class="checkboxes unstyled">
+        <h3>Brand</h3>
+      </ul>
+    </div>
   </div>
 
   <div class="search-layout-results" style="background: white">

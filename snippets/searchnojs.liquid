@@ -3,19 +3,12 @@
   hr.divider{
     background: #EFEFEF;
   }
-  @media only screen and (min-width: 797px){
-    .span1{
-      width: 20% !important;
-      max-width: 160px;
-    }
-    .span11{width: 40% !important;}
-  }
 </style>
 
 <div id="search">
   {% if search.performed %}
   {% paginate search.results by settings.pagination_limit %}
-  
+
   {% if search.results == empty%}
 
   <div class="row" style="background: white">
@@ -30,13 +23,13 @@
       {% endfor %}
     </div>
   {% else %}
-  
+
   <div class="row">
     <div class="span12">
       <h1>Search Results</h1>
     </div>
   </div>
-  
+
   <!-- Begin results -->
   {% for item in search.results %}
   <div class="row results">
@@ -57,7 +50,7 @@
   <hr class="divider" />
   {% endfor %}
   <!-- End results -->
-  
+
   {% include 'pagination' %}
 
   {% endif %}

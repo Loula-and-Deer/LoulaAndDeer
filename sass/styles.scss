@@ -35,11 +35,11 @@
 @import "views/sitemap";
 
 /* Media */
-@import "media/desktop-wide";
-@import "media/desktop-slim";
-@import "media/tablet";
-@import "media/mobile";
 @import "media/mobile-slim";
+@import "media/mobile";
+@import "media/tablet";
+@import "media/desktop-slim";
+@import "media/desktop-wide";
 
 /* Vendors */
 @import "vendor/fancybox";

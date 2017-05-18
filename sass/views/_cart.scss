@@ -25,7 +25,6 @@
 div.errors, .subtext.error { font-weight: 700; color: #954040; }
 div.errors { margin-bottom: 15px; }
 .featured-cart-title { margin-left: 13px; }
-.checkout-buttons { clear: both;}
 
 #cart {
   h2 {
@@ -55,28 +54,9 @@ div.errors { margin-bottom: 15px; }
   }
 }
 
-.extra-checkout-buttons {
-  float: right;
-  text-align: right;
-  padding-top: 15px;
-  width: 145px;
-  height: 45;
-  input {
-    border: none;
-    box-shadow: none;
-    height: 42px;
-  }
-}
-
-.cart-item {
-  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
 .cart-item-inner {
-  height: 100px;
   padding: 1rem;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
   border-bottom: 1px solid #E6E6E6;
   .image{
     float: left;
@@ -88,17 +68,14 @@ div.errors { margin-bottom: 15px; }
 .cart-list{margin: 0;}
 
 .cart-item-addtional-info{
-  border: none;
   background:  #{'{{ settings.shop_bg_color }}'};
   margin: -1rem;
   display: none;
-  border-left: 1px solid #E6E6E6;
-  border-right: 1px solid #E6E6E6;
+  box-shadow: 0px 20px 20px -10px rgba(190, 190, 190, 0.41);
   li{
     text-align: center;
-    font-size: 16px;
     padding: 1rem;
-    border-bottom: 2px solid #E6E6E6;
+    border-bottom: 1px solid #ebebeb;
     a, p{
       text-align: center;
       font-size: 16px;
@@ -119,15 +96,9 @@ div.errors { margin-bottom: 15px; }
   border-bottom: 1px solid  #{'{{ settings.shop_bg_color }}'};
 }
 
-.buttons{ padding: 1rem; }
-
 .extra-checkout-button{
-  display: table !important;
-  float: none !important;
-  width: 80% !important;
-  margin-left: 1rem !important;
-  margin: 1rem auto !important;
-  max-width: 300px !important;
+  width: 80%;
+  margin: 1rem auto;
 }
 
 #paypal-express-button{
@@ -148,44 +119,28 @@ div.errors { margin-bottom: 15px; }
 }
 
 //I'm sorry for the double underline.
+.cart-item-quantity-container{
+  margin: 0 auto;
+  max-width: 250px;
+  width: 100%;
+  height: 40px;
+}
+
 .cart__quantity{
-    height: 40px !important;
-    padding: 0;
-    border: 0;
-    background: #{'{{ settings.input_bg_color }}'};
-    box-shadow: none;
-    text-align: center;
+  text-align: center;
+  width: calc(100% - 90px) !important;
+  font-size: 2rem;
+  float: left;
+  background: white;
+  outline: 1px solid #e1e1e1;
 }
 
 .cart__quantity_dec{
-    width: 25px !important;
-    height: 40px !important;
-    padding: 0;
-    border: 0;
-    background: #dddddd;
-    box-shadow: none;
-    text-align: center;
-    width: 25px;
-    font-size: 2rem;
-    @include border-radius(0);
-    position: relative;
-    left: 5px;
+  @extend %cart-button;
 }
 
-
 .cart__quantity_inc{
-    width: 25px !important;
-  	height: 40px !important;
-    padding: 0;
-    border: 0;
-    background: #dddddd;
-    box-shadow: none;
-    text-align: center;
-    width: 25px;
-    @include border-radius(0);
-    font-size: 2rem;
-    position: relative;
-    left: -5px;
+  @extend %cart-button;
 }
 
 li.dot {

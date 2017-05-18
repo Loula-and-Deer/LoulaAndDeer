@@ -1,17 +1,16 @@
-@media only screen and (min-width: 797px) and (max-width: 1026px) {
-  .wrapper, .toolbar, footer { width:768px; }
-
-  #open-filter-button{
-    position: relative;
-    top: -7rem;
-    padding: 0 6rem;
-    margin-right: 1rem;
+@media only screen and (max-width: $desktop-wide-width) {
+  .results.list {
+    width: 98%;
+    .add-product-form {
+      .buttons {
+        input {width: auto;}
+        .search-qty {width: 50px;}
+      }
+    }
   }
-
-  .cart-layout-side-information{
-    border-left: 1rem solid #f9f9f9;
-  }
+  .search_li {margin-left: 0;}
 }
+
 
 @media only screen and (min-width: $mobile-width) {
   nav{
