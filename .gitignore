@@ -1,5 +1,5 @@
 node_modules/
 .idea/
-.sass-cache/*.scssc
+.sass-cache/
 *.bak
 *.old
