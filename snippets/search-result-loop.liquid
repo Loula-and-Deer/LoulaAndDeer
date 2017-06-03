@@ -1,17 +1,18 @@
- <div class="search-result-container" id="search_product{{ forloop.index }}">
+ <div class="search-result-container" id="search_product{{ forloop.index }}" data-id="{{ product.id }}" data-price="{{ product.price }}" data-title="{{ product.title }}" data-vendor="{{ product.vendor}}">
       <div class="search-result">
-        <div class="thumbnail" style="{% if product.price_min < product.compare_at_price_min %}outline: 3px solid red{% endif %}">
+        <div class="search-result-thumbnail" style="{% if product.price_min < product.compare_at_price_min %}outline: 3px solid red{% endif %}">
           {% if product.price_min < product.compare_at_price_min %}
             <div style="outline: 3px solid red">
             <p style="margin: 0; position: absolute; z-index: 3;  background: red;  color: white;  padding: 5px;">SALE</p>
           {% endif %}
-          <a class="search-link" alt="product" href="{{ product.url }}">
+          <a alt="product" href="{{ product.url }}">
             <img src="{{ product.featured_image | product_img_url: '188x131', crop: 'center', format: 'pjpg' }}" alt="{{ product.title | escape  }}" />
           </a>
         </div>
-        <h3 class="product-title fl" productTitle="{{ product.title }}">{{ product.title | link_to: product.url }}</h3>
-        <h3 class="product-vendor fr" productVendor="{{ product.vendor}}"> <a href="/collections/vendors?q={{product.vendor}}">{{ product.vendor }}</a></h3>
-        <h4 class="product-price price"  productPrice="{{ product.price }}">
+        <div class="search-result-info">
+        <h3 class="product-title fl">{{ product.title | link_to: product.url }}</h3>
+        <h3 class="product-vendor fr"> <a href="/collections/vendors?q={{product.vendor}}">{{ product.vendor }}</a></h3>
+        <h4 class="product-price price">
         {% if product.available %}
           {% if product.compare_at_price_max > product.price %}
             <del>{{ product.compare_at_price | money }}</del>
@@ -43,7 +44,7 @@
             {% include 'product-customizer' %}
           {% endif %}
           </div>
-          <div class="buttons" style="padding: 1rem 0; clear: right;">
+          <div class="buttons" style="{% if product.metafields.product_customizer.size > 0 %}padding: 1rem; clear: both;{% else %}padding: 1rem 0; clear: right;{% endif %}">
           {% if product.available %}
             <input type="submit" class="search-add" name="add" value="Add to cart"/>
             <input type="number" class="search-qty" name="quantity" value="1"  min="1"/>
@@ -54,6 +55,7 @@
 
            <a href="{{ product.url }}">More Details →</a>
         </form>
-      <hr class="divider" />
+      </div>
+      <hr class="divider" style="clear:both;" />
   </div>
   </div>

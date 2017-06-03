@@ -14,10 +14,8 @@
 
 {% if collection and collection.products_count > 1 %}
 
-<div class="row" style="border-top: 15px solid  #{'{{ settings.shop_bg_color }}'}; margin: 0; padding-top: 1rem;">
-  <div class="span12">
-    <h3 class="collection-title" style="padding: 0;">Related products</h3>
-  </div>
+<div class="row" style="border-top: 15px solid {{ settings.shop_bg_color }}; padding-top: 1rem;">
+    <h2 style="padding-left: 1rem;">Related products</h2>
 </div>
 
 <div class="row products" style="margin-bottom: 2rem;">

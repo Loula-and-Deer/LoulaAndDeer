@@ -54,6 +54,10 @@ div.errors { margin-bottom: 15px; }
   }
 }
 
+.cart-item{
+  overflow: hidden;
+}
+
 .cart-item-inner {
   padding: 1rem;
   overflow: hidden;
@@ -94,10 +98,15 @@ div.errors { margin-bottom: 15px; }
   padding: 0 1rem;
   margin-bottom: 1rem;
   border-bottom: 1px solid  #{'{{ settings.shop_bg_color }}'};
+  input {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+  }
 }
 
 .extra-checkout-button{
-  width: 80%;
+  width: 100%;
   margin: 1rem auto;
 }
 
@@ -115,7 +124,12 @@ div.errors { margin-bottom: 15px; }
 }
 
 #note{
-  width: 95%;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    display: block;
+    resize: vertical;
+    max-height: 167px;
 }
 
 //I'm sorry for the double underline.

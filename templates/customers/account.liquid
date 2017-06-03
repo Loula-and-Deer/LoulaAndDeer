@@ -1,16 +1,29 @@
 {% layout settings.customer_layout %}
 <div id="customer-account">
-
   <div class="row">
-    <div class="span12">
-      <h1 class="title clearfix">Account Details
-        <span class="note">{{ 'Logout' | customer_logout_link }}</span>
-      </h1>
-    </div>
+      <h1 class="account-title">Account Details</h1>
   </div>
 
   <div class="row">
-    <div id="customer_orders" class="span8">
+
+    <div id="customer_sidebar">
+      <h2>{{ customer.name | capitalize }}</h2>
+      <p class="email note">{{ customer.email }}</p>
+      <div class="address note">
+        {% if customer.default_address != nil %}
+        <p>{{ customer.default_address.address1 }}</p>
+        {% if customer.default_address.address2 != "" %}
+        <p>{{ customer.default_address.address2 }}</p>
+        {% endif %}
+        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+        <p>{{ customer.default_address.zip}}</p>
+        <p>{{ customer.default_address.phone }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div id="customer_orders">
+      <h2>Orders</h2>
       {% if customer.orders.size != 0 %}
       <table>
         <thead>
@@ -38,23 +51,9 @@
       <p>You haven't placed any orders yet.</p>
       {% endif %}
     </div>
-
-    <div id="customer_sidebar">
-      <h2>{{ customer.name }}</h2>
-      <p class="email note">{{ customer.email }}</p>
-      <div class="address note">
-        {% if customer.default_address != nil %}
-        <p>{{ customer.default_address.address1 }}</p>
-        {% if customer.default_address.address2 != "" %}
-        <p>{{ customer.default_address.address2 }}</p>
-        {% endif %}
-        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
-        <p>{{ customer.default_address.zip}}</p>
-        <p>{{ customer.default_address.phone }}</p>
-        {% endif %}
-        <a id="view_address" href="/account/addresses">View Addresses</a>
-      </div>
-    </div>
-
+    <div style="clear:both;padding-top:3rem;">
+      <a class="search-add" style="padding: 1rem; margin-right: 1rem;" href="/account/addresses">View Addresses</a>
+      <a class="search-add" style="padding: 1rem;" href="/account/logout">Log out</a>
+    <div>
   </div>
 </div>

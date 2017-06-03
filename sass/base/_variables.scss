@@ -46,7 +46,19 @@ $search-layout-grid: (
 );
 
 $search-layout-grid--mobile: (
-	columns: 7,
+	columns: 1,
+	gutter: 0,
+  media: "(max-width: 797px)",
+);
+
+// Search page
+$search-result-grid: (
+  columns: 4,
+  gutter: 1rem,
+);
+
+$search-result--mobile: (
+	columns: 1,
 	gutter: 0,
   media: "(max-width: 797px)",
 );
@@ -104,6 +116,18 @@ $product-information-layout-grid--mobile: (
   columns: 1,
   gutter: 1rem,
 	media: "(max-width: 797px)",
+);
+
+// Account
+$account-layout-grid: (
+  columns: 4,
+  gutter: 1rem,
+);
+
+$account-layout-grid--mobile: (
+	columns: 1,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
 );
 
 // Footer

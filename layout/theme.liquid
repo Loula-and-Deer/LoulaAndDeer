@@ -67,7 +67,6 @@
   {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
   {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
   {{ 'font-awesome.css' | asset_url | stylesheet_tag }}
-  {{ 'mailchimp.scss' | asset_url | stylesheet_tag }}
   {% if settings.google_header_font != "none" %}
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family={{ settings.google_header_font }}:300,400,700">
   {% endif %}
