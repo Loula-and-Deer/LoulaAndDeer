@@ -21,9 +21,11 @@
     });
 
     //Changes style of PayPal checkout button
-    paypalCheckoutButton.classList.remove("additional-checkout-button");
-    paypalCheckoutButton.classList.remove("additional-checkout-button--paypal-express");
-    paypalCheckoutButton.classList.add("extra-checkout-button")
+    if(paypalCheckoutButton !== null){
+      paypalCheckoutButton.classList.remove("additional-checkout-button");
+      paypalCheckoutButton.classList.remove("additional-checkout-button--paypal-express");
+      paypalCheckoutButton.classList.add("extra-checkout-button")
+    }
 
     //Removes "Checkout with PayPal" text from PayPal button
     $('#paypal-express-button').contents().filter(function() {
@@ -34,14 +36,24 @@
     $(".fa-ellipsis-v").on("click", function() {
       var item = $(this).parent().parent();
       var info = $(this).parent().parent().find(".cart-item-addtional-info");
-      if (item.attr("expanded") == "false") {
+      if (item.attr("expanded") === "false") {
         item.attr("expanded", "true");
+        item.attr("height", item.height());
+        item.css("maxHeight", item.height());
         info.css("display", "block");
-        item.height(100 + info.height());
+
+        item.animate({
+          maxHeight: eval(item.attr("height")) + info.height()
+        }, 400);
+
       } else {
         item.attr("expanded", "false");
-        $(window).width() < 420 ? item.height(120) : item.height(100);
-        info.css("display", "none");
+        item.animate({
+          maxHeight: eval(item.attr("height"))
+        }, 400, function() {
+          info.css("display", "none");
+        });
+
       }
     });
 

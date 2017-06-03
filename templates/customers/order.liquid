@@ -1,20 +1,17 @@
 {% layout settings.customer_layout %}
 <div id="customer-order">
   <div class="row">
-    <div class="span12">
-      <h1>Order {{ order.name }} <span class="note order_date">&mdash; {{ order.created_at | date: "%b %d, %Y %I:%M%p" }}</span></h1>
-      
+      <h1 class="account-title">Order {{ order.name }} <span class="note order_date">&mdash; {{ order.created_at | date: "%b %d, %Y %I:%M%p" }}</span></h1>
       {% if order.cancelled %}
-      <div id="order_cancelled" class="flash notice">
-        <h5 id="order_cancelled_title">Order Cancelled <span class="note">{{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}</span></h5>
-        <span class="note">{{ order.cancel_reason }}</span>
-      </div>
+        <div id="order_cancelled" class="notice">
+          <h3 id="order_cancelled_title">Order Cancelled - {{ order.cancelled_at | date: "%B %d, %Y %I:%M%p" }}</h5>
+          <h3>{{ customer.first_name  | capitalize }}, your order was cancelled because: {{ order.cancel_reason }}</h3>
+        </div>
       {% endif %}
-    </div>
   </div>
-  
+
   <div class="row">
-    <div id="order_payment" class="span6">
+    <div id="order_payment">
       <h2 class="order_section_title">Billing Address</h2>
       <p><span class="note">Payment Status:</span> <span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></p>
       <div class="address note">
@@ -27,7 +24,7 @@
       </div>
     </div>
     {% if order.shipping_address %}
-    <div id="order_shipping" class="span6">
+    <div id="order_shipping">
       <h2 class="order_section_title">Shipping Address</h2>
       <p><span class="note">Fulfillment Status:</span> <span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></p>
       <div class="address note">
@@ -40,11 +37,10 @@
       </div>
     </div>
     {% endif %}
-    
+
   </div>
-  
   <div class="row">
-    <div class="span12">
+    <div>
       <table id="order_details">
         <thead>
           <tr>
@@ -59,7 +55,7 @@
           {% for line_item in order.line_items %}
           <tr id="{{ line_item.id }}" class="{% cycle 'odd', 'even' %}">
             <td class="">
-              {{ line_item.title | link_to: line_item.product.url }} 
+              {{ line_item.title | link_to: line_item.product.url }}
               {% if line_item.fulfillment %}
                 <div class="note">
                   Fulfilled {{ line_item.fulfillment.created_at | date: "%b %d" }}
@@ -75,12 +71,12 @@
             <td class="total money">{{ line_item.quantity | times: line_item.price | money }}</td>
           </tr>
           {% endfor %}
-        </tbody>  
+        </tbody>
         <tfoot>
           <tr class="order_summary note">
             <td class="label" colspan="4">Subtotal</td>
             <td class="total money">{{ order.subtotal_price | money }}</td>
-          </tr>   
+          </tr>
 
           {% for shipping_method in order.shipping_methods %}
           <tr class="order_summary note">
@@ -94,15 +90,15 @@
               <td class="label" colspan="4">{{ tax_line.title }} {{ tax_line.rate | times: 100 }}%:</td>
               <td class="total money">{{ tax_line.price | money }}</td>
             </tr>
-          {% endfor %}    
+          {% endfor %}
 
           <tr class="order_summary order_total">
             <td class="label" colspan="4">Total</td>
             <td class="total money">{{ order.total_price | money }} {{ order.currency }}</td>
-          </tr>   
-        </tfoot>  
+          </tr>
+        </tfoot>
       </table>
     </div>
-  </div> 
-  
+  </div>
+  <a class="search-add" style="padding: 1rem;" href="/account">Back To Account</a>
 </div>

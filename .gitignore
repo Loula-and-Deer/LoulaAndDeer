@@ -1,1 +1,5 @@
-*.scssc
+node_modules/
+.idea/
+.sass-cache/*.scssc
+*.bak
+*.old
