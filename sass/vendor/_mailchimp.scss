@@ -1,0 +1,26 @@
+#mc_embed_signup form {
+  margin-bottom: 1rem;
+}
+
+#mc_embed_signup input {
+  @include appearance(none);
+  display: inline-block;
+  height:36px;
+}
+
+#mc_embed_signup input[type="submit"] {
+  width: 30%;
+  border-radius: 0 2px 2px 0px;
+  padding: 0;
+}
+
+#mc_embed_signup input[type="email"] {
+  float: left;
+  border-radius: 2px 0px 0px 2px;
+  background: white;
+  padding:0 5px;
+  margin: 0;
+  width: calc(65% - 5px);
+  border: 1px solid #ff4747;
+  height: 34px;
+}

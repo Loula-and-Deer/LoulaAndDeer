@@ -1,17 +1,16 @@
 {% paginate blog.articles by settings.pagination_limit %}
 <div id="blog">
   
-  <div class="row title">
+  <div class="row title bigpadding">
     <div class="span12">
       <h1>{{ blog.title }}</h1>
     </div> 
   </div> 
     
   <!-- Begin content -->
-  <div class="row">
-    <div class="span9 articles">
+    <div class="articles">
       {% for article in blog.articles %}
-      <div class="article">
+      <div class="article row bigborder">
         <h1>
           <a href="{{ article.url }}">{{ article.title }}</a> 
           <span class="date" style="display: block;">
@@ -25,18 +24,18 @@
         </h1>
         {{ article.excerpt_or_content }}
       </div>
-      <hr class="divider" />
       {% endfor %}
     </div>
     
     <!-- Begin sidebar -->
     {% include 'blog-sidebar' %}
     <!-- End sidebar -->
-    
-  </div>
+  
   <!-- End content -->
   
 </div>
 
 {% include 'pagination' %}
 {% endpaginate %}
+
+<style>#content{background: {{settings.shop_bg_color}}}</style>

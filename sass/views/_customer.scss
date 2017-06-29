@@ -1,0 +1,101 @@
+// Logged out
+#customer-login{
+  padding: 2rem 0;
+}
+
+#login, #register {
+    display: table;
+    margin: 0 auto;
+}
+
+// Logged in
+#customer-account, #customer-order, #customer-addresses{
+  padding: 1rem;
+}
+
+#order_payment, #order_shipping{
+  width: 50%;
+  float: left;
+}
+
+#customer-account p, #customer-order p {
+    line-height: 14px;
+}
+
+#login input.text, #register input.text {
+    width: 220px;
+}
+
+#login label, #register label {
+    font-size: 16px;
+}
+
+#customer-activate .create-password {
+    margin-bottom: 30px;
+}
+
+#customer-activate .label, #customer-login .label, #customer-reset-password .label, #customer-register .label {
+    display: block;
+}
+
+#customer-activate .text, #customer-login .text, #customer-reset-password .text, #customer-register .text {
+    display: block;
+    margin-bottom: 15px;
+}
+
+#customer-login .action_bottom, #customer-register .action_bottom {
+    margin-top: 15px;
+}
+
+.action_bottom span {
+    line-height: 40px;
+}
+
+.account-title{
+  font-size: 50px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+// Account
+
+#customer-account{
+  @include grid-container;
+}
+
+#customer_sidebar{
+  @include grid-column(1, $account-layout-grid);
+
+  @include grid-media($account-layout-grid--mobile) {
+     @include grid-column(1);
+  }
+}
+
+#customer_orders{
+  @include grid-column(3, $account-layout-grid);
+
+  @include grid-media($account-layout-grid--mobile) {
+     @include grid-column(1);
+  }
+}
+// Address
+.view_address p {
+    margin: 0;
+}
+
+.address_table {
+    border-bottom: 1px solid #d7d7d7;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
+}
+
+// Customer order_cancelled
+#order_cancelled_title{
+  color: red;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+#order_cancelled {
+    margin-bottom: 30px;
+}

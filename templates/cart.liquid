@@ -7,22 +7,22 @@
 {% if cart.item_count == 0 %}
   <div class="row" style="background: white">
     <div class="expanded-message">
-      <h2>Your cart is empty</h2>
+      <h1>Your cart is empty</h1>
       <h3>You might like these items.</h3>
     </div>
-    <div class="cart-featured">
+    <div >
       {% for product in collections['new-in'].products limit: 12 %}
-        {% include 'product-loop' %}
+        {% include 'collection-loop' %}
       {% endfor %}
     </div>
   </div>
 {% else %}
 
-  <div id="cart" style="margin-top: -15px;" class="cartJS">
+  <div id="cart" class="cart-layout cartJS">
     <div class="row">
       <div class="cart-t">
         <form action="/cart" method="post" id="cartform">
-          <ul class="cart-list" style="border-bottom: 15px solid {{ settings.shop_bg_color }};">
+          <ul class="cart-layout-items unstyled">
             <li class="cart-item" style="height: 35px">
               <h2>YOUR CART</h2>
             </li>
@@ -30,15 +30,21 @@
               <li class="cart-item" id="cart-item_{{ forloop.index }}" expanded="false">
                 <div class="cart-item-inner">
                   <a class="image" href="{{ item.url }}">
-                      <img src="{{ item | img_url: 'medium' }}"  alt="{{ item.title | escape }}" />
+                      <img src="{{ item | img_url: '130x85' , crop: 'center' , format: 'pjpg' }}"  alt="{{ item.title | escape }}" />
                   </a>
                   <i class="fa fa-ellipsis-v" aria-hidden="true" style="font-size: 25px;float: right;width: 5rem;text-align: right;"></i>
                   <a class="item" href="{{ item.url }}">
 
-                    <p id="linetitle_{{ forloop.index }}">{% if item.quantity > 1 %}
-                    {{ item.product.title }} | x{{ item.quantity }}
+                    <p id="linetitle_{{ forloop.index }}">
+                    {% if item.product.title contains "Personalised Name"%}
+                      <!-- Hides the quantity display if the item is a name plaque-->
+                      {{ item.product.title }}
                     {% else %}
-                    {{ item.product.title }}
+                      {% if item.quantity > 1 %}
+                        {{ item.product.title }} | x{{ item.quantity }}
+                      {% else %}
+                      	{{ item.product.title }}
+                      {% endif %}
                     {% endif %}
                     </p>
                   </a>
@@ -48,7 +54,7 @@
                   <p class="variant-title">{{ item.variant.title }}</p>
                   {% endunless %}
                 </div>
-                <ul class="cart-item-addtional-info">
+                <ul class="cart-item-addtional-info unstyled">
                 {% assign property_size = item.properties | size %}
                   {% if property_size > 1 %}
                   <li>
@@ -56,72 +62,78 @@
                     {% include 'product_customizer_cart' %}
                   </li>
                   {% endif %}
-                  
+
                   <!-- Quantity Input -->
+                  {% if item.product.title != "Personalised Name Plaque" %}
                   <li>
                     <p>Quantity</p>
-                    <input type="button" size="2" class="cart__quantity_dec" value="-" data-line="{{ forloop.index }}">
-                    <input type="number" size="2" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
-                    <input type="button" size="2" class="cart__quantity_inc" value="+" data-line="{{ forloop.index }}">
-
+                    <div class="cart-item-quantity-container">
+                      <input type="button" size="2" class="cart__quantity_dec" value="-">
+                      <input type="number" class="cart__quantity" value="{{ item.quantity }}" min="1" data-line="{{ forloop.index }}">
+                      <input type="button" size="2" class="cart__quantity_inc" value="+">
+                    </div>
                   </li>
+                  {% endif %}
                   <!-- Remove Item -->
-                  <li><a href="/cart/change?line={{ forloop.index }}&quantity=0" data-line="{{ forloop.index }}">Remove</a></li>
+                  <li><a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a></li>
                 </ul>
               </li>
             {% endfor %}
-            <li class="cart-item" style="height: 35px">
-              <h3 class="subtotal-preview" style="text-align: right; margin: 0;">SUBTOTAL &nbsp; &nbsp; &nbsp; {{cart.total_price | money}}</h3>
-              <p style="text-align: right; font-size: 10px;">All of our items come gift wrapped.</p>
+            <li class="cart-item" style="height: auto; padding: 1rem;">
+              <h3 class="subtotal-preview fr" style="text-align: right; margin: 0;">SUBTOTAL &nbsp; &nbsp; &nbsp; {{cart.total_price | money}}</h3>
+              <h3 class="fl" style="text-align: right; text-transform: uppercase;">All of our items come gift wrapped.</h3>
             </li>
           </ul>
-          
-          <div class="buttons clearfix">
+
+          <div class="cart-layout-side-information">
             <h2>TOTAL</h2>
             <div class="cart-info">
               <p style="text-align: left; width: 50%; float:left;">Subtotal</p>
               <p class="subtotal" style="text-align: right; width: 50%; float:left;">{{cart.total_price | money}}</p>
               <p style="text-align: left; width: 50%; float:left;">Delivery</p>
-              <a style="text-align: right; width: 50%; float:left;" href="https://www.loulaanddeer.co.uk/pages/delivery">
+              <p id="open-mcp-btn" class="btn" style="text-align: right; width: 50%; float:left; margin: 0; padding: 0; clear: none;">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
+              </p>
             </div>
             <div class="cart-buttons">
-
+              <p style="clear: both; margin: 10px 0;">
+                 <input style="vertical-align: middle; float:left; width: 20px;" type="checkbox" id="agree" />
+                 <label style="display:inline; float:none" for="agree">I agree with the <a href="https://loulaanddeer.co.uk/pages/terms-and-conditions">terms and conditions</a>.
+                 </label>
+               </p>
               <input type="submit" class="btn" name="checkout" value="Checkout" />
-              <!--             <input type="submit" id="update-cart" class="btn" name="update" value="Update" /> -->
+              <!--  <input type="submit" id="update-cart" class="btn" name="update" value="Update" /> -->
               {{ content_for_additional_checkout_buttons }}
             </div>
             <div class="cart-addtional-info" style="font-size:12px ">
-              <p class="tc">Order Notes</p>
-              <textarea id="note" name="note" maxlength="400" style="resize: vertical; max-height: 167px;">{{ cart.note }}</textarea>
-              <div>
-                <i style="font-size: 12px; line-height: 18px; margin-right: 8px;" class="fa fa-question-circle fl" aria-hidden="true"></i>
-                <p style="font-size: 12px;" >Have a discount code? Add it in the next step.</p>
-              </div>
+              <p class="tc">Order Note</p>
+              <textarea id="note" name="note" maxlength="400">{{ cart.note }}</textarea>
             </div>
           </div>
         </form>
       </div>
     {% endif %}
   </div>
-    
-    {% if cart.item_count != 0 %}
+  {% if cart.item_count != 0 %}
     <div class="row">
       <div class="cart-t">
-          <ul class="cart-list" style="max-width: 100%;">
-            <li class="cart-item" style="height: 35px">
+          <ul class="cart-list unstyled" style="max-width: 100%;">
+            <li class="cart-item" style="height: auto;">
               <h2>SUGGESTED ITEMS</h2>
             </li>
-            <div class="cart-featured">
+            <div>
               {% for product in collections['best-sellers'].products limit: 6 %}
-              {% include 'product-loop' %}
+              {% include 'collection-loop' %}
               {% endfor %}
             </div>
         </ul>
       </div>
     </div>
-    {% endif %}
+  {% endif %}
 
   <!-- End cart -->
 </div>
+
+{% assign mcp_title = pages.delivery.title %}
+{% assign mcp_content = pages.delivery.content %}
+{% include 'modular-content-popup' %}

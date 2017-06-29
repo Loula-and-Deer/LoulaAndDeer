@@ -1,0 +1,36 @@
+#mcp {
+  position: fixed;
+  padding: 3rem;
+  background: white;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
+  box-shadow: 0 0 17px 0 rgba(0,0,0,0.2);
+  z-index: 99;
+  overflow-y: auto;
+  margin: 0 auto;
+
+  .mcp_title {
+    padding: 4rem 4rem 1rem 0;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 2rem);
+    background: #f1f1f1;
+    border-top: 1px solid #dadada;
+    padding: 1rem 0 1rem 2rem;
+  }
+
+  .inner {
+    position: relative;
+    height: auto;
+  }
+}
+
+.full-height {
+  height: 100%;
+}

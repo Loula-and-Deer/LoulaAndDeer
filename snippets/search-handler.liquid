@@ -1,0 +1,165 @@
+<script>
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var SearchResult = function SearchResult(DOM, title, vendor, price, id) {
+  _classCallCheck(this, SearchResult);
+
+  this.DOM = DOM;
+  this.title = title;
+  this.vendor = vendor;
+  this.price = Number(price);
+  this.id = id;
+  this.quantity = DOM.find(".buttons").find(".search-qty").val();
+};
+
+(function ($) {
+  $(function () {
+    var minProductPrice = 0;
+    var maxProductPrice = 0;
+    var products = [];
+    var vendors = new Set();
+    var i = 0;
+    var maxPriceInputSlider = $("#maxPriceInput");
+
+    //Initialise search result array
+    $(".search-result-container").each(function () {
+      //Increment is here to match HTML ID's
+      i++;
+      var title = $(this).data("title");
+      var vendor = $(this).data("vendor");
+      var price = $(this).data("price");
+      var prodID = $(this).data("id");
+      products[i] = new SearchResult($(this), title, vendor, price, prodID);
+    });
+
+    //Set up page
+    if (i > 0) {
+      minProductPrice = products[1].price;
+    }
+
+    //Loops over each product
+    products.forEach(function (e) {
+      //If cheapest product set min price
+      if (e.price < minProductPrice) {
+        minProductPrice = e.price;
+      }
+
+      //If most expensive product set max price
+      if (e.price > maxProductPrice) {
+        maxProductPrice = e.price;
+      }
+
+      //Adds all vendors to the vendors set
+      vendors.add(e.vendor);
+    });
+
+    //Create DOM elements for filter list
+    createVendorFilterList(vendors);
+
+    //Added 1000 (£1) because sometimes Edge can't snap to the max price.
+    maxPriceInputSlider.attr("min", minProductPrice);
+    maxPriceInputSlider.attr("max", maxProductPrice + 100);
+    maxPriceInputSlider.attr("value", maxProductPrice);
+
+    $("#maxPriceText").text(Shopify.formatMoney(maxProductPrice, "{{ shop.money_with_currency_format }}"));
+
+    /*=======================
+      ||  Lisetner Events  ||
+      =======================*/
+    $(document).on('input', '#maxPriceInput', function () {
+      $('#maxPriceText').text(Shopify.formatMoney($(this).val(), "{{ shop.money_with_currency_format }}"));
+    });
+
+    maxPriceInputSlider.change(function () {
+      filterProducts($(this).val());
+    });
+
+    //Filter results when a new vendor/brand is selected
+    $('input[class*="vendorCheckbox"]').change(function () {
+      filterProducts(maxPriceInputSlider.val());
+    });
+
+    //Open filter menu mobile bind
+    $("#open-filter-button").bind("tap", openFilterMenu);
+
+    //Open filter menu deskop bind
+    $("#open-filter-button").bind("click", openFilterMenu);
+
+    //Close filter menu mobile bind
+    $("#close-filter-button").bind("tap", closeFilterMenu);
+
+    //Close filter menu deskop bind
+    $("#close-filter-button").bind("click", closeFilterMenu);
+
+    /*=================
+      ||  Functions  ||
+      =================*/
+    function openFilterMenu(event) {
+      $('#filter-column').fadeIn(400);
+      $('.filter-underlay').fadeIn(200);
+    }
+
+    function closeFilterMenu(event) {
+      $('#filter-column').fadeOut(400);
+      $('.filter-underlay').fadeOut(200);
+    }
+
+    function createVendorFilterList(vendorList) {
+      vendorList.forEach(function (e) {
+        var li = "<li>";
+        li += '<input class="vendorCheckbox" type="checkbox" vendor="' + e + '" id="' + e + '_id">';
+        li += '<label class="checkbox-background fl" for="' + e + '_id"></label>';
+        li += '<p style="line-height: initial; display: inline-block;">' + e + '</p>';
+        li += '</li>';
+        $("#vendor-filter").append(li);
+      });
+    }
+
+    function filterProducts(maxPrice) {
+      var filterVendor = new Set();
+      var amtOfProductsShown = 0;
+
+      $('input[class*="vendorCheckbox"]').each(function () {
+        if ($(this).is(':checked')) {
+          filterVendor.add($(this).attr("vendor"));
+        }
+      });
+
+      //Show all within price range if vendor filter is cleared
+      if (filterVendor.size <= 0) {
+        products.forEach(function (e) {
+          if (e.price > maxPrice) {
+            e.DOM.hide(0);
+          } else {
+            amtOfProductsShown++;
+            if ($(e.DOM).is(":hidden")) {
+              e.DOM.fadeIn(0);
+            }
+          }
+        });
+        $("#search-conditions").text("Showing " + amtOfProductsShown + " filtered results.");
+        return;
+      }
+
+      var vendorsSetAsArray = Array.from(filterVendor);
+      products.forEach(function (e) {
+        if (jQuery.inArray(e.vendor, vendorsSetAsArray) != -1) {
+          if (e.price <= maxPrice) {
+            amtOfProductsShown++;
+            if ($(e.DOM).is(":hidden")) {
+              e.DOM.fadeIn(0);
+            }
+          } else {
+            e.DOM.hide(0);
+          }
+        } else {
+          e.DOM.hide(0);
+        }
+      });
+      $("#search-conditions").text("Showing " + amtOfProductsShown + " filtered results.");
+    }
+  });
+})(jQuery);
+</script>
