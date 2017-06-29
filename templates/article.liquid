@@ -1,10 +1,8 @@
 {% paginate article.comments by 100 %}
 <div id="article" class="row">
-  
-  <div class="span9 article">
-    
+  <div class="article">
     <!-- Begin article -->
-    <div class="article-body clearfix">
+    <div class="article-body clearfix row">
       <h1>{{ article.title }} 
         <span class="date" style="display: block;">
         {{ article.published_at | date: "%B %d %Y" }}
@@ -20,18 +18,28 @@
       </div>
     </div>
     <!-- End article -->
-
+    
     <!-- Begin social icons -->
     {% include 'like-article' with product %}
-    <hr class="divider" />
     <!-- End social icons -->
-
+    
+    <div class="row clearfix">
+      <h3>Tags</h3>
+      <ul class="tags">
+        {% for tag in article.tags %}
+        	<li>{{ tag  | link_to_tag: tag }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    
+    
     <!-- Begin comments -->
     {% if blog.comments_enabled? %}
-    <div id="comments" class="comments">
+    <div id="comments" class="comments row">
       
       {% if article.comments.size > 0 or comment.created_at %}
-      <h2 class="comment-title">Comments</h3>
+      <h2 class="comment-title">Comments</h2>
       
       {% if comment and comment.created_at %}
         <div id="comment-{{ comment.id }}" class="comment border-bottom clearfix">
@@ -43,7 +51,7 @@
       {% for comment in article.comments %}
         <div id="comment-{{ comment.id }}" class="comment border-bottom clearfix">
           <h3 class="author"><strong>{{ comment.author }}</strong> on <span class="date">{{ comment.created_at | date: "%B %d %Y at %I:%M%p" }}</span></h3>
-          <div>{{ comment.content }}</div>
+          {{ comment.content }}
         </div> <!-- /.comment -->
       {% endfor %}
 
@@ -67,11 +75,13 @@
         {% endif %}
 
         <label for="comment_author">Your name</label>
-        <input type="text" id="comment_author" name="comment[author]" size="40" class="text" />
+        <input type="text" id="comment_author" name="comment[author]" class="text option" />
+        
         <label for="comment_email">Your email</label>
-        <input type="text" id="comment_email" name="comment[email]" size="40" class="text" />
+        <input type="emial" id="comment_email" name="comment[email]" class="text option" />
+        
         <label for="comment_body">Comment</label>
-        <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="text">{{form.body}}</textarea>
+        <textarea id="comment_body" name="comment[body]" class="text option">{{form.body}}</textarea>
 
         <input type="submit" value="Post comment" class="btn" id="comment-submit" />
 
@@ -81,15 +91,17 @@
 
         {% endform %}
       </div>
+     
     </div> 
     {% endif %}
     <!-- End comments -->
-    
   </div>
   
   <!-- Begin sidebar -->
   {% include 'blog-sidebar' %}
   <!-- End sidebar -->
-  
+
 </div>
 {% endpaginate %}
+
+<style>#content{background: {{settings.shop_bg_color}}}</style>

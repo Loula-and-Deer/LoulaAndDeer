@@ -1,25 +1,70 @@
-<div class="product span3 adaptive-grid">
-  
-  <!-- Begin product image -->
+{% capture collection_handle %}{{ collection-loop | handleize }}{% endcapture %}
+{% capture url %}{% if collection_handle != "" %}/collections/{{ collection-loop }}{{ product.url }}{% else %}{{ product.url }}{% endif %}{% endcapture %}
+
+<div class="collection-product{% if featured %} collection-product-featured{%endif%}">
+  {% if featured %}<h3>Our newest product</h3>{%endif%}
   <div class="image">
-    <a href="{{ collection.url }}">
-      {% if collection.image %}
-        <img src="{{ collection.image.src | collection_img_url: 'large' }}" alt="{{ collection.image.alt }}" />
-      {% else %}
-        <img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" alt="{{ collection.title | escape  }}" />
-      {% endif %}
+    {% if settings.show_sale_circle and product.price_min < product.compare_at_price_min %}
+      <p style="margin: 0; position: absolute; z-index: 3;  background: {{ settings.sale_bg_color }};  color: white;  padding: 5px;">SALE</p>
+    {% endif %}
+
+{% comment %} Added the != 1 because the inventory is not managed properly.{% endcomment %}
+    {% if product.selected_or_first_available_variant.inventory_quantity < 10 and product.selected_or_first_available_variant.inventory_quantity > 0  and product.selected_or_first_available_variant.inventory_quantity != 1 %}
+      <p style="margin: 0; position: absolute; z-index: 2; background: #5858ff;  color: white;  padding: 5px; {% if product.price_min < product.compare_at_price_min %} padding-left: 5rem; {% endif %}">ONLY {{ product.selected_or_first_available_variant.inventory_quantity }} LEFT!</p>
+    {% endif %}
+
+    <a href="{{ url }}">
+      {% if featured %}
+      	<img src="{{ product.featured_image | product_img_url: 'x547', crop: 'center', format: 'pjpg' }}" alt="{{ product.title | escape  }}" {% if settings.show_sale_circle and product.price_min < product.compare_at_price_min %} style="outline: 3px solid {{ settings.sale_bg_color }}" {% endif %}/>
+      {%else%}
+      	<img src="{{ product.featured_image | product_img_url: '303x200', crop: 'center', format: 'pjpg' }}" alt="{{ product.title | escape  }}" {% if settings.show_sale_circle and product.price_min < product.compare_at_price_min %} style="outline: 3px solid {{ settings.sale_bg_color }}" {% endif %}/>
+      {%endif%}
     </a>
   </div>
-  <!-- End product image -->
-  
-  <!-- Begin product description -->
+
   <div class="details">
-    <a href="{{ collection.url }}" class="clearfix">
-      <h4 class="title">{{ collection.title }}</h4>
-      <span class="price">{{ collection.all_products_count }} {{ collection.all_products_count | pluralize: 'Product', 'Products' }}</span>
+    <a href="{{ url }}" class="fl">
+      <h4 class="title">{{ product.title | truncate: 27 }}</h4>
+      {% if settings.product_vendor %}
+      <span class="vendor">{{ product.vendor }}</span>
+      {% endif %}
+
+      <span class="price">
+      {% if product.available %}
+        {% if product.compare_at_price_max > product.price %}
+          <del>{{ product.compare_at_price | money }}</del>
+        {% endif %}
+        {% if product.price_varies %}
+        <small><em>from</em></small>
+        {% endif %}
+        {{ product.price | money }}
+      {% else %}
+        {{ product.price | money }} Sold Out
+      {% endif %}
+      </span>
+
     </a>
+    <form class="add-product-form fr" action="/cart/add" method="post">
+          <div style="display: none;" class="{% if product.metafields.product_customizer.size > 1  %} product-options {% endif %}">
+          <div style="display: none;" class="select "{% if hide_default_title %} style="display:none"{% endif %}>
+            <select id="product-select" name="id" style="display: none;">
+              {% for variant in product.variants %}
+                <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          </div>
+          <div class="buttons" style="padding: 1rem 0; clear: right;">
+          {% if product.available %}
+            {% if product.metafields.product_customizer.size < 1  %}
+            <input type="submit" class="search-add" name="add" value="add"/>
+            {% endif %}
+            <input type="number" class="search-qty" name="quantity" value="1"  min="1" style="display: none;"/>
+          {% else %}
+            <input type="submit" class="search-add search-add-soldout" name="add" disabled="disabled" value="Sold out"/>
+          {% endif %}
+          </div>
+        </form>
   </div>
-  <!-- End product description -->
-  
+
 </div>
-{% cycle 'clear-collection-list': '', '', '', '<div style="clear:both;"></div>' %}

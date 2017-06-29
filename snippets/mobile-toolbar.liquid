@@ -1,27 +1,201 @@
-	<div class="toolbar-wrapper" id="mobile-toolbar">
-		<div class="toolbar clearfix">
-			<ul class="unstyled" style="margin: 0">
-				<li class="menu-icon" id="menu-button" >
-					<i class="fa fa-bars"></i>
-				</li>
-				
-				<li class="menu-icon" id="search-button">
-					<i class="fa fa-search"></i>
-				</li>
+<div class="toolbar-wrapper" id="mobile-toolbar">
+  <div class="toolbar clearfix">
+    <ul class="unstyled" style="display: flex;">
 
-				<li class="menu-icon logo-test">
-					<a href="/">
-						<h2 style="line-height: 50px">Loula and Deer</h2>
-					</a>
-				</li>
-				
-				<li class="menu-icon fr" style="width: 55px;">
-					<a class="cart" href="/cart">
-						<i class="fa fa-shopping-cart">
-                      </i>
-                      <p class="fr" style="font-family: Helvetica, Arial, sans-serif;display: inline-block;width: 25px;">{{ cart.item_count }}</p>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
+      <li class="menu-icon" id="menu-button">
+        <ul id="hamburger-container">
+          <li class="hamburger short"></li>
+          <li class="hamburger"></li>
+          <li class="hamburger short"></li>
+        </ul>
+      </li>
+
+      <li class="menu-icon" id="search-button">
+        <ul id="search-container" class="search-icon">
+          <li class="hamburger"></li>
+          <li class="hamburger"></li>
+          <li class="hamburger"></li>
+        </ul>
+      </li>
+
+      <li class="menu-icon" style="flex-grow: 1;" id="mobile-logo-long">
+        <a href="/">
+          <h2>Loula and Deer</h2>
+        </a>
+      </li>
+
+      <li class="menu-icon" style="flex-grow: 1;" id="mobile-logo-short">
+        <a href="/">
+          <h2>L&amp;D</h2>
+        </a>
+      </li>
+
+      <li class="menu-icon" style="width: 55px;">
+        <a class="cart" href="/cart">
+          <i class="fa fa-shopping-cart"></i>
+          <p id="mobile-cart-count" style="font-family: Helvetica, Arial, sans-serif;display: inline-block;width: 25px;">{{ cart.item_count }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<script>
+(function($){
+  $(function(){
+    //The toolbar's list item
+    var menuButton = $("#menu-button");
+
+    //menuButton child list item
+    var hamburger = $("#hamburger-container");
+
+    //The toolbar's list item
+    var searchButton =  $("#search-button");
+
+    //The search buttons icon
+    var searchIcon = $("#search-container");
+
+    //The flyout with the links
+    var menuFlyout = $("#menuFlyout");
+
+    //The flyout with the links
+    var searchFlyout = $("#searchFlyout");
+
+    //The black body overlay
+    var overlay = $(".content-overlay");
+
+    /* == Functions == */
+    function toggleAnimateHambugerIcon(){
+      var top = hamburger.children().eq(0);
+      var middle = hamburger.children().eq(1);
+      var bottom = hamburger.children().eq(2);
+
+      if(menuFlyout.is(":visible")){
+        // Menu flyout is closed [Hamburger Icon]
+        top.css({"top": "0px", "left": "-2px", "width": "18px", "transform": "rotate(0deg)"});
+        middle.css({"left": "0px", "opacity": "1"});
+        bottom.css({"top": "0px", "left": "-2px", "width": "18px", "transform": "rotate(0deg)"});
+      } else {
+        // Menu flyout is expanded [Cross Icon]
+        top.css({"top": "8px", "left": "0px", "width": "22px", "transform": "rotate(45deg)"});
+        middle.css({"left": "4px", "opacity": "0"});
+        bottom.css({"top": "-8px", "left": "0px", "width": "22px", "transform": "rotate(-45deg)"});
+      }
+    }
+
+    function toggleAnimateSearchIcon(){
+      var circle = searchIcon.children().eq(0);
+      var handle = searchIcon.children().eq(1);
+      var cross = searchIcon.children().eq(2);
+
+      if(searchFlyout.is(":visible")){
+        // Search flyout is closed [Search Icon]
+        circle.css({"top": "5px", "left": "7px", "width": "16px", "height": "16px", "opacity": "1"});
+        handle.css({"top": "6px", "left": "-3px", "width": "10px"});
+        cross.css({"top": "8px", "left": "-8px", "width": "22px", "opacity": "0"});
+      } else {
+        // Search flyout is expanded [Cross Icon]
+        circle.css({"top": "-8px", "left": "-8px", "width": "0px", "height": "0px", "opacity": "0"});
+        handle.css({"top": "8px", "left": "-3px", "width": "22px"});
+        cross.css({"top": "0px", "left": "0px", "width": "22px", "opacity": "1"});
+      }
+    }
+
+    /* == Bindings == */
+
+    //On searchButton click/tap
+    searchButton.on("click tap", function() {
+      //Hide menuFlyout if visible
+      if(menuFlyout.is(":visible")){
+        menuFlyout.slideToggle("fast");
+        toggleAnimateHambugerIcon();
+      }
+
+      //Animate search icon
+      toggleAnimateSearchIcon();
+
+      //Hide or show searchFlyout
+      searchFlyout.slideToggle("fast","swing", function(){
+        //After animation is complete
+        //Hide or show content
+        if(menuFlyout.is(":visible") || searchFlyout.is(":visible")){
+          overlay.fadeIn();
+        } else {
+          overlay.fadeOut();
+        }
+      });
+    });
+
+    //On menuButton click/tap
+    menuButton.on("click tap", function() {
+      //Hide searchFlyout if visible
+      if(searchFlyout.is( ":visible" )){
+        searchFlyout.slideToggle("fast");
+        toggleAnimateSearchIcon();
+      }
+
+      //Animate hamburger icon
+      toggleAnimateHambugerIcon();
+
+      //Hide or show menuFlyout
+      menuFlyout.slideToggle("fast","swing", function(){
+        //After animation is complete
+        //Hide or show overlay
+        if(menuFlyout.is(":visible") || searchFlyout.is(":visible")){
+          overlay.fadeIn();
+        } else {
+          overlay.fadeOut();
+        }
+      });
+    });
+
+    //On overlay click
+    overlay.on('click tap scroll', function(){
+      //Hide overlay
+      if(overlay.is( ":visible" )){
+        overlay.fadeOut();
+      }
+
+      //Hide search flyout
+      if(searchFlyout.is( ":visible" )){
+        searchFlyout.slideToggle("fast");
+        toggleAnimateSearchIcon();
+      }
+
+      //Hide menu flyout
+      if(menuFlyout.is( ":visible" )){
+        menuFlyout.slideToggle("fast");
+        toggleAnimateHambugerIcon();
+      }
+    });
+
+    /* == Mobile flyouts == */
+    $(".flyout").hide();
+    $(".sub-menu").hide();
+
+    $(".more, .account-links").on("click", function() {
+      $(this).nextAll("ul").slideToggle( "fast" );
+      $("i", this).toggleClass("fa-plus fa-minus");
+      $(this).toggleClass("expanded");
+
+      // horizontal hamburger
+      var horizontal = $(this).children().eq(0).children().eq(0);
+
+      // vertical hamburger
+      var vertical = $(this).children().eq(0).children().eq(1);
+
+      if($(this).hasClass("expanded")){
+        // If sub section is expanded
+        horizontal.css("transform", "rotate(-45deg)");
+        vertical.css("transform", "rotate(45deg)");
+        $(this).css("background", "rgb(187, 187, 187)");
+      } else {
+        // If sub section is not expanded
+        horizontal.css("transform", "rotate(0deg)");
+        vertical.css("transform", "rotate(90deg)");
+        $(this).css("background", "#e6e6e6");
+      }
+    });
+  });
+})(jQuery);
+</script>

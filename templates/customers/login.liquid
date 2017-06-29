@@ -1,8 +1,8 @@
 {% layout settings.customer_layout %}
 <div id="customer-login">
   <div class="row">
-    <div id="login" class="span7">
-      <h2 class="title">Login</h2>
+    <div id="login">
+      <h2 class="title">LOG IN</h2>
 
       {% form 'customer_login' %}
       {{ form.errors | default_errors }}
@@ -12,11 +12,11 @@
 
       <label for="customer_password" class="label">Password</label>
       <input type="password" value="" name="customer[password]" id="customer_password" class="text" size="16" />
-      <p>No account?<a href="register"> Create one!</a></p> 
       <a href="#" onclick="showRecoverPasswordForm();return false;">Forgot your password?</a>
 
       <div class="action_bottom">
         <input class="btn" type="submit" value="Sign In" />
+        <a href="/account/register" class="btn">Create Account</a>
       </div>
       {% endform %}
     </div>

@@ -1,0 +1,196 @@
+nav {
+  font-family:#{'{{ settings.google_nav_font | replace: "+", " " }}'};
+  position: relative;
+  border-bottom: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'};
+  border-top: 1px #{'{{ settings.border_style }}'} #{'{{ settings.border_color }}'};
+}
+
+nav > ul > li {
+  margin-bottom: 0;
+}
+
+nav > ul > li > a {
+  padding: 0 0 0 30px;
+  text-decoration: none;
+  color: #{'{{ settings.nav_link_color }}'};
+  display: block; padding: 0 15px;
+  font-size: #{'{{ settings.nav_font_size }}'};
+  line-height: #{'{{ settings.nav_line_height }}'};
+  height: #{'{{ settings.nav_line_height }}'};
+  font-weight: #{'{{ settings.nav_weight }}'};
+  text-transform: #{'{{ settings.nav_font_style }}'};
+}
+
+nav > ul > li:first-child > a { padding-left: 0; }
+nav > ul > li.dropdown {position:relative;}
+nav > ul > li.dropdown > a { margin-right: 0; }
+
+nav > ul > li.dropdown > .dropdown > li { display: block; }
+nav > ul > li.dropdown:hover > .dropdown {
+  display: block;
+  z-index: 999999;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10);
+}
+
+nav > ul > li > a.current {
+  color: #{'{{ settings.selected_nav_link_color }}'};
+}
+
+nav > ul > li:hover > a {
+  color: #{'{{ settings.nav_link_hover_color }}'};
+  text-decoration: none;
+}
+
+nav > ul > li.dropdown > .dropdown {
+  background: #{'{{ settings.nav_dropdown_background_color }}'};
+  list-style: none outside none;
+  padding: 5px 15px;
+  display: none;
+  position: absolute;
+  min-width: 180px;
+  z-index: 20;
+  top: 100%;
+  left: 0%;
+  margin-left: 0;
+  text-align: left;
+  border: 1px solid #{'{{ settings.border_color }}'};
+}
+
+nav > ul > li.dropdown:hover > .dropdown {
+  display: block;
+  z-index: 20;
+  box-shadow:0 0 3px rgba(0, 0, 0, 0.10);
+}
+
+nav > ul > li.dropdown li {
+  list-style: none;
+  font-size: 13px;
+  line-height: 30px;
+}
+
+nav > ul > li.dropdown li a {
+  line-height: 30px;
+  height: 30px;
+  font-size: 13px;
+  color: #{'{{ settings.nav_dropdown_link_color }}'};
+}
+
+nav > ul > li.dropdown li a:hover {
+  color: #{'{{ settings.nav_dropdown_link_hover_color }}'};
+}
+
+/* Mobile Nav Styles */
+nav.mobile {
+  display: none;
+  border: none;
+  padding-top: 0px;
+  width: 100%;
+}
+
+nav.mobile > ul > li > a {
+  line-height: 30px;
+  height: 30px;
+}
+
+nav.mobile select {
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+}
+
+.mobile-wrapper{
+    position: fixed;
+    display: none;
+    width: 100%;
+    z-index: 10;
+    top: 50px;
+}
+
+.wrapper {
+  background: #{'{{ settings.shop_bg_color_content_area }}'};
+  margin: 0 auto;
+  margin-top: 3rem;
+}
+
+.flyout {
+  background:  #{'{{ settings.toolbar_bg_color }}'};
+  border-bottom: 1px #{'{{ settings.border_style }}'} #{'{{ settings.toolbar_border_color }}'};
+  box-shadow: 0 10px 26px -8px rgba(0,0,0,0.25);
+  display: none;
+  .search-field {
+    margin: 12px 0;
+    padding: 0 40px;
+    width: 100%;
+    box-sizing: border-box;
+    .search {
+      height: 35px;
+    }
+  }
+  .search_box {
+    box-sizing: border-box;
+    height: 35px;
+    width: 100% !important;
+  }
+}
+
+.flyout > ul {
+  margin: 0px;
+  list-style-type: none;
+}
+
+.flyout > ul li {
+  margin: 0px;
+  cursor: pointer;
+}
+
+.flyout > ul li a.navlink, .flyout > ul li .account-links, .flyout > ul > li > ul > li.customer-links a   {
+  color: #{'{{ settings.toolbar_text_color }}'};
+  display: block;
+  font-size: 14px;
+  line-height: 35px;
+  height: 35px;
+  padding: 0 40px;
+  border-bottom:  1px solid #{'{{ settings.toolbar_border_color }}'};
+  border-top: none;
+}
+
+.flyout > ul li .more {
+  float: right;
+  margin-top: -36px;
+  font-size: 18px;
+  display: block;
+  height: 35px;
+  line-height: 35px;
+  width: 35px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  background: #e6e6e6;
+  transition: background 0.3s;
+}
+
+.flyout > ul li, .flyout > ul li .more {
+  @include user-select(none);
+}
+
+.flyout > ul > li > ul {
+  list-style-type: none; margin: 0px;
+}
+
+.flyout > ul > li > ul > li a.navlink, .flyout > ul > li > ul > li.customer-links a {
+  color: #{'{{ settings.toolbar_text_color }}'};
+  padding-left: 50px;
+}
+
+.flyout > ul > li > ul > li a.navlink:hover, .flyout > ul li a.navlink:hover, .flyout > ul > li > ul > li.customer-links a:hover {
+  color: #{'{{ settings.toolbar_text_hover_color }}'};
+}
+
+.more .hamburger {
+  background: white;
+}
+
+ul.sub-menu {
+    background: #f6f6f6;
+    box-shadow: inset 0px 7px 7px -5px rgb(219, 219, 219), inset 0px -7px 7px -5px rgb(219, 219, 219);
+}

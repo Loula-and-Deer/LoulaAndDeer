@@ -1,0 +1,136 @@
+// Blog
+
+.span6.articles {
+  margin-left: 5px;
+  margin-right: 5px;
+  background: white;
+}
+
+.article.row.bigborder {
+  padding: 2rem;
+}
+
+#blog {
+  .articles{
+    width: 100%;
+    max-width: 700px;
+    float: left;
+    p {
+      text-align: justify;
+    }
+  }
+  .row {background: white;}
+  .sidebar.row {
+    width: 100%;
+    max-width: 260px;
+    float: left;
+    margin-left: 20px;
+    padding: 1rem;
+	}
+}
+
+.article {
+  h1 {
+    font-size: 26px;
+    a {
+      display: block;
+      color: #{'{{ settings.link_color }}'};
+      &:hover {
+        color: #{'{{ settings.link_hover_color }}'};
+      }
+    }
+    .article-title { display: block; }
+  }
+  .continue { display: block; margin-top: 15px; }
+
+  &, .article-body {
+    h1{
+      .date {
+        font-size: 13px;
+        font-family: #{'{{ settings.regular_font }}'};
+      }
+    }
+  }
+}
+
+
+#article {
+  h2{
+    &.comment-title { font-size: 20px; }
+  }
+
+  h3 {
+    &.author{ font-size: 14px; font-style: italic; }
+  }
+  #comment_body { width: 90%; height: 200px; }
+  .article{
+    width: 100%;
+    max-width: 700px;
+    float: left;
+    .article-body{
+      p{
+        text-align: justify;
+      }
+    }
+  }
+
+  .row {
+    background: white;
+    padding: 1rem;
+  }
+  .sidebar{
+    &.row {
+      width: 100%;
+      max-width: 260px;
+      float: left;
+      margin-left: 20px;
+    }
+  }
+  .comment { margin-bottom: 15px; }
+  .comment_form {
+    margin-top: 30px;
+    label {display: block;}
+    .subtext {margin-bottom: 15px;}
+    .text {
+      margin-bottom: 15px;
+      display:block;
+    }
+  }
+}
+
+.sidebar {
+  h3 { font-size: 18px; }
+  .article {
+    margin: 0 0 15px;
+    a {
+      display: block;
+    }
+  }
+  .tags {
+    li {
+      margin: 0;
+    }
+  }
+}
+
+#article-content {
+  h1 {
+    color: #{'{{ settings.header_color }}'};
+    font-weight:#{'{{ settings.header_weight }}'};
+    font-size:#{'{{ settings.main_heading_font_size }}'};
+    line-height:#{'{{ settings.main_heading_line_height }}'};
+  }
+
+  h2 {
+    color: #{'{{ settings.header_color }}'};
+    font-weight:#{'{{ settings.header_weight }}'};
+    font-size:#{'{{ settings.sub_heading_font_size }}'};
+    line-height:#{'{{ settings.sub_heading_line_height }}'};
+  }
+  h3 {
+    color: #{'{{ settings.header_color }}'};
+    font-weight:#{'{{ settings.header_weight }}'};
+    font-size:#{'{{ settings.footer_heading_font_size }}'};
+    line-height:#{'{{ settings.footer_heading_line_height }}'};
+  }
+}

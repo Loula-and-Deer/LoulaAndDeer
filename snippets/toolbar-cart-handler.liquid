@@ -1,0 +1,28 @@
+<script>
+    var _config = {
+      mobileCartCountSelector: '#mobile-cart-count',
+      desktopCartCountSelector: '#desktop-cart-count',
+    };
+    
+    function updateCartMobileToolbar(amtOfItems){
+      // 14
+      $(_config.mobileCartCountSelector).html(amtOfItems);
+    }
+    
+    function updateCartDesktopToolbar(amount, amtOfItems){
+      // 14 Items (£294.48)
+      var cartText = amtOfItems + " ";
+      cartText += (amtOfItems > 1 ? " Items" : " Item") + " ";
+      cartText += "(";
+      cartText += Shopify.formatMoney(amount, "{{shop.money_with_currency_format}}");
+      cartText += ")";
+      $(_config.desktopCartCountSelector).html(cartText);
+    }
+    
+    function updateCartToolbars(amount, amtOfItems){
+      $(document).ready(function() {
+        updateCartMobileToolbar(amtOfItems);
+        updateCartDesktopToolbar(amount, amtOfItems);
+      });   
+    }
+</script>

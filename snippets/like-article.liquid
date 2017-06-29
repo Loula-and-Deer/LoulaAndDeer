@@ -1,6 +1,22 @@
-<div class="addthis_toolbox addthis_default_style ">
-  <a class="addthis_button_tweet" tw:count="none"></a>
-  <a class="addthis_button_google_plusone" g:plusone:size="medium" g:plusone:count="false"></a>
-  <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+<div id="social" class="row">
+  <h3 class="fl">Share</h3>
+  <div class="google-plus fr"><g:plusone size="medium" annotation="none"></g:plusone></div>
+  <div class="tweet-btn fr">
+    <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ shop.url }}{{ article.url }}" data-count="none">Tweet</a><script src="//platform.twitter.com/widgets.js"></script>
+  </div>
+  <div class="pinterest fr">
+    <a href="//pinterest.com/pin/create/button/?url={{ shop.url }}{{ article.url }}&media={{ article.image | product_img_url: 'large' }}" class="pin-it-button" count-layout="horizontal">Pin It</a>
+    <script src="//assets.pinterest.com/js/pinit.js"></script>
+  </div>
+
+
+  <div class="facebook-like fr"><iframe src="https://www.facebook.com/plugins/like.php?href={{ shop.url }}{{ article.url }}&layout=button&action=like&show_faces=true&share=true&height=65&appId" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:95px; height:20px" allowTransparency="true"></iframe></div>
 </div>
-<script src="//s7.addthis.com/js/250/addthis_widget.js"></script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = '//apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>

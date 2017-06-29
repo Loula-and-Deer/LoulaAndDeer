@@ -1,47 +1,31 @@
-<script>
+{% include 'toolbar-cart-handler' %}
 
-/**
- * Module to ajaxify all add to cart forms on the page.
- *
- * Copyright (c) 2014 Caroline Schnapp (11heavens.com)
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- *
- */
+<script>
 Shopify.AjaxifyCart = (function($) {
   var _config = {
     addedToCartBtnLabel: 'Thank you!',
     addingToCartBtnLabel: 'Adding...',
     soldOutBtnLabel: 'Sold Out',
     howLongTillBtnReturnsToNormal: 1000, // in milliseconds.
-    cartCountSelector: '.cart, #cart-count a:first, #gocart p a, #cart .checkout em, .item-count',
-    cartTotalSelector: '#cart-price',
-    feedbackPosition: 'nextButton', // 'aboveForm' for top of add to cart form, 'belowForm' for below the add to cart form, and 'nextButton' for next to add to cart button.
+    howLongTillConfirmationHides: 2000, // in milliseconds.
     shopifyAjaxAddURL: '/cart/add.js',
     shopifyAjaxCartURL: '/cart.js'
   };
+
   var _showFeedback = function(success, html, addToCartForm) {
     $('.ajaxified-cart-feedback').remove();
-    var feedback = '<p class="ajaxified-cart-feedback ' + success + '">' + html + '</p>';
-    switch (_config.feedbackPosition) {
-      case 'aboveForm':
-        addToCartForm.before(feedback);
-        break;
-      case 'belowForm':
-        addToCartForm.after(feedback);
-        break;
-      case 'nextButton':
-      default:
-        // In New Standard theme:
-        // addToCartForm.find('#product-add').append(feedback);
-        addToCartForm.find('input[type="submit"]').after(feedback);
-        break;   
-    }
-    // If you use animate.css
-    // $('.ajaxified-cart-feedback').addClass('animated bounceInDown');
-    $('.ajaxified-cart-feedback').slideDown();
+    var feedback = '<a href="/cart" class="ajaxified-cart-feedback ' + success + '">' + html + '</a>';
+    
+    addToCartForm.after(feedback);    
+    $('.ajaxified-cart-feedback').css({"bottom": "-150px", "opacity": 0});
+    $('.ajaxified-cart-feedback').animate({bottom: 0, opacity: 1}, 200, "swing");
+
+    window.setTimeout(function(){
+      $('.ajaxified-cart-feedback').animate({bottom: -150, opacity: 0}, 200, "swing");
+    }, _config.howLongTillConfirmationHides);
   };
+
+
   var _init = function() {   
     $(document).ready(function() { 
       $('form[action="/cart/add"]').submit(function(e) {
@@ -60,36 +44,16 @@ Shopify.AjaxifyCart = (function($) {
           success: function(itemData) {
             // Re-enable add to cart button.
             addToCartBtn.addClass('inverted').val(_config.addedToCartBtnLabel);
-            _showFeedback('success','<i class="fa fa-check"></i> Added to cart! <a href="/cart">View cart</a> or <a href="/collections/all">continue shopping</a>.',addToCartForm);
+            _showFeedback('success','<i class="fa fa-check"></i> Added to cart!',addToCartForm);
+
+            // Show confirmation link
             window.setTimeout(function(){
               addToCartBtn.removeAttr('disabled').removeClass('disabled').removeClass('inverted').val(addToCartBtn.attr('data-label'));
             }, _config.howLongTillBtnReturnsToNormal);
-            // Update cart count and show cart link.
+            
+            // Update toolbar cart
             $.getJSON(_config.shopifyAjaxCartURL, function(cart) {
-              if (_config.cartCountSelector && $(_config.cartCountSelector).size()) {
-                var value = $(_config.cartCountSelector).html() || '0';
-                $(_config.cartCountSelector).html(value.replace(/[0-9]+/,cart.item_count));
-              }
-              if (_config.cartTotalSelector && $(_config.cartTotalSelector).size()) {
-                if (typeof Currency !== 'undefined' && typeof Currency.moneyFormats !== 'undefined') {
-                  var newCurrency = '';
-                  if ($('[name="currencies"]').size()) {
-                    newCurrency = $('[name="currencies"]').val();
-                  }
-                  else if ($('#currencies span.selected').size()) {
-                    newCurrency = $('#currencies span.selected').attr('data-currency');
-                  }
-                  if (newCurrency) {
-                    $(_config.cartTotalSelector).html('<span class=money>' + Shopify.formatMoney(Currency.convert(cart.total_price, "{{ shop.currency }}", newCurrency), Currency.money_format[newCurrency]) + '</span>');
-                  } 
-                  else {
-                    $(_config.cartTotalSelector).html(Shopify.formatMoney(cart.total_price, "{{ shop.money_format | remove: "'" | remove: '"' }}"));
-                  }
-                }
-                else {
-                  $(_config.cartTotalSelector).html(Shopify.formatMoney(cart.total_price, "{{ shop.money_format | remove: "'" | remove: '"' }}"));
-                }
-              };
+                updateCartToolbars(cart.total_price, cart.item_count);
             });        
           }, 
           error: function(XMLHttpRequest) {
@@ -130,29 +94,21 @@ Shopify.AjaxifyCart.init();
 
 </script>
 
-{% comment %}
-If you want to animate your feedback message.
-{% endcomment %}
-{% comment %}
-{{ '//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.0/animate.min.css' | stylesheet_tag }}
-{% endcomment %}
-{{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' | stylesheet_tag }}
 
 <style>
 .ajaxified-cart-feedback {
-  /* Below add to cart button */
-  /* display: block; */
-  display: inline;
-  padding-left: 10px;
-  line-height: 36px;
-  font-size: 90%;
-  vertical-align: middle;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  left: 0;
+  color: white;
+  z-index: 99999999;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2rem 0 !important;
 }
-.ajaxified-cart-feedback.success { color: #3D9970; }
-.ajaxified-cart-feedback.error { color: #FF4136; } 
-/* Making links stand out. */
-.ajaxified-cart-feedback a {
-  font-weight: bold;
-  border-bottom: 1px solid;
-}
+
+.ajaxified-cart-feedback.success { background: {{settings.ajax_success_bg}}; color: black;}
+  .ajaxified-cart-feedback.error { background: {{settings.ajax_fail_bg}}; color: white; } 
+
 </style>

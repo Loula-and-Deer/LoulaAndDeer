@@ -1,0 +1,10 @@
+@media only screen and (min-width: 797px) and (max-width: 1026px) {
+  .wrapper, .toolbar, footer { width:768px; }
+
+  .cart-layout-side-information{
+    border-left: 1rem solid #f9f9f9;
+  }
+  .filter-underlay{
+    display: none !important;
+  }
+}

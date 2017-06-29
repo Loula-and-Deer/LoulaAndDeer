@@ -1,16 +1,25 @@
 {% if linklists[linklist].links.size > 0 %}
 <!-- BEGIN table.products -->
-<table class="products">
-{% tablerow link in linklists[linklist].links cols: 4 %}
-<div>
+<div class="row products">
+
+  {% for link in linklists[linklist].links %}
+<div class="product span3 adaptive-grid">
+    <!-- Begin product image -->
+  <div class="image">
+    <a href="{{ link.url }}">
+        <img src="{{ link.object.image.src | img_url: 'large' }}" alt="{{ link.object.image.alt }}" />
+    </a>
+  </div>
+  <!-- End product image -->
+  
   <a href="{{ link.url }}" title="Browse our {{ link.object.title | escape }} collection.">
-    <img src="{{ link.object.products.first.featured_image | product_img_url: 'medium' }}" width="175px" alt="{{ link.object.title | escape }}" />
-    <big>{{ link.title }}</big>
+    <h4 class="title">{{ link.title }}</h4>
   </a>
 </div>
-{% endtablerow %}
-</table>
+{% endfor %}
+</div>
 <!-- END table.products -->
 {% else %}
 <p>Please {{ 'create a link list' | link_to: '/admin/links' }} that contains links to the collections you wish to feature here. The title of that link list must be <strong>{{ linklist | replace: '-', ' ' | capitalize }}</strong>.</p>
 {% endif %}
+{% cycle 'products': '', '', '', '<div style="clear:both;"></div>' %}

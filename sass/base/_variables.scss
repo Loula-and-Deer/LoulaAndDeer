@@ -1,0 +1,143 @@
+%social_button {
+	display: block;
+	float: left;
+	margin-right: 10px;
+}
+
+%fullscreen_fixed {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+%cart-button{
+  float: left;
+  width: 35px !important;
+  height: 40px;
+  background: #dddddd;
+  font-size: 2rem;
+  border-radius: 0;
+	outline: 1px solid #e1e1e1;
+}
+
+$mobile-slim-width: 420px;
+$mobile-width: 797px;
+$desktop-wide-width: 1026px;
+
+// Grids
+
+// Home Page
+$homepage-layout-grid: (
+  columns: 9,
+  gutter: 2rem,
+);
+
+$homepage-layout-grid--mobile: (
+	columns: 2,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);
+
+// Search page
+$search-layout-grid: (
+  columns: 7,
+  gutter: 1rem,
+);
+
+$search-layout-grid--mobile: (
+	columns: 1,
+	gutter: 0,
+  media: "(max-width: 797px)",
+);
+
+// Search page
+$search-result-grid: (
+  columns: 4,
+  gutter: 1rem,
+);
+
+$search-result--mobile: (
+	columns: 1,
+	gutter: 0,
+  media: "(max-width: 797px)",
+);
+
+// Collection page
+$collection-layout-grid: (
+  columns: 3,
+  gutter: 2rem,
+);
+
+$collection-layout-grid--mobile: (
+	columns: 2,
+	gutter: 5px,
+  media: "(max-width: 797px)",
+);
+
+// Product page
+$product-page-layout-grid: (
+  columns: 2,
+  gutter: 2rem,
+);
+
+$product-page-layout-grid--mobile: (
+  columns: 1,
+  gutter: 2rem,
+	media: "(max-width: 797px)",
+);
+
+// Cart
+$cart-layout-grid: (
+  columns: 7,
+  gutter: 1rem,
+);
+
+$cart-layout-grid--mobile: (
+	columns: 1,
+	gutter: 0,
+  media: "(max-width: 797px)",
+);
+
+
+// Product thumbnails
+$product-page-thumbnail-layout: (
+  columns: 3,
+  gutter: 1rem,
+);
+
+// Product information
+$product-information-layout-grid: (
+  columns: 2,
+  gutter: 1rem,
+);
+
+$product-information-layout-grid--mobile: (
+  columns: 1,
+  gutter: 1rem,
+	media: "(max-width: 797px)",
+);
+
+// Account
+$account-layout-grid: (
+  columns: 4,
+  gutter: 1rem,
+);
+
+$account-layout-grid--mobile: (
+	columns: 1,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);
+
+// Footer
+$footer-layout-grid: (
+  columns: 3,
+  gutter: 2rem,
+);
+
+$footer-layout-grid--mobile: (
+	columns: 1,
+	gutter: 1rem,
+  media: "(max-width: 797px)",
+);

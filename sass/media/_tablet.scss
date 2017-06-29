@@ -1,0 +1,37 @@
+@media only screen and (max-width: $desktop-wide-width) {
+  .results.list {
+    width: 98%;
+    .add-product-form {
+      .buttons {
+        input {width: auto;}
+        .search-qty {width: 50px;}
+      }
+    }
+  }
+  .search_li {margin-left: 0;}
+}
+
+
+@media only screen and (min-width: $mobile-width) {
+  nav{
+    padding-top: 0;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .search {
+    width: 40px;
+    transition: all 0.15s;
+  }
+
+  .go {
+    i {
+      font-size: 20px;
+    }
+  }
+
+  .content-overlay{display: none !important;}
+  .collection-product:nth-child(3n+1) {
+      clear: left;
+  }
+}
