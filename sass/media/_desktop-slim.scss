@@ -7,4 +7,23 @@
   .filter-underlay{
     display: none !important;
   }
+
+  .gift-card-display{
+    margin-top: 3rem;
+    label{
+      font-size: 180px;
+    }
+
+    input{
+      font-size: 140px;
+      width: 27vw !important;
+    }
+
+    span{
+      position: relative;
+      top: -240px;
+      left: 50%;
+    }
+  }
+
 }
