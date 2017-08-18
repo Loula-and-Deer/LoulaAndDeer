@@ -16,6 +16,15 @@
   }
 }
 
+.product-page-full{
+  @include grid-container;
+  @include grid-column(2, $product-page-layout-grid);
+
+  @include grid-media($product-page-layout-grid--mobile) {
+     @include grid-column(1);
+  }
+}
+
 // Thumbnails
 .product-thumbnail-featured{
   @include grid-column(3, $product-page-thumbnail-layout);

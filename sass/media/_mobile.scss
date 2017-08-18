@@ -194,4 +194,25 @@
 
   // Helpers
   .pagepadding {padding: 1rem;}
+
+  //Gift Card
+  .gift-card-display{
+    // margin-bottom: -20vw;
+    
+    label{
+      font-size: 19vw;
+    }
+
+    input{
+      height: 100%;
+      font-size: 16vw;
+      width: 27vw !important;
+    }
+
+    span{
+      position: relative;
+      top: -28vw;
+      left: 50%;
+    }
+  }
 }
