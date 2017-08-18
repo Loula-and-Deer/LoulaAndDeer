@@ -99,7 +99,7 @@
           </div>
 
           {% if settings.display_quantity_dropdown and product.available %}
-          <div class="product-customisation-option">
+          <div class="product-customisation-option" style="display:none">
             <label for="quantity">Quantity</label>
             <input id="quantity" type="number" name="quantity" value="1"  min="1" max="{{product.selected_or_first_available_variant.inventory_quantity}}" class="tc item-quantity" />
           </div>
