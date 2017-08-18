@@ -2,7 +2,6 @@
       <div class="search-result">
         <div class="search-result-thumbnail" style="{% if product.price_min < product.compare_at_price_min %}outline: 3px solid red{% endif %}">
           {% if product.price_min < product.compare_at_price_min %}
-            <div style="outline: 3px solid red">
             <p style="margin: 0; position: absolute; z-index: 3;  background: red;  color: white;  padding: 5px;">SALE</p>
           {% endif %}
           <a alt="product" href="{{ product.url }}">
