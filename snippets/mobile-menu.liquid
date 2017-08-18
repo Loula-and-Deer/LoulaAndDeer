@@ -37,9 +37,8 @@
         {% endif %}
       {% endfor %}
       <li>
-        <a href="{{ settings.facebook_link }}" title="Follow us on Facebook" class="navlink social-mobile-link"><span class="shopify-social-icon-facebook"/></a>
-        <a href="{{ settings.instagram_link }}" title="Follow us on Instagram" class="navlink social-mobile-link"><span class="shopify-social-icon-instagram"/></a>
-        <a href="{{ settings.twitter_link }}" title="Follow us on Twitter" class="navlink social-mobile-link"><span class="shopify-social-icon-twitter"/></a>
+        {% assign socal_align_centre = true %}
+        {% include 'social-links' %}
       </li>
     </ul>
 </div>

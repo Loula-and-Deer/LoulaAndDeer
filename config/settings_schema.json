@@ -1,11 +1,447 @@
 [
   {
-    "name": "General",
+    "name": "theme_info",
+    "theme_name": "Loula and Deer",
+    "theme_author": "Lewis Johnson",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https:\/\/loulaanddeer.co.uk\/pages\/contact-us",
+    "theme_support_email": "lewisjohnsondev@gmail.com"
+  },
+  {
+    "name": "READ ME.",
     "settings": [
       {
+        "type": "textarea",
+        "id": "lolno_message",
+        "default": "At the moment nearly all the setting are broken, I'm working hard to get these settings working again. In the meantime, ask Lewis for any website changes. Thanks.",
+        "label": "Read this please."
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Homepage Content"
+      },
+      {
+        "type": "collection",
+        "id": "frontpage_collection",
+        "label": "Collection of Products"
+      },
+      {
+        "type": "header",
+        "content": "Slideshow",
+        "info": "For best results, upload images that are at least 1278px wide. Try to keep your slideshow images the same size."
+      },
+      {
         "type": "checkbox",
-        "id": "wide_layout",
-        "label": "Enable Wide layout?"
+        "id": "display_slideshow",
+        "label": "Enable slideshow?",
+        "info": "(Note: If disabled, the first image in the slideshow will be shown)"
+      },
+      {
+        "type": "select",
+        "id": "slideshow_speed",
+        "label": "Show slideshow images for",
+        "options": [
+          {
+            "value": "8000",
+            "label": "8 seconds"
+          },
+          {
+            "value": "7000",
+            "label": "7 seconds"
+          },
+          {
+            "value": "6000",
+            "label": "6 seconds"
+          },
+          {
+            "value": "5000",
+            "label": "5 seconds"
+          },
+          {
+            "value": "4000",
+            "label": "4 seconds"
+          },
+          {
+            "value": "3000",
+            "label": "3 seconds"
+          },
+          {
+            "value": "2000",
+            "label": "2 seconds"
+          }
+        ],
+        "default": "4000"
+      },
+      {
+        "type": "select",
+        "id": "slideshow_transition",
+        "label": "Slideshow transition effect:",
+        "options": [
+          {
+            "value": "slide",
+            "label": "Slide"
+          },
+          {
+            "value": "fade",
+            "label": "Fade"
+          }
+        ],
+        "default": "fade"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 1"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_1",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_1.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_1_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_1_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 2"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_2",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_2.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_2_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_2_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 3"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_3",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_3.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_3_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_3_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 4"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_4",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_4.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_4_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_4_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 5"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_5",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_5.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_5_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_5_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 6"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_6",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_6.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_6_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_6_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 7"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_7",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_7.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_7_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_7_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 8"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_8",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_8.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_8_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_8_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 9"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_9",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_9.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_9_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_9_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Slide 10"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_slide_10",
+        "label": "Show?"
+      },
+      {
+        "type": "image",
+        "id": "slideshow_10.jpg",
+        "label": "Image File",
+        "max-width": 1278
+      },
+      {
+        "type": "text",
+        "id": "slide_10_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "slide_10_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "header",
+        "content": "Promo Images",
+        "info": "For best results, upload images that are 406 pixels wide. Try to keep all 3 images the same size."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_fp_images",
+        "label": "Show 3 images below slideshow?"
+      },
+      {
+        "type": "paragraph",
+        "content": "Image 1"
+      },
+      {
+        "type": "image",
+        "id": "fp_image_1.jpg",
+        "label": "Image file",
+        "max-width": 406
+      },
+      {
+        "type": "text",
+        "id": "fp_image_1_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "fp_image_1_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Image 2"
+      },
+      {
+        "type": "image",
+        "id": "fp_image_2.jpg",
+        "label": "Image file",
+        "max-width": 406
+      },
+      {
+        "type": "text",
+        "id": "fp_image_2_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "fp_image_2_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Image 3"
+      },
+      {
+        "type": "image",
+        "id": "fp_image_3.jpg",
+        "label": "Image file",
+        "max-width": 406
+      },
+      {
+        "type": "text",
+        "id": "fp_image_3_link",
+        "label": "Links to"
+      },
+      {
+        "type": "text",
+        "id": "fp_image_3_alt",
+        "label": "ALT text"
+      },
+      {
+        "type": "header",
+        "content": "Custom Section",
+        "info": "Put in the products ID"
+      },
+      {
+        "type": "text",
+        "id": "fp_section_1_header",
+        "label": "Header Name"
+      },
+      {
+        "type": "text",
+        "id": "fp_section_1_subheader",
+        "label": "Subheader Name"
+      },
+      {
+        "type": "product",
+        "id": "fp_section_1_id_1",
+        "label": "Product 1"
+      },
+      {
+        "type": "product",
+        "id": "fp_section_1_id_2",
+        "label": "Product 1"
+      },
+      {
+        "type": "product",
+        "id": "fp_section_1_id_3",
+        "label": "Product 1"
       }
     ]
   },
@@ -1970,485 +2406,6 @@
     ]
   },
   {
-    "name": "Homepage",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Homepage Content"
-      },
-      {
-        "type": "collection",
-        "id": "frontpage_collection",
-        "label": "Collection of Products"
-      },
-      {
-        "type": "page",
-        "id": "homepage",
-        "label": "Additional home page content?"
-      },
-      {
-        "type": "header",
-        "content": "Slideshow",
-        "info": "For best results, upload images that are at least 1278px wide. Try to keep your slideshow images the same size."
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slideshow",
-        "label": "Enable slideshow?",
-        "info": "(Note: If disabled, the first image in the slideshow will be shown)"
-      },
-      {
-        "type": "select",
-        "id": "slideshow_speed",
-        "label": "Show slideshow images for",
-        "options": [
-          {
-            "value": "8000",
-            "label": "8 seconds"
-          },
-          {
-            "value": "7000",
-            "label": "7 seconds"
-          },
-          {
-            "value": "6000",
-            "label": "6 seconds"
-          },
-          {
-            "value": "5000",
-            "label": "5 seconds"
-          },
-          {
-            "value": "4000",
-            "label": "4 seconds"
-          },
-          {
-            "value": "3000",
-            "label": "3 seconds"
-          },
-          {
-            "value": "2000",
-            "label": "2 seconds"
-          }
-        ],
-        "default": "4000"
-      },
-      {
-        "type": "select",
-        "id": "slideshow_transition",
-        "label": "Slideshow transition effect:",
-        "options": [
-          {
-            "value": "slide",
-            "label": "Slide"
-          },
-          {
-            "value": "fade",
-            "label": "Fade"
-          }
-        ],
-        "default": "fade"
-      },
-      {
-        "type": "radio",
-        "id": "slideshow_arrows",
-        "label": "Slideshow arrow colour?",
-        "options": [
-          {
-            "value": "none",
-            "label": "None"
-          },
-          {
-            "value": "light",
-            "label": "Light"
-          },
-          {
-            "value": "dark",
-            "label": "Dark"
-          }
-        ]
-      },
-      {
-        "type": "select",
-        "id": "slider_nav_opacity",
-        "label": "Slideshow arrow opacity:",
-        "options": [
-          {
-            "value": "9",
-            "label": "90%"
-          },
-          {
-            "value": "8",
-            "label": "80%"
-          },
-          {
-            "value": "7",
-            "label": "70%"
-          },
-          {
-            "value": "6",
-            "label": "60%"
-          },
-          {
-            "value": "5",
-            "label": "50%"
-          },
-          {
-            "value": "4",
-            "label": "40%"
-          },
-          {
-            "value": "3",
-            "label": "30%"
-          },
-          {
-            "value": "2",
-            "label": "20%"
-          },
-          {
-            "value": "1",
-            "label": "10%"
-          }
-        ],
-        "default": "9"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 1"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_1",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_1.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_1_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_1_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 2"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_2",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_2.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_2_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_2_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 3"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_3",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_3.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_3_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_3_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 4"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_4",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_4.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_4_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_4_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 5"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_5",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_5.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_5_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_5_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 6"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_6",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_6.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_6_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_6_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 7"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_7",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_7.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_7_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_7_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 8"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_8",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_8.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_8_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_8_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 9"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_9",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_9.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_9_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_9_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Slide 10"
-      },
-      {
-        "type": "checkbox",
-        "id": "display_slide_10",
-        "label": "Show?"
-      },
-      {
-        "type": "image",
-        "id": "slideshow_10.jpg",
-        "label": "Image File",
-        "max-width": 1278
-      },
-      {
-        "type": "text",
-        "id": "slide_10_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "slide_10_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "header",
-        "content": "Promo Images",
-        "info": "For best results, upload images that are 406 pixels wide. Try to keep all 3 images the same size."
-      },
-      {
-        "type": "checkbox",
-        "id": "show_fp_images",
-        "label": "Show 3 images below slideshow?"
-      },
-      {
-        "type": "paragraph",
-        "content": "Image 1"
-      },
-      {
-        "type": "image",
-        "id": "fp_image_1.jpg",
-        "label": "Image file",
-        "max-width": 406
-      },
-      {
-        "type": "text",
-        "id": "fp_image_1_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "fp_image_1_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Image 2"
-      },
-      {
-        "type": "image",
-        "id": "fp_image_2.jpg",
-        "label": "Image file",
-        "max-width": 406
-      },
-      {
-        "type": "text",
-        "id": "fp_image_2_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "fp_image_2_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "paragraph",
-        "content": "Image 3"
-      },
-      {
-        "type": "image",
-        "id": "fp_image_3.jpg",
-        "label": "Image file",
-        "max-width": 406
-      },
-      {
-        "type": "text",
-        "id": "fp_image_3_link",
-        "label": "Links to"
-      },
-      {
-        "type": "text",
-        "id": "fp_image_3_alt",
-        "label": "ALT text"
-      },
-      {
-        "type": "header",
-        "content": "Collections featured"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_collections",
-        "label": "Feature collections on home page?"
-      },
-      {
-        "type": "link_list",
-        "id": "frontpage_collections",
-        "label": "Link list to use for collections"
-      }
-    ]
-  },
-  {
     "name": "Product Pages",
     "settings": [
       {
@@ -2601,21 +2558,6 @@
         "type": "checkbox",
         "id": "display_blog_tags",
         "label": "Display blog tags?"
-      }
-    ]
-  },
-  {
-    "name": "Cart",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "display_cart_note",
-        "label": "Display additional cart note?"
-      },
-      {
-        "type": "collection",
-        "id": "featured_products",
-        "label": "Choose featured collection for cart and search pages"
       }
     ]
   }
