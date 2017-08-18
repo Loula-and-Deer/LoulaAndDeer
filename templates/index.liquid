@@ -83,6 +83,36 @@
     {% endfor %}
 	</div>
 </div>
-  
 
-  
+<div class="row homepage-promotion">
+  <div style="padding-left: 1rem">
+    <h2 style="margin-bottom: 5px">Personalised Jewellery</h2>
+    <h3>For that extra-special occasion.</h3>
+  </div>
+  <div class="row" id="fp-images">
+    <div class="homepage-layout-full">
+      <a href="https://loulaanddeer.co.uk/pages/personalised-necklaces">
+        <img id="banner-mobile" src="{{ 'Christening_Gifts_Banner_Mobile.png' | asset_img_url:'original', format: 'pjpeg'}}" alt="Personalised Jewellery Promotion Image">
+        <img id="banner-desktop" src="{{ 'Christening_Gifts_Banner_Desktop.png' | asset_img_url:'original', format: 'pjpeg'}}" alt="Personalised Jewellery Promotion Image">
+      </a>
+    </div>
+	</div>
+</div>
+
+<style>
+@-webkit-keyframes shine {
+  0%    {filter: brightness(100%);}
+  50%   {filter: brightness(105%);}
+  100%  {filter: brightness(100%);}
+}
+
+#banner-desktop, #banner-mobile{
+  animation-name: shine;
+  animation-duration: 3s;
+  animation-iteration-count: 9999;
+}
+
+@media screen and (max-width: 796px) {#banner-desktop{display: none;}}
+
+@media screen and (min-width: 797px) {#banner-mobile{display: none;}}
+</style>
