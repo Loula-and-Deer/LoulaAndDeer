@@ -101,7 +101,7 @@
           {% if settings.display_quantity_dropdown and product.available %}
           <div class="product-customisation-option">
             <label for="quantity">Quantity</label>
-            <input id="quantity" type="number" name="quantity" value="1"  min="1" class="tc item-quantity" />
+            <input id="quantity" type="number" name="quantity" value="1"  min="1" max="{{product.selected_or_first_available_variant.inventory_quantity}}" class="tc item-quantity" />
           </div>
           {% endif %}
 
@@ -134,21 +134,57 @@
         </div>
       {% endif %}
     </div>
-
-    <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
   </div>
 </div>
 
+<!-- Begin related product -->
+{% if settings.show_related_products %}
+  {% include 'related-products' %}
+{% endif %}
 
-  <!-- Begin related product -->
-  {% if settings.show_related_products %}
-    {% include 'related-products' %}
-  {% endif %}
-
-  <script>
+<script>
   (function($) {
     $(function() {
+      var minLength = 2;
+      var maxLength = 9;
+      var pattern = '".{' + minLength + ',' + maxLength + '}"';
+      var title = "Please enter " + minLength + " to " + maxLength + " letters.";
+      //Bindings
+      $('[name="properties[Child\'s Name]"]').attr("maxlength", maxLength);
+      $('[name="properties[Child\'s Name]"]').attr("minlength", minLength);
+      //$('[name="properties[Child\'s Name]"]').attr("pattern", pattern);
+      $('[name="properties[Child\'s Name]"]').attr("title", title);
 
+      $('[name="properties[Child\'s Name]"]').keyup(function() {
+        $("#quantity").attr("value", $('[name="properties[Child\'s Name]"]').val().length);
+        updatePricePreview();
+      });
+
+      $('[name="properties[Child\'s Name]"]').on('change', function() {
+        $("#quantity").attr("value", $('[name="properties[Child\'s Name]"]').val().length);
+        updatePricePreview();
+      });
+
+      //Returns child's name * product price
+      function calcPrice() {
+        var name = $('[name="properties[Child\'s Name]"]').val();
+        return name.length * {{variant.price}};
+      }
+
+      //Updates the total price preview above buy buttton
+      function updatePricePreview() {
+        check = $('[name="properties[Child\'s Name]"]');
+        check.val(check.val().replace(/[^a-zA-z&]|`*/g, ''));
+        $('#price-total').text("£" + (calcPrice() / 100).toFixed(2));
+      }
+
+      //Adds "per letter" after price preview
+      $("#price-preview").after("<h5 style='color: #a1a1a1' class='fl'>per letter</h5>");
+
+      //Displays price to show "£0.00" when the page loads
+      updatePricePreview();
+
+      //Description expander
       var el = $(".description"),
       curHeight = el.height(),
       autoHeight = el.css('height', 'auto').height();
