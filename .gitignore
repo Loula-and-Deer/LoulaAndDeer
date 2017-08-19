@@ -4,4 +4,4 @@ node_modules/
 *.bak
 *.old
 *.exe.old
-*.scssc
+.sass-cache/*
