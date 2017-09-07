@@ -1,15 +1,23 @@
 $(document).ready(function () {
-  $('label[for*="product-select"]').remove();
+    $('label[for*="product-select"]').remove();
 
-    var el = $(".description"),
-        exdesc = $("#expand-description");
+    $(".tab-link").click(function () {
+        var tabcontent, tablinks;
 
-    // if (autoHeight <= 150) {
-    //     exdesc.remove();
-    // }
+        tabcontent = $(".tab-content");
+        tablinks = $(".tab-link");
 
-    exdesc.on("click", function () {
-        el.switchClass("description", "description-expanded", 400);
-        exdesc.remove();
+        tabcontent.each(function(){
+            $(this).css("display", "none");
+        });
+
+        tablinks.each(function(){
+            $(this).removeClass("active");
+        });
+
+        $("#" + $(this).data("tab")).css("display", "block");
+        $(this).addClass("active");
     });
+
+    $("#defaultTab").click();
 });
