@@ -85,7 +85,11 @@
 
             <!-- Begin product options -->
             <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
-                {% include 'product-customizer' %}
+                {% if product.metafields.product_customizer %}
+                    {% include 'product-customizer' %}
+                    {{ 'product-customizer.scss.css' | asset_url | stylesheet_tag }}
+                {% endif %}
+
                 <div class="product-information-layout">
                     {% if hide_default_title %}
                     <div style="display:none">
@@ -157,3 +161,4 @@
         {% include 'related-products' %}
     {% endif %}
 </div>
+
