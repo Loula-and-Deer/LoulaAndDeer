@@ -22,6 +22,7 @@ on_stylesheet_saved do |filename|
     # Move the file to new location
     FileUtils.mv filename, path + file + extension
       `theme upload /assets/styles.scss.liquid`
+      `theme upload /assets/product-customizer.scss.liquid`
   end
 end
 
