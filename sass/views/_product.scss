@@ -1,47 +1,46 @@
 // Product page
-.product-page-layout{
+.product-page-layout {
   @include grid-container;
 }
 
-.product-page-breadcrumb{
+.product-page-breadcrumb {
   @include grid-column(2, $product-page-layout-grid);
 }
 
-.product-page-half{
+.product-page-half {
   @include grid-container;
   @include grid-column(1, $product-page-layout-grid);
 
   @include grid-media($product-page-layout-grid--mobile) {
-     @include grid-column(1);
+    @include grid-column(1);
   }
 }
 
-.product-page-full{
+.product-page-full {
   @include grid-container;
   @include grid-column(2, $product-page-layout-grid);
 
   @include grid-media($product-page-layout-grid--mobile) {
-     @include grid-column(1);
+    @include grid-column(1);
   }
 }
 
 // Thumbnails
-.product-thumbnail-featured{
+.product-thumbnail-featured {
   @include grid-column(3, $product-page-thumbnail-layout);
 }
 
-.product-thumbnail{
+.product-thumbnail {
   @include grid-column(1, $product-page-thumbnail-layout);
-  img{
+  img {
     width: 100%;
   }
 }
 
 // Product information
-.product-information-layout{
+.product-information-layout {
   @include grid-container;
 }
-
 
 .product-information-layout .buy-container {
   display: flex;
@@ -66,7 +65,7 @@
 
   div {
     width: 30%;
-    input{
+    input {
       height: calc(40px - 2px);
       padding: 0;
       margin: 0;
@@ -75,7 +74,7 @@
       background: none;
     }
 
-    label{
+    label {
       position: relative;
       background: white;
       padding: 0 5px;
@@ -85,50 +84,62 @@
   }
 }
 
-.product-information-layout .description{
+.product-information-layout .description {
   overflow: hidden;
   line-height: 16px;
   max-height: 72px;
   transition: all 0.5s;
 
-  &-expanded{
+  &-expanded {
     max-height: 100rem;
     line-height: 18px;
   }
 }
 
-.zoomImg { cursor: crosshair; }
+.zoomImg {
+  cursor: crosshair;
+}
 
 #add-to-cart {
   text-transform: uppercase;
 }
 
-#price-preview{
+#price-preview {
   color: #a1a1a1;
   display: inline;
 }
 
 // More tabs
+.more-information {
+  margin-top: 3rem;
 
-.more-information ul{
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: inherit;
-  flex-wrap: nowrap;
-  width: 100%;
-}
+  .tab-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: inherit;
+    flex-wrap: nowrap;
+    width: 100%;
+    button {
+        font-size: 18px;
+    }
+  }
 
-.more-information ul li {
-  display: block;
-  width: 33.3%;
-  margin: 0;
-  padding: 0;
-}
+  .tab-content{
+    list-style: none;
+    width: 70%;
+    margin: 4rem auto 0;
+    text-align: justify;
 
-.more-information ul li div {
-  display: none;
-  margin: 0 !important;
-  padding: 0;
+    > li{
+      display: none;
+    }
+
+    > li.active-tab {
+      display: block;
+    }
+
+  }
+
 }
