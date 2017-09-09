@@ -2,7 +2,6 @@
   #content{
     background: {{ settings.shop_bg_color }} !important;
   }
-
 </style>
 
 <div class="filter-underlay"></div>
@@ -18,11 +17,12 @@
     <div class="expanded-message">
       <h2>No search results for <strong>"{{ search.terms }}"</strong></h2>
       <h3>Try searching for something else.</h3>
-      <h4>Suggested products</h4>
+
+      <h2 style="margin-top: 2rem">You might like...</h2>
     </div>
     <div>
       {% for product in collections['new-in'].products limit: 6 %}
-        {% include 'product-loop' %}
+        {% include 'collection-loop' %}
       {% endfor %}
     </div>
   {% else %}
