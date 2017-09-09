@@ -113,13 +113,18 @@
 .more-information {
   margin-top: 3rem;
 
+  ul{
+    margin: 0;
+  }
+  
   .tab-links {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     width: 100%;
+
     button {
-      font-size: 18px;
+      font-size: 16px;
       color: white;
       background: #5d5d5d;
     }
@@ -148,5 +153,4 @@
     }
 
   }
-
 }
