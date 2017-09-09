@@ -1,9 +1,2 @@
-node_modules/
-.idea/
 .sass-cache/
-*.bak
 *.old
-*.exe.old
-.sass-cache/*
-theme.lock
-.idea/workspace.xml
