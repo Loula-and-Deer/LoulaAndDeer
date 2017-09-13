@@ -112,7 +112,12 @@
                                 <input id="quantity" type="number" name="quantity" value="1" min="1"
                                        class="tc item-quantity"/>
                             </div>
-                            <input type="submit" id="add-to-cart" class="btn" name="add" value="Add to cart"/>
+                            {% if product.available %}
+                                <input type="submit" id="add-to-cart" class="btn" name="add" value="Add to cart"/>
+                            {% else %}
+                                <input type="submit"  id="add-to-cart" class="btn" name="add" disabled="disabled" value="Sold out"/>
+                            {% endif %}
+                            
                         </div>
                         <!-- End product options -->
                     </div>
