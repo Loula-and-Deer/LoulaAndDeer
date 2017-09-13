@@ -4,9 +4,10 @@
   }
 </style>
 
-<div class="filter-underlay"></div>
+{% include 'search-handler' %}}
+{{ 'product-customizer.scss.css' | asset_url | stylesheet_tag }}
 
-{% include 'search-handler' %}
+<div class="filter-underlay"></div>
 
 <div class="search-layout" id="search-container">
   {% if search.performed %}
