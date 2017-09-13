@@ -1,4 +1,6 @@
 <div class="product-page-layout {{ product.handle }}" itemscope itemtype="http://schema.org/Product">
+
+    {{ 'product.min.js' | asset_url | script_tag }}
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
 
@@ -83,7 +85,10 @@
 
       <!-- Begin product options -->
       <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
-        {% include 'product-customizer' %}
+          {% if product.metafields.product_customizer %}
+              {% include 'product-customizer' %}
+              {{ 'product-customizer.scss.css' | asset_url | stylesheet_tag }}
+          {% endif %}
         <div class="product-information-layout">
           <div
           {% if hide_default_title == false %}class="product-customisation-option"{% endif %}
@@ -115,19 +120,6 @@
 
       </form>
 
-      <!-- Begin description -->
-      <div class="description clearfix">
-        {% if product.description != "" %}
-          <h3 style="border-bottom: 3px solzid #F9F9F9;">More about {{ product.title }} </h3>
-        {{ product.description }}
-        {% endif %}
-
-        <p class="fl"><a href="http://loulaanddeer.co.uk/pages/returns-policy">Returns Policy</a></p>
-        <p class="fl">&nbsp; | &nbsp;</p>
-        <p class="fl"><a href="http://loulaanddeer.co.uk/pages/delivery">Shipping</a></p>
-        <!-- End description -->
-      </div>
-      <a href="#" style="color:{{ settings.link_color }}" id="expand-description" onclick="return false;">Show more</a>
     </div>
 
     <!-- Social section -->
@@ -140,6 +132,31 @@
       {% endif %}
     </div>
   </div>
+
+    <div class="product-page-full more-information">
+        <div class="tab-links">
+            <button class="tab-link" data-tab="description" id="defaultTab">Description</button>
+            <button class="tab-link" data-tab="reviews">Reviews</button>
+            <button class="tab-link" data-tab="delivery">Shipping &amp; Returns</button>
+        </div>
+
+        <ul>
+            <li class="tab-content" id="description">
+                <h3 style="border-bottom: 3px solid #F9F9F9;">More about {{ product.title }} </h3>
+                <div class="description">
+                    {{ product.description }}
+                </div>
+            </li>
+            <li class="tab-content" id="reviews">
+                <div id="shopify-product-reviews" data-id="{{ product.id }}">
+                    {{ product.metafields.spr.reviews }}
+                </div>
+            </li>
+            <li class="tab-content" id="delivery">
+                {{ pages.delivery.content }}
+            </li>
+        </ul>
+    </div>
 </div>
 
 <!-- Begin related product -->
@@ -152,12 +169,11 @@
     $(function() {
       var minLength = 2;
       var maxLength = 9;
-      var pattern = '".{' + minLength + ',' + maxLength + '}"';
       var title = "Please enter " + minLength + " to " + maxLength + " letters.";
+
       //Bindings
       $('[name="properties[Child\'s Name]"]').attr("maxlength", maxLength);
       $('[name="properties[Child\'s Name]"]').attr("minlength", minLength);
-      //$('[name="properties[Child\'s Name]"]').attr("pattern", pattern);
       $('[name="properties[Child\'s Name]"]').attr("title", title);
 
       $('[name="properties[Child\'s Name]"]').keyup(function() {

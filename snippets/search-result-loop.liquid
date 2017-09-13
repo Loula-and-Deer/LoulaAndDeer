@@ -30,7 +30,7 @@
       {% assign hide_default_title = true %}
       {% endif %}
 
-        <form  id="add-product-form" class="add-product-form" action="/cart/add" method="post">
+        <form  id="add-product-form" class="add-product-form product-information-layout" action="/cart/add" method="post">
           <div class="{% if product.metafields.product_customizer.size > 1  %} product-options {% endif %}">
           <div class="select "{% if hide_default_title %} style="display:none"{% endif %}>
             <select id="product-select" name="id" >
@@ -43,10 +43,13 @@
             {% include 'product-customizer' %}
           {% endif %}
           </div>
-          <div class="buttons" style="{% if product.metafields.product_customizer.size > 0 %}padding: 1rem; clear: both;{% else %}padding: 1rem 0; clear: right;{% endif %}">
+          <div class="buy-container" style="width: 70%">
           {% if product.available %}
-            <input type="submit" class="search-add" name="add" value="Add to cart"/>
-            <input type="number" class="search-qty" name="quantity" value="1"  min="1"/>
+          <div>
+            <label for="quantity">Quantity</label>
+            <input id="quantity" type="number" name="quantity" value="1" min="1" class="tc item-quantity">
+          </div>
+            <input type="submit" class="btn" name="add" value="Add to cart"/>
           {% else %}
             <input type="submit" class="search-add search-add-soldout" name="add" disabled="disabled" value="Sold out"/>
           {% endif %}
