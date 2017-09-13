@@ -76,7 +76,7 @@
     {% capture section_product %}fp_section_1_id_{{ i }}{% endcapture %}
     <div class="homepage-layout-3rd">
       <a href="{{ all_products[settings[section_product]].url }}">
-        <img src="{{ all_products[settings[section_product]].featured_image | product_img_url: '640x360' , crop: 'center', format: 'pjpeg' }}" alt="{{ all_products[settings[section_product]].title }}" />
+        <img src="{{ all_products[settings[section_product]].featured_image | product_img_url: '315x177' , crop: 'center', format: 'pjpeg' }}" alt="{{ all_products[settings[section_product]].title }}" />
         <h3>{{ all_products[settings[section_product]].title }}</h3>
       </a>
     </div>
@@ -112,7 +112,10 @@
   animation-iteration-count: 9999;
 }
 
-@media screen and (max-width: 796px) {#banner-desktop{display: none;}}
+@media screen and (max-width: 796px) {
+  #banner-desktop{display: none;}
+}
 
-@media screen and (min-width: 797px) {#banner-mobile{display: none;}}
+@media screen and (min-width: 797px) {
+  #banner-mobile{display: none;}}
 </style>

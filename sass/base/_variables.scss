@@ -99,23 +99,10 @@ $cart-layout-grid--mobile: (
   media: "(max-width: 797px)",
 );
 
-
 // Product thumbnails
 $product-page-thumbnail-layout: (
   columns: 3,
   gutter: 1rem,
-);
-
-// Product information
-$product-information-layout-grid: (
-  columns: 2,
-  gutter: 1rem,
-);
-
-$product-information-layout-grid--mobile: (
-  columns: 1,
-  gutter: 1rem,
-	media: "(max-width: 797px)",
 );
 
 // Account

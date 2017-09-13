@@ -99,7 +99,7 @@
           {% endif %}
         {% endfor %}
       {% endcapture %}
-      <div class="product-customisation-option option-type-{{ option_type }} {% if option_required %}option-required{% endif %}" data-option-id="{{ remote_option_id }}" product-option-id="{{ remote_product_option_id }}" data-option-name="{{ option_name | downcase | handleize }}" {% if option_max_selections %}data-max-selections="{{ option_max_selections }}"{% endif %} {% if option_min_selections %}data-min-selections="{{ option_min_selections }}"{% endif %}>
+      <div class="option-type-{{ option_type }} {% if option_required %}option-required{% endif %}" data-option-id="{{ remote_option_id }}" product-option-id="{{ remote_product_option_id }}" data-option-name="{{ option_name | downcase | handleize }}" {% if option_max_selections %}data-max-selections="{{ option_max_selections }}"{% endif %} {% if option_min_selections %}data-min-selections="{{ option_min_selections }}"{% endif %}>
         {% unless option_type == 'checkbox' %}
           <label for="{{ option_id }}">{{ option_label }}{% if option_price and option_values == null %} <span class="option-amount">(+{{ option_price | money }})</span>{% endif %}</label>
           <div>
