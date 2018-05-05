@@ -1,5 +1,6 @@
-# Loula & Deer
-![alt text](https://cdn.shopify.com/s/files/1/0398/6929/t/28/assets/Web_Logo.png =250x250)
+<img align="left" src="https://cdn.shopify.com/s/files/1/0398/6929/t/28/assets/Web_Logo.png" width="150">
+<h1 align="left">LOULA <br> & <br> DEER</h1>
+<br>
 
 This repo holds the [Shopify](www.shopify.co.uk) theme for [Loula & Deer](https://loulaanddeer.co.uk).
 
