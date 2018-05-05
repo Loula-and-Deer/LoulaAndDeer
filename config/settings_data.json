@@ -1,0 +1,340 @@
+{
+  "current": {
+    "color_body_bg": "#ffffff",
+    "color_body_text": "#333333",
+    "color_primary_color": "#333333",
+    "color_primary_button_text": "#ffffff",
+    "color_sale_badge": "#c8493f",
+    "color_borders": "#e8e8e8",
+    "color_form": "#f4f4f4",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#333333",
+    "image_overlay_opacity": 25,
+    "type_header_family": "Google_Open+Sans_400_sans",
+    "type_header_base_size": "28px",
+    "type_base_family": "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+    "type_base_size": "15px",
+    "type_button_base_size": "14px",
+    "type_navigation_base_size": "16px",
+    "cart_enable_ajax": true,
+    "show_breadcrumb_nav": true,
+    "share_image": "shopify:\/\/shop_images\/loula_and_deer_copy_7a677849-5b87-4286-afec-8362e74d45c0.jpg",
+    "social_facebook_link": "https:\/\/www.facebook.com\/LoulaAndDeer\/",
+    "social_twitter_link": "https:\/\/twitter.com\/loulaanddeer",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https:\/\/www.instagram.com\/loulaanddeer\/",
+    "social_snapchat_link": "",
+    "social_google_plus_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "main_blog": "news",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "favicon": "shopify:\/\/shop_images\/loula_and_deer_copy_7a677849-5b87-4286-afec-8362e74d45c0.jpg",
+    "checkout_header_image": "shopify:\/\/shop_images\/baby-toys-bottles-products.jpg",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#555555",
+    "checkout_button_color": "#ff3a3a",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "featured-products": {
+        "type": "featured-products",
+        "settings": {
+          "title": "Featured collection",
+          "home_page_featured_products": "frontpage",
+          "home_featured_products_row_num": 2
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "menu",
+            "settings": {
+              "title": "Links",
+              "menu": "footer"
+            }
+          },
+          "1524923053946": {
+            "type": "newsletter",
+            "settings": {}
+          },
+          "1524923150153": {
+            "type": "text",
+            "settings": {
+              "title": "Company details",
+              "richtext": "<p>Loula and Deer<br><span>5 Brighton Place, Brighton, United Kingdom<br><\/span><span>Registration No: 09351604<\/span><\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "1524923053946",
+          "1524923150153"
+        ],
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/Typographic_Logo.png",
+          "logo_max_width": "230",
+          "show_announcement": true,
+          "home_page_only": true,
+          "announcement_text": "We've got a new look! Please bare with us while we change style.",
+          "announcement_link": "shopify:\/\/pages\/contact-us",
+          "tagline": "<p>Rags and toys for little girls and boys<\/p>"
+        }
+      },
+      "sidebar": {
+        "type": "sidebar",
+        "settings": {
+          "main_menu_link_list": "main-menu"
+        }
+      },
+      "1524923005811": {
+        "type": "slideshow",
+        "blocks": {
+          "1524923005811-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slideshow_1_1024x1024_progressive_jpg.jpeg",
+              "alignment": "center",
+              "slide_cta": "Shop now",
+              "link": "shopify:\/\/products\/ballerina-music-jewellery-box"
+            }
+          },
+          "1524923005811-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_3030.jpg",
+              "alignment": "center",
+              "slide_cta": "Shop now",
+              "link": "shopify:\/\/products\/amber-teething-necklaces"
+            }
+          },
+          "1524925320506": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_1404_copy.jpg",
+              "alignment": "bottom",
+              "slide_cta": "Shop now",
+              "link": "shopify:\/\/products\/organic-essential-oil-diffuser"
+            }
+          },
+          "1524925659249": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/IMG_0249.jpg",
+              "alignment": "center",
+              "slide_cta": "Shop out best sellers",
+              "link": "shopify:\/\/collections\/best-sellers"
+            }
+          }
+        },
+        "block_order": [
+          "1524923005811-0",
+          "1524923005811-1",
+          "1524925320506",
+          "1524925659249"
+        ],
+        "settings": {
+          "slider_home_auto": true,
+          "slider_home_rate": 5,
+          "slideshow_height": 450,
+          "slider_home_transition": "slide",
+          "text_size": "medium"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "vendor_show": false,
+          "collection_sort_enable": true,
+          "collection_tag_enable": false
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_quantity_enable": false,
+          "vendor_show": false,
+          "social_sharing_products": true,
+          "product_description_position": "below",
+          "show_extra_tab": false,
+          "extra_tab_content": "",
+          "product_image_zoom_type": "lightbox",
+          "enable_payment_button": false,
+          "add_to_cart_width": "regular"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "social_sharing_blog": true
+        }
+      },
+      "1524926376392": {
+        "type": "map",
+        "settings": {
+          "heading": "Loula & Deer",
+          "address": "<p>5 Brighton Place<br>Brighton, United Kingdom<\/p>\n<p><\/p>\n<p>Mon - Thur, 11am to 5pm<br>Fri &amp; Sat, 10am to 6pm<br>Sun &amp; Bank Holidays, 11am to 4pm<\/p>",
+          "map_address": "Loula and Deer, 5 Brighton Pl, Brighton BN1 1HJ",
+          "button_text": "Get directions",
+          "show_pin": true,
+          "api_key": "",
+          "background_image": "shopify:\/\/shop_images\/Pictures_for_web_188.jpg",
+          "background_image_position": "center center"
+        }
+      },
+      "1524926731012": {
+        "type": "featured-content",
+        "settings": {
+          "section_title": "Find us",
+          "text": "<p>Come and visit our little boutique.<\/p>",
+          "text_size": "medium"
+        }
+      },
+      "1524927901976": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "Blog",
+          "blog": "news",
+          "post_limit": 3,
+          "blog_show_date": true,
+          "blog_show_author": false,
+          "blog_show_image": false,
+          "blog_show_excerpt": true,
+          "show_view_all": false
+        }
+      }
+    },
+    "content_for_index": [
+      "1524923005811",
+      "featured-products",
+      "1524926731012",
+      "1524926376392",
+      "1524927901976"
+    ]
+  },
+  "presets": {
+    "Beauty": {
+      "color_body_bg": "#f7f7f7",
+      "color_body_text": "#3c4049",
+      "color_primary_color": "#d97c76",
+      "color_primary_button_text": "#ffffff",
+      "color_sale_badge": "#d97c76",
+      "color_borders": "#d7d8d2",
+      "color_form": "#ffffff",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3c4049",
+      "image_overlay_opacity": "25",
+      "type_header_family": "Google_PT+Serif_700_serif",
+      "type_header_base_size": "28px",
+      "type_base_family": "Google_PT+Serif_400_serif",
+      "type_base_size": "16px",
+      "type_button_base_size": "12px",
+      "type_navigation_base_size": "16px",
+      "show_breadcrumb_nav": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_page_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "featured-products",
+        "featured-content"
+      ]
+    },
+    "Light": {
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#333333",
+      "color_primary_color": "#333333",
+      "color_primary_button_text": "#ffffff",
+      "color_sale_badge": "#c8493f",
+      "color_borders": "#e8e8e8",
+      "color_form": "#f4f4f4",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#333333",
+      "image_overlay_opacity": "25",
+      "type_header_family": "TimesNewRoman, 'Times New Roman', Times, Baskerville, Georgia, serif",
+      "type_header_base_size": "28px",
+      "type_base_family": "'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "type_base_size": "15px",
+      "type_button_base_size": "14px",
+      "type_navigation_base_size": "16px",
+      "show_breadcrumb_nav": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_page_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "featured-products",
+        "featured-content"
+      ]
+    }
+  }
+}
