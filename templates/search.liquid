@@ -5,6 +5,7 @@
     {% if search.performed %}
       {% if search.results_count == 0 %}
         {{ 'general.search.no_results_html' | t: terms: search.terms }}
+    	{% include 'related-products' %}
       {% else %}
         {{ 'general.search.results_for_html' | t: terms: search.terms }}
       {% endif %}
@@ -31,22 +32,16 @@
   {% if search.performed %}
     <div class="grid grid--uniform">
       {% for item in search.results %}
-      {% if item.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
-
+      	{% if item.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
         {% if item.object_type == 'product' %}
-
           {% assign product = item %}
           {% include 'product-grid-item' %}
-
         {% else %}
-
           <div class="grid__item medium-up--one-third small--one-half">
             <h2 class="h3">{{ item.title | link_to: item.url }}</h2>
             <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
           </div>
-
         {% endif %}
-
       {% endfor %}
     </div>
 

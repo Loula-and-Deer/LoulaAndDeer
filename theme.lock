@@ -26,7 +26,7 @@ assets/theme.js.liquid:
 assets/theme.scss.liquid:
   development: 2018-04-28T14:36:42+01:00   dd9ac91e6d4d125902df76ac604ba8ef
 config/settings_data.json:
-  development: 2018-04-28T16:53:56+01:00   1713fc42db9079b002eab6d9aee8cb33
+  development: 2018-05-05T12:45:24+01:00   5843242e94c92c996228a93736fc5463
 config/settings_schema.json:
   development: 2018-04-28T16:28:58+01:00   f3a6907400cd8b6fe26693d44223f084
 layout/password.liquid:
@@ -74,7 +74,7 @@ sections/featured-video.liquid:
 sections/footer.liquid:
   development: 2018-04-28T14:36:41+01:00   76e48e8ee83535846e545ac0651ce2b1
 sections/header.liquid:
-  development: 2018-04-30T22:02:29+01:00   9bb897232f55f3602013fd512a6ecee5
+  development: 2018-05-12T11:35:27+01:00   3eb288c5cc7557ac5d8521cdfa13b1a7
 sections/list-collections-template.liquid:
   development: 2018-04-28T14:36:42+01:00   5cee42a561d01c41c11b1b3031c9eb40
 sections/map.liquid:
@@ -86,7 +86,7 @@ sections/password-content.liquid:
 sections/password-header.liquid:
   development: 2018-04-28T14:36:42+01:00   0dabed945442c440027e199baefc71fa
 sections/product-template.liquid:
-  development: 2018-04-30T20:49:03+01:00   c780d65d5230c2b3de38d160f5563ac7
+  development: 2018-05-05T14:42:41+01:00   c780d65d5230c2b3de38d160f5563ac7
 sections/sidebar.liquid:
   development: 2018-04-28T14:36:42+01:00   48e5495ee6756f32969a1f62797008f7
 sections/slideshow.liquid:
@@ -204,7 +204,7 @@ snippets/product-customizer.liquid:
 snippets/product-description.liquid:
   development: 2018-04-28T16:29:38+01:00   ff3554b5b0c481491160dccab99e4f43
 snippets/product-grid-item.liquid:
-  development: 2018-04-28T14:36:43+01:00   bea5fe33d9ad5e80f8fcf2585b47ad92
+  development: 2018-05-12T11:07:08+01:00   b03c53122e246a50f99338a888029a8f
 snippets/related-products.liquid:
   development: 2018-04-30T22:00:11+01:00   996a416dfda833d0483576ffa30cb7aa
 snippets/shopstorm-scripttags.liquid:
@@ -252,4 +252,4 @@ templates/password.liquid:
 templates/product.liquid:
   development: 2018-04-28T14:36:44+01:00   8dc0a5ff5551ec620d64c92ba21689d8
 templates/search.liquid:
-  development: 2018-05-05T11:00:31+01:00   c5141f2fdc744e6f4843806e483da4a2
+  development: 2018-05-12T11:37:36+01:00   e6383eee747749419eb9f41c97efeaba

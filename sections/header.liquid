@@ -55,7 +55,7 @@
           {% include 'icon-search' %}
         </a>
         <form action="/search" method="get" class="search-bar small--hide" role="search">
-          {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+          <input type="hidden" name="type" value="product">
           <button type="submit" class="search-bar__submit">
             {% include 'icon-search' %}
             <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
