@@ -58,7 +58,7 @@
           {% for image in product.images %}
             <li class="grid__item {{ thumbnail_width }}">
               <a href="{{ image.src | img_url: 'grande' }}" class="product-single__thumbnail" data-image-id="{{ image.id }}">
-                <img src="{{ image.src | img_url: 'compact' }}" alt="{{ image.alt | escape }}">
+                <img src="{{ image.src | img_url: 'compact', crop: 'center' }}" alt="{{ image.alt | escape }}">
               </a>
             </li>
           {% endfor %}
